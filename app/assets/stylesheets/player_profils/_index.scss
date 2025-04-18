@@ -6,7 +6,9 @@
   margin: 20px;
   padding: 20px;
 }
-.player-profil-index-container>a{
+.add-player-profil a,
+.player-profil-index-container a {
   text-decoration: none;
-
+  color: inherit;
 }
+
