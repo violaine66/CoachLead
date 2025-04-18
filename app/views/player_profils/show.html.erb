@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="player-card-show">
+    <%= @player_profil.last_name %>
+    <%= @player_profil.first_name %>
+    <%= @player_profil.age %>
+    <%= @player_profil.weight %>
+    <%= @player_profil.job %>
+    <%= @player_profil.children_count %>
+  </div>
+  <%= link_to edit_player_profil_path(@player_profil) do %>
+    <i class="fa-solid fa-pen-to-square"></i>
+  <% end %>
+  <%= link_to player_profil_path(@player_profil), data: { turbo_method: :delete, turbo_confirm: "Are you sure" } do %>
+    <i class="fa-solid fa-trash"></i>
+  <% end %>
+  <p><%= link_to "Retour aux joueurs", player_profils_path %></p>
+</div>

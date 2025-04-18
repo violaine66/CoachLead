@@ -1,10 +1,15 @@
 <div class="container">
   <div class= "player-profil-index-container">
       <% @player_profils.each do |player| %>
-      <div class="player-profil-index">
-        <%= player.first_name %>
-        <%= player.last_name %>
+        <%= link_to player_profil_path(player) do %>
+        <div class="player-profil-index">
+          <%= player.first_name %>
+          <%= player.last_name %>
+        <% end %>
       </div>
     <% end %>
+  </div>
+  <div class="add-player-profil">
+    <%= link_to "Ajouter un profil", new_player_profil_path %>
   </div>
 </div>

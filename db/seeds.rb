@@ -8,8 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 puts "Suppression des données existantes..."
-User.destroy_all
+
 PlayerProfil.destroy_all
+User.destroy_all
 
 puts "Création de l'utilisateur développeur..."
 user1 = User.create!(

@@ -26,7 +26,7 @@ class PlayerProfilsController < ApplicationController
   end
 
   def update
-    @player_profil = PlayerProfi.find(params[:id])
+    @player_profil = PlayerProfil.find(params[:id])
     if @player_profil.update(player_profil_params)
       redirect_to @player_profil, notice: 'Profil du joueur mis à jour'
     else

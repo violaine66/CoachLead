@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="new-player-profil">
+    <div class="form-player-profil">
+      <%= simple_form_for (@player_profil) do |f| %>
+      <%= f.input :last_name%>
+      <%= f.input :first_name%>
+      <%= f.input :age%>
+      <%= f.input :weight%>
+      <%= f.input :job%>
+      <%= f.input :children_count%>
+      <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to "Retour aux joueurs", player_profils_path %>
+</div>
