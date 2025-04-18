@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_many :job_load_evaluations
   has_many :match_performances
 
+  # Validations
+  validates :email, presence: true, uniqueness: true
+  validates :pseudo, presence: true, uniqueness: true
+  enum role: { joueur: "joueur", entraieur: "entraineur"}
 end
