@@ -1,0 +1,10 @@
+<div class="container">
+  <div class= "player-profil-index-container">
+      <% @player_profils.each do |player| %>
+      <div class="player-profil-index">
+        <%= player.first_name %>
+        <%= player.last_name %>
+      </div>
+    <% end %>
+  </div>
+</div>
