@@ -1,0 +1,2 @@
+class JobLoadEvaluationsController < ApplicationController
+end

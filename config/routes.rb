@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :player_profils, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :job_load_evaluations, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 end
