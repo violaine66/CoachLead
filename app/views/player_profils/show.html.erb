@@ -7,11 +7,20 @@
     <%= @player_profil.job %>
     <%= @player_profil.children_count %>
   </div>
-  <%= link_to edit_player_profil_path(@player_profil) do %>
-    <i class="fa-solid fa-pen-to-square"></i>
+
+  <% if policy(PlayerProfil).create?%>
+    <%= link_to edit_player_profil_path(@player_profil) do %>
+      <i class="fa-solid fa-pen-to-square"></i>
+    <% end %>
   <% end %>
-  <%= link_to player_profil_path(@player_profil), data: { turbo_method: :delete, turbo_confirm: "Are you sure" } do %>
-    <i class="fa-solid fa-trash"></i>
+    <% if policy(PlayerProfil).destroy? %>
+      <%= link_to player_profil_path(@player_profil), data: { turbo_method: :delete, turbo_confirm: "Are you sure" } do %>
+        <i class="fa-solid fa-trash"></i>
+      <% end %>
+    <% end %>
+  <% if current_user.role == "entraineur" %>
+    <p><%= link_to "Retour aux joueurs", player_profils_path %></p>
+  <% else  %>
+    <p><%= link_to "Retour", root_path %></p>
   <% end %>
-  <p><%= link_to "Retour aux joueurs", player_profils_path %></p>
 </div>

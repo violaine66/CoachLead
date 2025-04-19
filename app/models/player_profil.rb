@@ -1,5 +1,5 @@
 class PlayerProfil < ApplicationRecord
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
 
   # validations
   validates :age, numericality: { only_integer: true, greater_than: 0 }
