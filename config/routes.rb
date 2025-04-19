@@ -12,8 +12,6 @@ Rails.application.routes.draw do
 
   resources :trainings
 
-
-
-  resources :player_profils, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  resources :job_load_evaluations, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :player_profils
+  resources :job_load_evaluations, only: [:index, :show, :new, :create]
 end

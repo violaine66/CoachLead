@@ -10,7 +10,9 @@
 puts "Suppression des données existantes..."
 
 PlayerProfil.destroy_all
+JobLoadEvaluation.destroy_all
 User.destroy_all
+Training.destroy_all
 
 puts "Création de l'utilisateur développeur..."
 entraineur = User.create!(
@@ -99,3 +101,13 @@ players_data.each do |player_data|
 end
 
 puts "10 utilisateurs et 10 profils de joueurs ont été créés avec succès."
+
+puts "création de 10 évaluations de charge de travail..."
+users.each do |user|
+  JobLoadEvaluation.create!(
+    period: "Avril 2025",                    # Tu peux modifier la période selon ton besoin
+    rating: rand(1..5),                     # Une note entre 1 et 5 (par exemple)
+    user: user
+  )
+end
+

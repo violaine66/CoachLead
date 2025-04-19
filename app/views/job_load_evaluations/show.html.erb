@@ -1,0 +1,12 @@
+<div class="container mt-5">
+  <h1>Détail de l’évaluation</h1>
+
+  <% if current_user.entraineur? %>
+    <p><strong>Joueur :</strong> <%= @job_load_evaluation.user.player_profil&.first_name %> <%= @job_load_evaluation.user.player_profil&.last_name %></p>
+  <% end %>
+
+  <p><strong>Période :</strong> <%= @job_load_evaluation.period %></p>
+  <p><strong>Note de charge :</strong> <%= @job_load_evaluation.rating %> / 5</p>
+
+  <%= link_to "Retour", job_load_evaluations_path, class: "btn btn-secondary mt-3" %>
+</div>

@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <h1>Évaluations de pénibilité</h1>
+
+  <% if current_user.entraineur? %>
+    <p>Liste de toutes les évaluations :</p>
+  <% else %>
+    <p>Voici vos évaluations :</p>
+  <% end %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <% if current_user.entraineur? %>
+          <th>Joueur</th>
+        <% end %>
+        <th>Période</th>
+        <th>Note</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @job_load_evaluations.each do |evaluation| %>
+        <tr>
+          <% if current_user.entraineur? %>
+            <td><%= evaluation.user.player_profil&.first_name %> <%= evaluation.user.player_profil&.last_name %></td>
+          <% end %>
+          <td><%= evaluation.period %></td>
+          <td><%= evaluation.rating %></td>
+          <td>
+            <%= link_to "Voir", job_load_evaluation_path(evaluation), class: "btn btn-sm btn-primary" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
