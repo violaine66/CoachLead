@@ -1,3 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<p><%= link_to "Les joueurs", player_profils_path %></p>
+<% if current_user.entraineur? %>
+  <h1>Bienvenue Coach <%= current_user.email %> !</h1>
+  <%= link_to "Voir les joueurs", player_profils_path %>
+
+<% elsif current_user.joueur? %>
+  <h1>Bienvenue <%= current_user.email %> !</h1>
+  <%= link_to "Mon profil", player_profil_path(current_user.player_profil) %>
+<% end %>

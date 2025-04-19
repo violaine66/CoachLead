@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     is_devise = devise_controller?
-    puts "Is devise controller? #{is_devise}"
+
     is_devise || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
   def policy_scope_needed?

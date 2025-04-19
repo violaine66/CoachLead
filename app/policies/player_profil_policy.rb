@@ -26,4 +26,24 @@ class PlayerProfilPolicy < ApplicationPolicy
     # Exemple : autorise uniquement si l'utilisateur est le propriétaire du profil ou un entraineur
     user.entraineur? || record.user == user
   end
+
+  def new?
+    create?
+  end
+
+  def create?
+    user.entraineur? # L'accès à la création est uniquement autorisé aux utilisateurs ayant le rôle "entraineur"
+  end
+
+  def update?
+    user.entraineur?
+  end
+
+  def edit?
+    update?
+  end
+
+  def destroy?
+    user.entraineur?
+  end
 end

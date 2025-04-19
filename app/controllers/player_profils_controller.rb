@@ -1,4 +1,5 @@
 class PlayerProfilsController < ApplicationController
+  before_action :set_player_profil, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   after_action :verify_policy_scoped, only: :index  # Vérifie la politique du scope pour l'index
   before_action :authorize_user, only: :index  # Vérifie l'autorisation d'accès à l'index
@@ -9,30 +10,33 @@ class PlayerProfilsController < ApplicationController
   end
 
   def show
-    @player_profil = PlayerProfil.find(params[:id])
     authorize @player_profil
   end
 
   def new
     @player_profil = PlayerProfil.new
+    authorize @player_profil
   end
 
   def create
-    @player_profil = PlayerProfil.new(player_profile_params)
-    @player_profil.user = current_user # Assuming you have a current_user method
+    @player_profil = PlayerProfil.new(player_profil_params)
+    authorize @player_profil
+    @player_profil.user = current_user
+
     if @player_profil.save
       redirect_to @player_profil, notice: 'Player profile was successfully created.'
     else
+      puts @player_profil.errors.full_messages
       render :new
     end
   end
 
   def edit
-    @player_profil = PlayerProfil.find(params[:id])
+    authorize @player_profil
   end
 
   def update
-    @player_profil = PlayerProfil.find(params[:id])
+    authorize @player_profil
     if @player_profil.update(player_profil_params)
       redirect_to @player_profil, notice: 'Profil du joueur mis à jour'
     else
@@ -41,14 +45,18 @@ class PlayerProfilsController < ApplicationController
   end
 
   def destroy
-    @player_profil = PlayerProfil.find(params[:id])
+    authorize @player_profil
     @player_profil.destroy
     redirect_to player_profils_url, notice: 'Profil du joueur supprimé.'
   end
 
   private
+  def set_player_profil
+    @player_profil = PlayerProfil.find(params[:id])
+  end
+
   def player_profil_params
-    params.require(:player_profil).permit(:age, :weight, :children_count)
+    params.require(:player_profil).permit(:age, :weight, :children_count, :job, :first_name, :last_name, :user_id)
   end
   def authorize_user
     # Vérifie si l'utilisateur connecté est un 'entraineur'
