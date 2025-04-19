@@ -19,8 +19,9 @@ user1 = User.create!(
   pseudo: "Lou",
   role: "entraineur",
 )
-# db/seeds.rb
-# db/seeds.rb
+
+puts "Utilisateur développeur créé avec succès."
+
 
 # Création de 10 utilisateurs
 users_data = [
