@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <h1>Détail</h1>
+
+  <% if current_user.entraineur? %>
+   <p><strong>Joueur :</strong>
+      <% if @match_performance.user.player_profil.present? %>
+        <%= "#{@match_performance.user.player_profil.first_name} #{@match_performance.user.player_profil.last_name}" %>
+      <% else %>
+        <%= "Profil manquant" %>
+      <% end %>
+    </p>
+
+  <% end %>
+
+  <p><strong>Date du match :</strong> <%= @match_performance.match_date %></p>
+  <p><strong>Participation :</strong> <%= @match_performance.played ? "Oui" : "Non" %></p>
+  <p><strong>Cartons jaunes :</strong> <%= @match_performance.yellow_card %></p>
+
+  <%= link_to "Retour", match_performances_path, class: "btn btn-secondary mt-3" %>
+</div>

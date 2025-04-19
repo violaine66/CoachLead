@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   resources :player_profils
   resources :job_load_evaluations, only: [:index, :show, :new, :create]
+  resources :match_performances, only: [:index, :show, :new, :create]
 end

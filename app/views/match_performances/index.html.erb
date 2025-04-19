@@ -1,0 +1,51 @@
+<div class="container">
+  <h1>Performances de match</h1>
+
+  <% if current_user.entraineur? %>
+    <p>Performances des joueurs</p>
+  <% else %>
+    <p>Voici vos performances de match :</p>
+  <% end %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <% if current_user.entraineur? %>
+          <th>Joueur</th>
+        <% end %>
+        <th>Date</th>
+        <th>Participation</th>
+        <th>Cartons jaunes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @match_performances.each do |performance| %>
+        <tr>
+          <% if current_user.entraineur? %>
+            <td>
+              <% if performance.user.player_profil.present? %>
+                <%= "#{performance.user.player_profil.first_name} #{performance.user.player_profil.last_name}" %>
+              <% else %>
+                <%= "Profil manquant" %>
+              <% end %>
+            </td>
+          <% end %>
+          <td><%= performance.match_date %></td>
+          <td><%= performance.played ? "Oui" : "Non" %></td>
+          <td><%= performance.yellow_card %></td>
+          <td>
+            <%= link_to "Voir", match_performance_path(performance), class: "btn btn-sm btn-primary" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% if current_user.entraineur?%>
+    <div>
+        <%= link_to "Créer une nouvelle performance", new_match_performance_path, class: "btn btn-success" %>
+    </div>
+  <% end %>
+   <div>
+    <%= link_to "Retour", root_path, class: "btn btn-secondary mt-3" %>
+  </div>
+</div>

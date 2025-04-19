@@ -13,6 +13,7 @@ PlayerProfil.destroy_all
 JobLoadEvaluation.destroy_all
 User.destroy_all
 Training.destroy_all
+MatchPerformance.destroy_all
 
 puts "Création de l'utilisateur développeur..."
 entraineur = User.create!(
@@ -110,4 +111,19 @@ users.each do |user|
     user: user
   )
 end
+ puts "10 évaluations de charge de travail créées avec succès."
 
+# Créez des performances de match pour chaque utilisateur
+puts "Création de performances de match..."
+users.each do |user|
+  # Créez plusieurs performances de match pour chaque utilisateur (par exemple, 5 matchs)
+  5.times do |i|
+    # Créez une performance de match pour un utilisateur avec des données simples
+    MatchPerformance.create(
+      user_id: user.id,
+      match_date: Date.new(2025, 4, i+1),  # Dates fixes pour les matchs (ex: 1er avril, 2 avril, etc.)
+      played: [true, false].sample,  # Match joué ou non, sélectionné aléatoirement
+      yellow_card: rand(0..2)  # Carton jaune aléatoire (0, 1 ou 2)
+    )
+  end
+end
