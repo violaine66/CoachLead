@@ -32,6 +32,6 @@ class JobLoadEvaluationPolicy < ApplicationPolicy
   end
 
   def create?
-    user.entraineur? || record.user == user
+    user.entraineur? || record.user == user ||user.joueur?
   end
 end

@@ -1,3 +1,13 @@
-<div class="container">
-  Coucou
+<div class="container mt-5">
+  <h2>Nouvelle évaluation de pénilibilité de mon travail</h2>
+  <div class="form-job-load-evaluation">
+    <%= simple_form_for @job_load_evaluation do |f| %>
+      <%= f.input :period, label: "Période" %>
+      <%= f.input :rating, label: "Note " %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "Retour", job_load_evaluations_path, class: "btn btn-secondary mt-3" %>
+  </div>
 </div>
