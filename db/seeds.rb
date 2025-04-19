@@ -13,11 +13,11 @@ PlayerProfil.destroy_all
 User.destroy_all
 
 puts "Création de l'utilisateur développeur..."
-user1 = User.create!(
+entraineur = User.create!(
   email: "lou@app.fr",
   password: "violaine",
   pseudo: "Lou",
-  role: "entraineur",
+  role: :entraineur,
 )
 
 puts "Utilisateur développeur créé avec succès."

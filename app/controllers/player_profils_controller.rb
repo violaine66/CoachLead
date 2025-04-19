@@ -1,10 +1,16 @@
 class PlayerProfilsController < ApplicationController
+  before_action :authenticate_user!
+  after_action :verify_policy_scoped, only: :index  # Vérifie la politique du scope pour l'index
+  before_action :authorize_user, only: :index  # Vérifie l'autorisation d'accès à l'index
+
   def index
-    @player_profils = PlayerProfil.all
+    @player_profils = policy_scope(PlayerProfil)
+
   end
 
   def show
     @player_profil = PlayerProfil.find(params[:id])
+    authorize @player_profil
   end
 
   def new
@@ -43,5 +49,9 @@ class PlayerProfilsController < ApplicationController
   private
   def player_profil_params
     params.require(:player_profil).permit(:age, :weight, :children_count)
+  end
+  def authorize_user
+    # Vérifie si l'utilisateur connecté est un 'entraineur'
+    authorize :player_profil, :index?  # Cela utilise la politique définie dans PlayerProfilPolicy
   end
 end

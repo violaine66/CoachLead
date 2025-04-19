@@ -14,5 +14,5 @@ class User < ApplicationRecord
   # Validations
   validates :email, presence: true, uniqueness: true
   validates :pseudo, presence: true, uniqueness: true
-  enum role: { joueur: "joueur", entraieur: "entraineur"}
+  enum role: { joueur: "joueur", entraineur: "entraineur"}
 end
