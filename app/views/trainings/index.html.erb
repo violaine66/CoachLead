@@ -1,9 +1,15 @@
 <div class="container">
-  <% @trainings.each do |t| %>
+  <h1 class="my-5">Mes Entrainements</h1>
+  <div class="list-entrainements">
+     <% @trainings.each do |t| %>
     <%= t.date %>
     <%= t.title %>
     <%= t.location %>
     <%= t.description %>
     <hr>
-  <% end %>
+    <% end %>
+  </div>
+  <div class= "mt-5">
+    <p><%= link_to "Retour à l'accueil", root_path %></p>
+  </div>
 </div>
