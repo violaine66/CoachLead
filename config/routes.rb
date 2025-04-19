@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  resources :trainings
+
+
+
   resources :player_profils, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :job_load_evaluations, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 end

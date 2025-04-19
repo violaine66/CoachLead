@@ -1,0 +1,9 @@
+<div class="container">
+  <% @trainings.each do |t| %>
+    <%= t.date %>
+    <%= t.title %>
+    <%= t.location %>
+    <%= t.description %>
+    <hr>
+  <% end %>
+</div>

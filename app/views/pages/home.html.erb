@@ -6,3 +6,11 @@
   <h1>Bienvenue <%= current_user.email %> !</h1>
   <%= link_to "Mon profil", player_profil_path(current_user.player_profil) %>
 <% end %>
+
+<div class="entrainements">
+ <h2>
+  <%= link_to "Mes Entrainements", trainings_path %>
+  </h2>
+
+
+</div>

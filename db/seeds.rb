@@ -22,6 +22,39 @@ entraineur = User.create!(
 
 puts "Utilisateur développeur créé avec succès."
 
+puts "Création des entraînements..."
+# db/seeds.rb
+
+# Créer quelques entraînements
+Training.create!(
+  date: Date.today + 1.day,
+  location: "Stade de Paris",
+  title: "Entraînement de Pré-Saison",
+  description: "Entraînement physique intense pour préparer la saison à venir. Focus sur la résistance et l'endurance.",
+)
+
+Training.create!(
+  date: Date.today + 3.days,
+  location: "Salle de Gym",
+  title: "Séance de Renforcement Musculaire",
+  description: "Entraînement ciblé sur le renforcement musculaire, avec des exercices pour augmenter la force et la stabilité.",
+)
+
+Training.create!(
+  date: Date.today + 7.days,
+  location: "Stade Municipal",
+  title: "Entraînement Technique et Tactique",
+  description: "Séance centrée sur les compétences techniques et la stratégie de jeu pour améliorer la performance collective.",
+)
+
+Training.create!(
+  date: Date.today + 10.days,
+  location: "Parc des Sports",
+  title: "Match d'Entraînement",
+  description: "Match d'entraînement contre une équipe locale pour tester les stratégies et préparer le premier match officiel.",
+)
+puts "Entraînements créés avec succès."
+
 
 # Création de 10 utilisateurs
 users_data = [
