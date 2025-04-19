@@ -2,11 +2,23 @@
   <h1 class="my-5">Mes Entrainements</h1>
   <div class="list-entrainements">
      <% @trainings.each do |t| %>
-    <%= t.date %>
-    <%= t.title %>
-    <%= t.location %>
-    <%= t.description %>
-    <hr>
+      <%= link_to training_path(t) do %>
+        <%= t.date %>
+        <%= t.title %>
+        <%= t.location %>
+        <%= t.description %>
+          <% if policy(Training).create?%>
+            <%= link_to edit_training_path(t) do %>
+            <i class="fa-solid fa-pen-to-square"></i>
+          <% end %>
+        <% end %>
+          <% if policy(Training).destroy? %>
+            <%= link_to training_path(t), data: { turbo_method: :delete, turbo_confirm: "Are you sure" } do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          <% end %>
+              <hr>
+      <% end %>
     <% end %>
   </div>
   <div class= "mt-5">

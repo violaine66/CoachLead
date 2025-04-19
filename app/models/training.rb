@@ -9,7 +9,7 @@ class Training < ApplicationRecord
 
   def create_participations_for_all_players
     User.joueur.find_each do |player|
-      TrainingParticipation.create!(training: self, user: player)
+      TrainingParticipation.create(training: self, user: player)
     end
   end
 end

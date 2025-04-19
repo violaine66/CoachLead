@@ -9,4 +9,9 @@
   <div class="entrainements mt-5">
     <h2><%= link_to "Mes Entrainements", trainings_path %></h2>
   </div>
+  <% if current_user.entraineur?%>
+    <div class="training-new">
+      <h2><%= link_to "Créer un entraînement", new_training_path %></h2>
+  </div>
+  <% end %>
 </div>

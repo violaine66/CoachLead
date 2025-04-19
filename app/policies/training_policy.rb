@@ -27,14 +27,14 @@ class TrainingPolicy < ApplicationPolicy
     user.entraineur?
   end
 
-  def update
+  def update?
     user.entraineur?
   end
 
   def edit?
     update?
   end
-  
+
   def destroy?
     user.entraineur?
   end
