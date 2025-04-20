@@ -11,7 +11,6 @@
   <% end %>
 
 
-
  <div class="mt-5">
   <% if current_user.entraineur? %>
     <h4>Absences / Retards des joueurs</h4>
@@ -38,6 +37,11 @@
                   else "badge bg-secondary"
                 end %>
               <span class="<%= badge_class %>"><%= a.status.capitalize %></span>
+            </td>
+            <td>
+              <%= link_to edit_training_attendance_path(@training, a), class: "text-decoration-none" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
             </td>
           </tr>
         <% end %>

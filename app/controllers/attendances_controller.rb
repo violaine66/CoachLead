@@ -1,6 +1,7 @@
 class AttendancesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_attendance,  only: [:show, :edit, :update]
+  before_action :set_training, only: [:edit, :update]
   after_action :verify_policy_scoped, only: :index  # Vérifie la politique du scope pour l'index
 
   def index
@@ -41,21 +42,20 @@ class AttendancesController < ApplicationController
     end
 
     if @attendance.save
-      redirect_to training_path(@training), notice: 'La présence a été créée avec succès.'
+      redirect_to training_attendances_path(@training), notice: 'La présence a été créée avec succès.'
     else
       render :new
     end
   end
 
   def edit
-    @attendance = Attendance.find(params[:id])
-    @training = Training.find(params[:training_id])
+    @training = @attendance.training
+    @users = User.includes(:player_profil).where(role: 'joueur')
     authorize @attendance
-  end
+    end
+
 
   def update
-    @attendance = Attendance.find(params[:id])
-    @training = Training.find(params[:training_id])
     authorize @attendance
 
     if @attendance.update(attendance_params)
@@ -71,7 +71,15 @@ class AttendancesController < ApplicationController
   end
 
   def set_attendance
-    @attendance = Attendance.find(params[:id])
+    @attendance = Attendance.find_by(id: params[:id])
+    if @attendance.nil?
+      flash[:error] = "L'absence avec l'ID #{params[:id]} n'a pas été trouvée."
+      redirect_to training_attendances_path(params[:training_id])
+    end
+  end
+
+  def set_training
+    @training = Training.find(params[:training_id])
   end
 
 end

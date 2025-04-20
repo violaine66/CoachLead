@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :trainings do
-    resources :attendances, only: [:index, :show, :new, :create]
+    resources :attendances, only: [:index, :show, :new, :create, :update, :edit]
   end
   resources :player_profils
   resources :job_load_evaluations, only: [:index, :show, :new, :create]
