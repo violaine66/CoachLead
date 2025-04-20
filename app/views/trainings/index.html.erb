@@ -1,6 +1,14 @@
 <div class="container">
   <h1 class="my-5">Mes Entrainements</h1>
-  <div class="list-entrainements">
+
+  <% if current_user.entraineur? %>
+    <div class="training-new">
+        <h2><%= link_to "Créer un entraînement", new_training_path %></h2>
+      </div>
+  <% end %>
+
+  <div class="list-entrainements mt-5">
+    <h4> Entrainements</h4>
      <% @trainings.each do |t| %>
       <%= link_to training_path(t) do %>
         <%= t.date %>
