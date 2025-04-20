@@ -9,11 +9,17 @@
 #   end
 puts "Suppression des données existantes..."
 
-PlayerProfil.destroy_all
-JobLoadEvaluation.destroy_all
-User.destroy_all
-Training.destroy_all
+# Destroy dependent records first
 MatchPerformance.destroy_all
+Attendance.destroy_all
+Training.destroy_all
+JobLoadEvaluation.destroy_all
+PlayerProfil.destroy_all
+
+# Now delete users
+User.destroy_all
+
+
 
 puts "Création de l'utilisateur développeur..."
 entraineur = User.create!(
@@ -127,3 +133,26 @@ users.each do |user|
     )
   end
 end
+
+# db/seeds.rb
+
+# On récupère quelques users et trainings existants
+joueurs = User.where(role: "joueur")  # ou :player si tu utilises un enum
+trainings = Training.all
+
+# Statuts possibles
+statuses = %w[present absent late excused]
+
+puts "Creating attendances..."
+
+trainings.each do |training|
+  joueurs.sample(5).each do |joueur|
+    Attendance.create!(
+      user: joueur,
+      training: training,
+      status: statuses.sample
+    )
+  end
+end
+
+puts "✅ Attendances created successfully!"
