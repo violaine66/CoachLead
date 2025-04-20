@@ -1,12 +1,11 @@
 class AttendancesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_attendance
+  before_action :set_attendance,  only: [:show, :edit, :update]
   after_action :verify_policy_scoped, only: :index  # Vérifie la politique du scope pour l'index
 
   def index
     @attendances = policy_scope(Attendance)
-    @training = Training.find(params[:training_id])
-    @attendances = @training.attendances
+    redirect_to training_path(params[:training_id])
   end
 
   def show
@@ -15,7 +14,7 @@ class AttendancesController < ApplicationController
 
   def new
     @attendance = Attendance.new
-    @users = User.all
+    @users = User.includes(:player_profil).where(role: 'joueur')
     @training = Training.find(params[:training_id])
     authorize @attendance
   end
@@ -33,8 +32,16 @@ class AttendancesController < ApplicationController
       render :new and return
     end
 
+    if current_user.entraineur?
+      @attendance.training = @training
+    else
+      # Si c'est le joueur qui soumet, on associe automatiquement son propre profil
+      @attendance.user = current_user
+      @attendance.training = @training
+    end
+
     if @attendance.save
-      redirect_to training_attendances_path(@training), notice: 'La présence a été créée avec succès.'
+      redirect_to training_path(@training), notice: 'La présence a été créée avec succès.'
     else
       render :new
     end

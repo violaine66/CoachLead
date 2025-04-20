@@ -1,33 +1,50 @@
 <div class="container mt-5">
-  <p><%= @training.date%></p>
-  <p><%= @training.title%></p>
-  <p><%= @training.location%></p>
-  <p><%= @training.description%></p>
+  <div>
+    <h2>Détails de l'entraînement</h2>
+      <p><%= @training.date%></p>
+      <p><%= @training.title%></p>
+      <p><%= @training.location%></p>
+      <p><%= @training.description%></p>
+  </div>
+  <% if current_user.entraineur? %>
+   <%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn btn-primary mt-3" %>
+  <% end %>
 
 
-  <div class="mt-5">
-    <% if current_user.entraineur? %>
-      <h4>Absence/Retards des joueurs</h4>
-      <% @training.attendances.each do |a| %>
-        <p>
-          <%= "#{a.user.player_profil.first_name} #{ a.user.player_profil.last_name}" %>
-          <%= a.status %>
-          <%= a.training.date %>
-        </p>
-      <% end %>
-    <% elsif %>
-    <h4>Mes absences /retard </h4>
-     <% my_attendance = @training.attendances.find_by(user_id: current_user.id) %>
-        <% if my_attendance.present? %>
-          <p>
-            Statut : <%= my_attendance.status.capitalize %><br>
-            Date : <%= l(my_attendance.training.date, format: :short) %>
-          </p>
-        <% else %>
-          <p>Aucune donnée de présence enregistrée pour cet entraînement.</p>
+
+ <div class="mt-5">
+  <% if current_user.entraineur? %>
+    <h4>Absences / Retards des joueurs</h4>
+
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Joueur</th>
+          <th>Date</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @training.attendances.each do |a| %>
+          <tr>
+            <td><%= "#{a.user.player_profil.first_name} #{a.user.player_profil.last_name}" %></td>
+            <td><%= l(a.training.date, format: :long) %></td>
+            <td>
+              <% badge_class = case a.status
+                  when "present" then "badge bg-success"
+                  when "absent" then "badge bg-danger"
+                  when "late" then "badge bg-warning text-dark"
+                  when "excused" then "badge bg-info text-dark"
+                  else "badge bg-secondary"
+                end %>
+              <span class="<%= badge_class %>"><%= a.status.capitalize %></span>
+            </td>
+          </tr>
         <% end %>
-      <% end %>
-    </div>
+      </tbody>
+    </table>
+  <% end %>
+</div>
 
     <div class="mt-5">
       <%= link_to "Retour à la liste des entraînements", trainings_path %>
