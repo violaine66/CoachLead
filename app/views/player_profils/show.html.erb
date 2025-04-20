@@ -8,6 +8,90 @@
     <%= @player_profil.children_count %>
   </div>
 
+ <% if current_user.entraineur? %>
+  <h3>Présences de <%= @player_profil.first_name %> <%= @player_profil.last_name %></h3>
+
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Date de l'entraînement</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @player_profil.user.attendances.each do |attendance| %>
+        <tr>
+          <td><%= l(attendance.training.date, format: :long) %></td>
+          <td>
+            <%# Badge selon le statut %>
+            <% status = attendance.status %>
+            <% badge_class = case status
+                when "present" then "badge bg-success"
+                when "absent" then "badge bg-danger"
+                when "late" then "badge bg-warning text-dark"
+                when "excused" then "badge bg-info text-dark"
+                else "badge bg-secondary"
+              end %>
+            <span class="<%= badge_class %>"><%= status.capitalize %></span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="mt-3">
+    <h4>Statistiques de présence</h4>
+    <ul>
+      <li><strong>Présent :</strong> <%= @player_profil.user.attendances.present.count %></li>
+      <li><strong>Absent :</strong> <%= @player_profil.user.attendances.absent.count %></li>
+      <li><strong>En retard :</strong> <%= @player_profil.user.attendances.late.count %></li>
+      <li><strong>Excusé :</strong> <%= @player_profil.user.attendances.excused.count %></li>
+      <li><strong>Total :</strong> <%= @player_profil.user.attendances.count %></li>
+    </ul>
+  </div>
+
+<% else %>
+  <h3>Mes absences / retards</h3>
+
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_user.attendances.each do |attendance| %>
+        <tr>
+          <td><%= l(attendance.training.date, format: :long) %></td>
+          <td>
+            <% status = attendance.status %>
+            <% badge_class = case status
+                when "present" then "badge bg-success"
+                when "absent" then "badge bg-danger"
+                when "late" then "badge bg-warning text-dark"
+                when "excused" then "badge bg-info text-dark"
+                else "badge bg-secondary"
+              end %>
+            <span class="<%= badge_class %>"><%= status.capitalize %></span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+    <div class="mt-3">
+      <h4>Mes statistiques de présence</h4>
+      <ul>
+        <li><strong>Présent :</strong> <%= current_user.attendances.present.count %></li>
+        <li><strong>Absent :</strong> <%= current_user.attendances.absent.count %></li>
+        <li><strong>En retard :</strong> <%= current_user.attendances.late.count %></li>
+        <li><strong>Excusé :</strong> <%= current_user.attendances.excused.count %></li>
+        <li><strong>Total :</strong> <%= current_user.attendances.count %></li>
+      </ul>
+    </div>
+  <% end %>
+
   <% if policy(PlayerProfil).create?%>
     <%= link_to edit_player_profil_path(@player_profil) do %>
       <i class="fa-solid fa-pen-to-square"></i>

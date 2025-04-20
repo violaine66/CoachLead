@@ -3,5 +3,33 @@
   <p><%= @training.title%></p>
   <p><%= @training.location%></p>
   <p><%= @training.description%></p>
-  <div class="mt-5"> <%= link_to "Retour à la liste des entraînements", trainings_path %></div>
+
+
+  <div class="mt-5">
+    <% if current_user.entraineur? %>
+      <h4>Absence/Retards des joueurs</h4>
+      <% @training.attendances.each do |a| %>
+        <p>
+          <%= "#{a.user.player_profil.first_name} #{ a.user.player_profil.last_name}" %>
+          <%= a.status %>
+          <%= a.training.date %>
+        </p>
+      <% end %>
+    <% elsif %>
+    <h4>Mes absences /retard </h4>
+     <% my_attendance = @training.attendances.find_by(user_id: current_user.id) %>
+        <% if my_attendance.present? %>
+          <p>
+            Statut : <%= my_attendance.status.capitalize %><br>
+            Date : <%= l(my_attendance.training.date, format: :short) %>
+          </p>
+        <% else %>
+          <p>Aucune donnée de présence enregistrée pour cet entraînement.</p>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="mt-5">
+      <%= link_to "Retour à la liste des entraînements", trainings_path %>
+  </div>
 </div>
