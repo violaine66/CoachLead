@@ -12,5 +12,6 @@ class TrainingEvaluation < ApplicationRecord
   validates :pleasure, inclusion: { in: [true, false] }
 
   # Scopes
+  validates :user_id, uniqueness: { scope: :training_id, message: "a déjà rempli une évaluation pour cet entraînement." }
 
 end
