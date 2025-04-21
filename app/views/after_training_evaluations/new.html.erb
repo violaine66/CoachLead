@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Nouvelle évaluation post-entraînement</h1>
+<%= simple_form_for [@training, @after_training_evaluation] do |f| %>
+  <%= f.input :after_intensity, label: "Intensité de l'entraînement' (0–10)" %>
+  <%= f.input :after_fatigue, label: "Fatigue physique après l'entraînement(0–10)" %>
+  <%= f.input :pleasure, as: :boolean, label: "Plaisir de l'entraînement ?" %>
+
+
+  <%= f.button :submit, "Enregistrer", class: "btn btn-primary" %>
+<% end %>
+
+
+</div>

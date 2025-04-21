@@ -14,6 +14,12 @@ class TrainingsController < ApplicationController
     elsif current_user.entraineur?
       @pre_training_evaluations = PreTrainingEvaluation.includes(:user).where(training: @training)
     end
+
+    if current_user.joueur?
+      @after_training_evaluation = AfterTrainingEvaluation.find_by(training: @training, user: current_user)
+    elsif current_user.entraineur?
+      @after_training_evaluations = AfterTrainingEvaluation.includes(:user).where(training: @training)
+    end
   end
 
   def new

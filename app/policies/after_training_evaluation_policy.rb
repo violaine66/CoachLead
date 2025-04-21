@@ -1,4 +1,4 @@
-class PreTrainingEvaluationPolicy < ApplicationPolicy
+class AfterTrainingEvaluationPolicy < ApplicationPolicy
   # NOTE: Up to Pundit v2.3.1, the inheritance was declared as
   # `Scope < Scope` rather than `Scope < ApplicationPolicy::Scope`.
   # In most cases the behavior will be identical, but if updating existing
@@ -8,12 +8,12 @@ class PreTrainingEvaluationPolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      if user.entraineur?
-        scope.all
+      if
+      scope.all
       elsif user.joueur?
         scope.where(user: user)
       else
-        scope.none  # Si l'utilisateur n'est ni entraineur ni joueur, il n'a accès à aucun enregistrement
+        scope.none
       end
     end
   end

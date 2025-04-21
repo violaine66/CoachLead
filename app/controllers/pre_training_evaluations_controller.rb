@@ -36,10 +36,6 @@ class PreTrainingEvaluationsController < ApplicationController
       end
     end
 
-
-
-
-
   private
   def set_pre_training_evaluation
     @pre_training_evaluation = PreTrainingEvaluation.find(params[:id])

@@ -20,10 +20,21 @@
         <li>Fatigue physique : <%= @pre_training_evaluation.physical_fatigue %></li>
         <li>Humeur : <%= @pre_training_evaluation.mood %></li>
       </ul>
-
     </div>
   <% else %>
     <%= link_to "Faire mon évaluation pré-entrainement", new_training_pre_training_evaluation_path(@training), class: "btn btn-primary mt-3" %>
+  <% end %>
+  <% if @after_training_evaluation.present? %>
+    <div class="mt-5">
+      <h4>Ton évaluation post-entrainement</h4>
+      <ul>
+        <li>Intensité de l'entraînement : <%= @after_training_evaluation.after_intensity %></li>
+        <li>Fatigue physique : <%= @after_training_evaluation.after_fatigue %></li>
+        <li>Plaisir de l'entraînement : <%= @after_training_evaluation.pleasure ? "Oui" : "Non" %></li>
+      </ul>
+    </div>
+  <% else %>
+    <%= link_to "Faire mon évaluation post-entrainement", new_training_after_training_evaluation_path(@training), class: "btn btn-primary mt-3" %>
   <% end %>
 <% end %>
 
@@ -48,6 +59,30 @@
             <td><%= evaluation.cognitive_fatigue %></td>
             <td><%= evaluation.physical_fatigue %></td>
             <td><%= evaluation.mood %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-5">
+    <h4>Évaluations post-entrainement des joueurs</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Joueur</th>
+          <th>Intensité de l'entraînement</th>
+          <th>Fatigue physique</th>
+          <th>Plaisir de l'entraînement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @after_training_evaluations.each do |evaluation| %>
+          <tr>
+            <td><%= "#{evaluation.user.player_profil.first_name} #{evaluation.user.player_profil.last_name}" %></td>
+            <td><%= evaluation.after_intensity %></td>
+            <td><%= evaluation.after_fatigue %></td>
+            <td><%= evaluation.pleasure ? "Oui" : "Non" %></td>
           </tr>
         <% end %>
       </tbody>
