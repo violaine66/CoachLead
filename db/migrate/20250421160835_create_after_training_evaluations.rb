@@ -1,10 +1,6 @@
-class CreateTrainingParticipations < ActiveRecord::Migration[7.1]
+class CreateAfterTrainingEvaluations < ActiveRecord::Migration[7.1]
   def change
-    create_table :training_participations do |t|
-      t.boolean :present
-      t.integer :cognitive_fatigue
-      t.integer :physical_fatigue
-      t.integer :mood
+    create_table :after_training_evaluations do |t|
       t.integer :after_intensity
       t.integer :after_fatigue
       t.boolean :pleasure

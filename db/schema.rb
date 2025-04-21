@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_21_071734) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_21_162104) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "after_training_evaluations", force: :cascade do |t|
+    t.integer "after_intensity"
+    t.integer "after_fatigue"
+    t.boolean "pleasure"
+    t.bigint "user_id", null: false
+    t.bigint "training_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_id"], name: "index_after_training_evaluations_on_training_id"
+    t.index ["user_id"], name: "index_after_training_evaluations_on_user_id"
+  end
 
   create_table "attendances", force: :cascade do |t|
     t.string "status"
@@ -56,20 +68,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_21_071734) do
     t.index ["user_id"], name: "index_player_profils_on_user_id"
   end
 
-  create_table "training_evaluations", force: :cascade do |t|
+  create_table "pre_training_evaluations", force: :cascade do |t|
     t.boolean "present"
     t.integer "cognitive_fatigue"
     t.integer "physical_fatigue"
     t.integer "mood"
-    t.integer "after_intensity"
-    t.integer "after_fatigue"
-    t.boolean "pleasure"
     t.bigint "user_id", null: false
     t.bigint "training_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["training_id"], name: "index_training_evaluations_on_training_id"
-    t.index ["user_id"], name: "index_training_evaluations_on_user_id"
+    t.index ["training_id"], name: "index_pre_training_evaluations_on_training_id"
+    t.index ["user_id"], name: "index_pre_training_evaluations_on_user_id"
   end
 
   create_table "trainings", force: :cascade do |t|
@@ -96,11 +105,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_21_071734) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "after_training_evaluations", "trainings"
+  add_foreign_key "after_training_evaluations", "users"
   add_foreign_key "attendances", "trainings"
   add_foreign_key "attendances", "users"
   add_foreign_key "job_load_evaluations", "users"
   add_foreign_key "match_performances", "users"
   add_foreign_key "player_profils", "users"
-  add_foreign_key "training_evaluations", "trainings"
-  add_foreign_key "training_evaluations", "users"
+  add_foreign_key "pre_training_evaluations", "trainings"
+  add_foreign_key "pre_training_evaluations", "users"
 end

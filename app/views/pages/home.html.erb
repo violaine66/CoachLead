@@ -32,20 +32,5 @@
       <h2><%= link_to "Mes performances de match", match_performances_path %></h2>
     </div>
 
-    <div class="evaluations-entrainement-joueur">
-      <% prochain_training = Training.where('date > ?', Time.current).order(:date).first %>
-        <% if prochain_training.present? %>
-          <% if prochain_training.training_evaluations.exists?(user: current_user) %>
-            <p>Tu as déjà évalué l'entraînement du <%= l(prochain_training.date, format: :long) %>.</p>
-          <% else %>
-            <%= link_to "Évaluer l'entraînement du #{l(prochain_training.date, format: :long)}",
-                        new_training_training_evaluation_path(prochain_training),
-                        class: "btn btn-primary" %>
-          <% end %>
-        <% else %>
-          <p>Pas d'entraînement prévu pour l’instant.</p>
-        <% end %>
-    </div>
-
   <% end %>
 </div>

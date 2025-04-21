@@ -4,8 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   # Associations
-  has_many :trainings, through: :training_evaluations
-  has_many :training_evaluations
+
+
+  has_many :pre_training_evaluations
+  has_many :evaluated_trainings_pre, through: :pre_training_evaluations, source: :training
+
+  has_many :after_training_evaluations
+  has_many :evaluated_trainings_post, through: :after_training_evaluations, source: :training
+
   has_many :attendances
   has_many :job_load_evaluations
   has_many :match_performances
