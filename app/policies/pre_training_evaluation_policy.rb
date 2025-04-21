@@ -32,6 +32,6 @@ class PreTrainingEvaluationPolicy < ApplicationPolicy
   end
 
   def create?
-    user.entraineur? || user == record.user
+    true
   end
 end

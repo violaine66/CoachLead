@@ -3,10 +3,13 @@ class PreTrainingEvaluationsController < ApplicationController
   after_action :verify_policy_scoped, only: :index  # Vérifie la politique du scope pour l'index
 
   def index
+    @training = Training.find(params[:training_id])
+    @pre_training_evaluations = @training.pre_training_evaluations.includes(user: :player_profil)
     @pre_training_evaluations = policy_scope(PreTrainingEvaluation)
   end
 
   def show
+    @training = Training.find(params[:training_id])
     authorize @pre_training_evaluation
   end
 
@@ -20,27 +23,14 @@ class PreTrainingEvaluationsController < ApplicationController
 
 
     def create
-      @pre_training_evaluation = PreTrainingEvaluation.new
+      @training = Training.find(params[:training_id])
+      @pre_training_evaluation = PreTrainingEvaluation.new(pre_training_evaluation_params)
+      @pre_training_evaluation.training = @training
+      @pre_training_evaluation.user = current_user
       authorize @pre_training_evaluation
 
-      @training = Training.find(params[:training_id])
-      @pre_training_evaluation.training = @training
-
-
-      @user = User.find_by(id: @pre_training_evaluation.user_id)
-      if @user.nil? || @user.player_profil.nil?
-        flash[:alert] = "L'utilisateur sélectionné n'a pas de profil associé."
-        render :new and return
-      end
-      if current_user.entraineur?
-        @pre_training_evaluation.training = @training
-      else
-        # Si c'est le joueur qui soumet, on associe automatiquement son propre profil
-        @pre_training_evaluation.user = current_user
-        @pre_training_evaluation.training = @training
-      end
       if @pre_training_evaluation.save
-        redirect_to training_pre_training_evaluations_path(@pre_training_evaluation.training), notice: 'Evaluation enregistrée.'
+        redirect_to training_path(@training), notice: 'Evaluation enregistrée.'
       else
         render :new
       end

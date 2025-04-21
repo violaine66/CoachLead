@@ -9,7 +9,11 @@ class TrainingsController < ApplicationController
 
   def show
     authorize @training
-    @pre_training_evaluations = @training.pre_training_evaluations
+    if current_user.joueur?
+      @pre_training_evaluation = PreTrainingEvaluation.find_by(training: @training, user: current_user)
+    elsif current_user.entraineur?
+      @pre_training_evaluations = PreTrainingEvaluation.includes(:user).where(training: @training)
+    end
   end
 
   def new

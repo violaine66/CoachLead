@@ -7,10 +7,53 @@
       <p><%= @training.description%></p>
   </div>
   <% if current_user.entraineur? %>
-   <%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn btn-primary mt-3" %>
-    <%# Lien vers l'index des évaluations pré-entraînement de cet entraînement %>
-  <%= link_to "Voir les évaluations pré-entrainement", training_pre_training_evaluations_path(@training), class: "btn btn-primary" %>
+   <p><%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn btn-primary mt-3"%></p>
   <% end %>
+
+<% if current_user.joueur? %>
+  <% if @pre_training_evaluation.present? %>
+    <div class="mt-5">
+      <h4>Ton évaluation pré-entrainement</h4>
+      <ul>
+        <li>Présent : <%= @pre_training_evaluation.present ? "Oui" : "Non" %></li>
+        <li>Fatigue cognitive : <%= @pre_training_evaluation.cognitive_fatigue %></li>
+        <li>Fatigue physique : <%= @pre_training_evaluation.physical_fatigue %></li>
+        <li>Humeur : <%= @pre_training_evaluation.mood %></li>
+      </ul>
+
+    </div>
+  <% else %>
+    <%= link_to "Faire mon évaluation pré-entrainement", new_training_pre_training_evaluation_path(@training), class: "btn btn-primary mt-3" %>
+  <% end %>
+<% end %>
+
+<% if current_user.entraineur? %>
+  <div class="mt-5">
+    <h4>Évaluations pré-entrainement des joueurs</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Joueur</th>
+          <th>Présent</th>
+          <th>Fatigue cognitive</th>
+          <th>Fatigue physique</th>
+          <th>Humeur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @pre_training_evaluations.each do |evaluation| %>
+          <tr>
+            <td><%= "#{evaluation.user.player_profil.first_name} #{evaluation.user.player_profil.last_name}" %></td>
+            <td><%= evaluation.present ? "Oui" : "Non" %></td>
+            <td><%= evaluation.cognitive_fatigue %></td>
+            <td><%= evaluation.physical_fatigue %></td>
+            <td><%= evaluation.mood %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
 
 
  <div class="mt-5">
@@ -23,6 +66,7 @@
           <th>Joueur</th>
           <th>Date</th>
           <th>Statut</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -38,7 +82,9 @@
                   when "excused" then "badge bg-info text-dark"
                   else "badge bg-secondary"
                 end %>
-              <span class="<%= badge_class %>"><%= a.status.capitalize %></span>
+              <span class="<%= badge_class %>">
+                <%= a.status.present? ? a.status.capitalize : "Non défini" %>
+              </span>
             </td>
             <td>
               <%= link_to edit_training_attendance_path(@training, a), class: "text-decoration-none" do %>
@@ -51,7 +97,7 @@
     </table>
   <% end %>
 </div>
-<%= link_to "évaluation - pre entrainement",  new_training_pre_training_evaluation_path(@training)%>
+
 
 
 
