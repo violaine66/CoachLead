@@ -7,8 +7,31 @@ class TrainingEvaluationPolicy < ApplicationPolicy
 
   class Scope < ApplicationPolicy::Scope
     # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
+    def resolve
+      if user.entraineur?
+      scope.all
+      elsif user.joueur?
+        scope.where(user: user)
+      else
+        scope.none  # Si l'utilisateur n'est ni entraineur ni joueur, il n'a accès à aucun enregistrement
+      end
+    end
+  end
+
+  def index?
+    user.entraineur?  # L'accès à l'index est uniquement autorisé aux utilisateurs ayant le rôle "entraineur"
+  end
+
+  def show?
+    # Exemple : autorise uniquement si l'utilisateur est le propriétaire du profil ou un entraineur
+    user.entraineur? || record.user == user
+  end
+
+  def new?
+    create?
+  end
+
+  def create?
+    user.entraineur? || record.user == user
   end
 end
