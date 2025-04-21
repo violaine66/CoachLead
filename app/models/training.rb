@@ -1,6 +1,6 @@
 class Training < ApplicationRecord
-  has_many :training_participations
-  has_many :users, through: :training_participations
+  has_many :training_evaluations
+  has_many :users, through: :training_evaluations
   has_many :attendances
 
   after_create :create_participations_for_all_players
@@ -9,7 +9,7 @@ class Training < ApplicationRecord
 
   def create_participations_for_all_players
     User.joueur.find_each do |player|
-      TrainingParticipation.create(training: self, user: player)
+      TrainingEvaluation.create(training: self, user: player)
     end
   end
 end

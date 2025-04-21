@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_18_133515) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_21_071734) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_18_133515) do
     t.index ["user_id"], name: "index_player_profils_on_user_id"
   end
 
-  create_table "training_participations", force: :cascade do |t|
+  create_table "training_evaluations", force: :cascade do |t|
     t.boolean "present"
     t.integer "cognitive_fatigue"
     t.integer "physical_fatigue"
@@ -68,8 +68,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_18_133515) do
     t.bigint "training_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["training_id"], name: "index_training_participations_on_training_id"
-    t.index ["user_id"], name: "index_training_participations_on_user_id"
+    t.index ["training_id"], name: "index_training_evaluations_on_training_id"
+    t.index ["user_id"], name: "index_training_evaluations_on_user_id"
   end
 
   create_table "trainings", force: :cascade do |t|
@@ -101,6 +101,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_18_133515) do
   add_foreign_key "job_load_evaluations", "users"
   add_foreign_key "match_performances", "users"
   add_foreign_key "player_profils", "users"
-  add_foreign_key "training_participations", "trainings"
-  add_foreign_key "training_participations", "users"
+  add_foreign_key "training_evaluations", "trainings"
+  add_foreign_key "training_evaluations", "users"
 end

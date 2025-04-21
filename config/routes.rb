@@ -12,8 +12,10 @@ Rails.application.routes.draw do
 
   resources :trainings do
     resources :attendances, only: [:index, :show, :new, :create, :update, :edit]
+    resources :training_evaluations, only: [:index, :show, :new, :create]
   end
   resources :player_profils
   resources :job_load_evaluations, only: [:index, :show, :new, :create]
   resources :match_performances, only: [:index, :show, :new, :create]
 end
+

@@ -1,4 +1,4 @@
-class TrainingParticipation < ApplicationRecord
+class TrainingEvaluation < ApplicationRecord
   belongs_to :user
   belongs_to :training
 
@@ -12,5 +12,5 @@ class TrainingParticipation < ApplicationRecord
   validates :pleasure, inclusion: { in: [true, false] }
 
   # Scopes
-  
+
 end
