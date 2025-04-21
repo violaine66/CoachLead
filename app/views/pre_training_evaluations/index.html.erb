@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Évaluations pré-entraînement pour <%= @training.title %></h1>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Joueur</th>
+      <th>Présent</th>
+      <th>Fatigue cognitive</th>
+      <th>Fatigue physique</th>
+      <th>Humeur</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pre_training_evaluations.each do |evaluation| %>
+      <tr>
+        <td><%= evaluation.user.full_name %></td>
+        <td><%= evaluation.present ? 'Oui' : 'Non' %></td>
+        <td><%= evaluation.cognitive_fatigue %></td>
+        <td><%= evaluation.physical_fatigue %></td>
+        <td><%= evaluation.mood %></td>
+        <td>
+          <%= link_to 'Voir', training_pre_training_evaluation_path(@training, evaluation), class: 'btn btn-sm btn-outline-secondary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

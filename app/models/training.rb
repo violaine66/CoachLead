@@ -2,8 +2,8 @@ class Training < ApplicationRecord
   has_many :pre_training_evaluations
   has_many :after_training_evaluations
 
-  has_many :users_pre_eval, through: :pre_training_evaluations, source: :user
-  has_many :users_post_eval, through: :after_training_evaluations, source: :user
+ has_many :users, through: :pre_training_evaluations
+ has_many :users, through: :after_training_evaluations
 
   has_many :attendances
 

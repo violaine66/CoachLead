@@ -7,10 +7,10 @@ class User < ApplicationRecord
 
 
   has_many :pre_training_evaluations
-  has_many :evaluated_trainings_pre, through: :pre_training_evaluations, source: :training
+  has_many :trainings, through: :pre_training_evaluations, source: :training
 
   has_many :after_training_evaluations
-  has_many :evaluated_trainings_post, through: :after_training_evaluations, source: :training
+  has_many :trainings, through: :after_training_evaluations, source: :training
 
   has_many :attendances
   has_many :job_load_evaluations

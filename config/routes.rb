@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   resources :trainings do
     resources :attendances, only: [:index, :show, :new, :create, :update, :edit]
-    resources :pre_training_evaluations, only: [:new, :create, :show, :index]
-    resources :after_training_evaluations, only: [:new, :create, :show, :index]
+    resources :pre_training_evaluations, only: [:index, :show, :new, :create]
+    resources :after_training_evaluations, only: [:new, :create]
 
   end
   resources :player_profils

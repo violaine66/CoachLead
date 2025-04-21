@@ -8,6 +8,8 @@
   </div>
   <% if current_user.entraineur? %>
    <%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn btn-primary mt-3" %>
+    <%# Lien vers l'index des évaluations pré-entraînement de cet entraînement %>
+  <%= link_to "Voir les évaluations pré-entrainement", training_pre_training_evaluations_path(@training), class: "btn btn-primary" %>
   <% end %>
 
 
@@ -49,6 +51,9 @@
     </table>
   <% end %>
 </div>
+<%= link_to "évaluation - pre entrainement",  new_training_pre_training_evaluation_path(@training)%>
+
+
 
     <div class="mt-5">
       <%= link_to "Retour à la liste des entraînements", trainings_path %>

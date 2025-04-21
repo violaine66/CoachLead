@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Nouvelle évaluation pré-entraînement</h1>
+
+<%= simple_form_for [@training, @pre_training_evaluation] do |f| %>
+  <%= f.input :present, as: :boolean, label: "Présent ?" %>
+  <%= f.input :cognitive_fatigue, label: "Fatigue cognitive (0–10)" %>
+  <%= f.input :physical_fatigue, label: "Fatigue physique (0–10)" %>
+  <%= f.input :mood, label: "Humeur (0–10)" %>
+
+
+  <%= f.button :submit, "Enregistrer", class: "btn btn-primary" %>
+<% end %>
+
+
+</div>

@@ -9,6 +9,7 @@ class TrainingsController < ApplicationController
 
   def show
     authorize @training
+    @pre_training_evaluations = @training.pre_training_evaluations
   end
 
   def new
