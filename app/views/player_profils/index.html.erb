@@ -1,26 +1,24 @@
 <div class="container">
-  <%= link_to "Ajouter un profil", new_player_profil_path, class: "btn btn-primary mt-3" %>
-  <div class="row mt-5">
-    <% @player_profils.each do |player| %>
-      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-        <%= link_to player_profil_path(player), class: "text-decoration-none text-dark" do %>
-          <div class="card h-100 shadow-sm">
-            <% if player.avatar.attached? %>
-              <%= cl_image_tag player.avatar.key, class: "card-img-top", alt: "Avatar du joueur" %>
-            <% else %>
-            <i class="fa-solid fa-circle-user"></i>
-            <% end %>
-            <div class="card-body text-center d-flex align-items-end">
-              <h5 class="card-title"><strong><%= player.full_name %></strong></h5>
+  <%= link_to "Ajouter un profil", new_player_profil_path, class: "btn btn-light mt-3" %>
+  <div class="row mt-5 justify-content-center">
+      <% @player_profils.each do |player| %>
+        <div class="col-8 col-sm-6 col-md-4 col-lg-3 mb-4 mx-auto">
+          <%= link_to player_profil_path(player), class: "text-decoration-none text-dark" do %>
+            <div class="card h-100 shadow-sm">
+              <% if player.avatar.attached? %>
+                <%= cl_image_tag player.avatar.key, class: "card-img-top", alt: "Avatar du joueur" %>
+              <% else %>
+                <i class="fa-solid fa-circle-user fa-5x my-3 d-block mx-auto"></i>
+              <% end %>
+              <div class="card-body text-center">
+                <h5 class="card-title"><strong><%= player.full_name %></strong></h5>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   <div class="text-center mt-4">
-
     <%= link_to "Retour", root_path, class: "btn btn-secondary mb-3" %>
   </div>
 </div>
