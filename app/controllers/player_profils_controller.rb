@@ -16,6 +16,7 @@ class PlayerProfilsController < ApplicationController
   def new
     @player_profil = PlayerProfil.new
     authorize @player_profil
+
   end
 
   def create

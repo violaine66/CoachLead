@@ -71,6 +71,20 @@
     <h3>Total à soustraire en fin de saison : <%= @player_profil.total_penalties_amount %> €</h3>
   </div>
 
+  <h2>Statistiques de <%= @player_profil.full_name %></h2>
+
+  <p><strong>Ses pénalités :</strong> <%= @player_profil.total_penalties %> absences/retards</p>
+  <p><strong>Moyenne de l’équipe :</strong> <%= PlayerProfil.average_penalties %></p>
+
+  <% diff = @player_profil.total_penalties - PlayerProfil.average_penalties %>
+  <% if diff > 0 %>
+    <p style="color:red;">⬆️ <%= diff %> au-dessus de la moyenne</p>
+  <% elsif diff < 0 %>
+    <p style="color:green;">⬇️ <%= diff.abs %> en-dessous de la moyenne</p>
+  <% else %>
+    <p>⚖️ Ce joueur est dans la moyenne</p>
+  <% end %>
+
 <% else %>
   <h3>Mes absences / retards</h3>
 
