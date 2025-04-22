@@ -6,6 +6,14 @@ class MatchPerformancesController < ApplicationController
 
   def index
     @match_performances = policy_scope(MatchPerformance)
+    @stats_by_player = @match_performances
+    .group_by(&:user)
+    .transform_values do |performances|
+      {
+        total_played: performances.count { |p| p.played },
+        total_yellow_cards: performances.sum { |p| p.yellow_card.to_i }
+      }
+    end
   end
 
   def show

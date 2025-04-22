@@ -15,6 +15,7 @@
   <p><strong>Date du match :</strong> <%= @match_performance.match_date %></p>
   <p><strong>Participation :</strong> <%= @match_performance.played ? "Oui" : "Non" %></p>
   <p><strong>Cartons jaunes :</strong> <%= @match_performance.yellow_card %></p>
+  <p><strong>Commentaires :</strong> <%= @match_performance.commentaires %></p>
 
   <%= link_to "Retour", match_performances_path, class: "btn btn-secondary mt-3" %>
 </div>

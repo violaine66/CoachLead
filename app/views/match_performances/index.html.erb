@@ -2,7 +2,39 @@
   <h1>Performances de match</h1>
 
   <% if current_user.entraineur? %>
-    <p>Performances des joueurs</p>
+     <div>
+    <%= link_to "Créer une nouvelle performance", new_match_performance_path, class: "btn btn-success" %>
+  </div>
+
+    <h3 class="mt-5">Statistiques globales par joueur</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Joueur</th>
+          <th>Matchs joués</th>
+          <th>Cartons jaunes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stats_by_player.each do |user, stats| %>
+          <tr>
+            <td>
+              <% if user.player_profil.present? %>
+                <%= "#{user.player_profil.first_name} #{user.player_profil.last_name}" %>
+              <% else %>
+                <%= "Profil manquant" %>
+              <% end %>
+            </td>
+            <td><%= stats[:total_played] %></td>
+            <% if  stats[:total_yellow_cards] >= 2 %>
+              <td class="badge bg-warning text-dark"><%= stats[:total_yellow_cards] %></td>
+            <% else %>
+            <td><%= stats[:total_yellow_cards] %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   <% else %>
     <p>Voici vos performances de match :</p>
   <% end %>
@@ -40,12 +72,10 @@
       <% end %>
     </tbody>
   </table>
-  <% if current_user.entraineur?%>
-    <div>
-        <%= link_to "Créer une nouvelle performance", new_match_performance_path, class: "btn btn-success" %>
-    </div>
-  <% end %>
-   <div>
+
+
+
+  <div>
     <%= link_to "Retour", root_path, class: "btn btn-secondary mt-3" %>
   </div>
 </div>
