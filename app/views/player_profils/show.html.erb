@@ -1,16 +1,28 @@
 <div class="container">
-  <div class="player-card-show mt-5">
-    <%= @player_profil.last_name %>
-    <%= @player_profil.first_name %>
-    <%= @player_profil.age %>
-    <%= @player_profil.weight %>
-    <%= @player_profil.job %>
-    <%= @player_profil.children_count %>
+  <div class= "d-flex justify-content-center">
+    <div class="player-card-show mt-5">
+      <strong><p><%= @player_profil.full_name %></p></strong>
+      <p><%= @player_profil.age %> ans</p>
+      <p><%= @player_profil.weight %> kg</p>
+      <p><%= @player_profil.job %></p>
+      <% if @player_profil.children_count > 0 %>
+        <p><%= @player_profil.children_count %> enfants</p>
+      <% else %>
+        <p>Aucun enfant</p>
+      <% end %>
+    </div>
   </div>
-<%= simple_form_for (@player_profil) do |f| %>
- <%= f.input :avatar, as: :file %>
-  <%= f.button :submit %>
-   <% end %>
+
+
+  <div class="mt-5">
+    <% if current_user.joueur?%>
+      <%= simple_form_for (@player_profil) do |f| %>
+      <%= f.input :avatar, as: :file %>
+        <%= f.button :submit %>
+      <% end %>
+    <% end %>
+  </div>
+
 
  <% if current_user.entraineur? %>
   <h3>Présences de <%= @player_profil.first_name %> <%= @player_profil.last_name %></h3>
