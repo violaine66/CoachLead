@@ -1,21 +1,17 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
 
-    <% if @player_profil.present? %>
-        <%= link_to player_profil_path(@player_profil), class: "navbar-brand" do %>
-          <% if @player_profil.avatar.attached? %>
-            <%= cl_image_tag @player_profil.avatar.key, alt: "Avatar du joueur" %> <!-- Afficher l'avatar du joueur -->
-          <% else %>
-            <i class="fa-solid fa-circle-user"></i> <!-- Icône par défaut si pas d'avatar -->
-          <% end %>
-        <% end %>
-      <% else %>
-        <!-- Afficher une icône par défaut si l'utilisateur est un entraîneur sans profil de joueur -->
-        <%= link_to root_path, class: "navbar-brand" do %>
-          <i class="fa-solid fa-user-tie"></i> <!-- Icône pour un entraîneur -->
-        <% end %>
+   <% if @player_profil.present? && @player_profil.persisted? %>
+  <%= link_to player_profil_path(@player_profil), class: "navbar-brand" do %>
+    <% if @player_profil.avatar.attached? %>
+      <%= cl_image_tag @player_profil.avatar.key, class: "avatar-navbar", alt: "Avatar du joueur" %>
+    <% else %>
+      Mon Profil
     <% end %>
-
+  <% end %>
+<% else %>
+  <span class="navbar-brand">CoachLead</span>
+<% end %>
 
 
 

@@ -1,4 +1,5 @@
 <div class="container">
+  <%= link_to "Ajouter un profil", new_player_profil_path, class: "btn btn-primary mt-3" %>
   <div class="row mt-5">
     <% @player_profils.each do |player| %>
       <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
@@ -19,7 +20,7 @@
   </div>
 
   <div class="text-center mt-4">
-    <%= link_to "Ajouter un profil", new_player_profil_path, class: "btn btn-primary me-2" %>
-    <%= link_to "Retour", root_path, class: "btn btn-secondary" %>
+
+    <%= link_to "Retour", root_path, class: "btn btn-secondary mb-3" %>
   </div>
 </div>
