@@ -36,7 +36,7 @@ class PlayerProfilPolicy < ApplicationPolicy
   end
 
   def update?
-    user.entraineur?
+    user.entraineur? || record.user == user
   end
 
   def edit?

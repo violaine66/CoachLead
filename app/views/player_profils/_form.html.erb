@@ -4,6 +4,7 @@
       <%= simple_form_for (@player_profil) do |f| %>
       <%= f.input :last_name%>
       <%= f.input :first_name%>
+      <%= f.input :avatar, as: :file %>
       <%= f.input :age%>
       <%= f.input :weight%>
       <%= f.input :job%>

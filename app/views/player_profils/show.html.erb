@@ -7,6 +7,10 @@
     <%= @player_profil.job %>
     <%= @player_profil.children_count %>
   </div>
+<%= simple_form_for (@player_profil) do |f| %>
+ <%= f.input :avatar, as: :file %>
+  <%= f.button :submit %>
+   <% end %>
 
  <% if current_user.entraineur? %>
   <h3>Présences de <%= @player_profil.first_name %> <%= @player_profil.last_name %></h3>

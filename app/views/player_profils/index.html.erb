@@ -3,6 +3,9 @@
       <% @player_profils.each do |player| %>
         <%= link_to player_profil_path(player) do %>
         <div class="player-profil-index">
+          <% if player.avatar.attached? %>
+            <%= cl_image_tag player.avatar.key, alt: "Avatar du joueur", height: 300, width: 400 %>
+          <% end %>
           <%= player.first_name %>
           <%= player.last_name %>
         <% end %>

@@ -13,6 +13,7 @@ puts "Suppression des données existantes..."
 MatchPerformance.destroy_all
 Attendance.destroy_all
 PreTrainingEvaluation.destroy_all
+AfterTrainingEvaluation.destroy_all
 Training.destroy_all
 JobLoadEvaluation.destroy_all
 PlayerProfil.destroy_all
