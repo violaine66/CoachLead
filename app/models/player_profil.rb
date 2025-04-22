@@ -10,4 +10,15 @@ class PlayerProfil < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+    def total_penalties
+    user.attendances
+        .where(status: [:absent, :late])
+        .count
+  end
+
+  # Montant total en euros (1€ par pénalité)
+  def total_penalties_amount
+    total_penalties
+  end
 end

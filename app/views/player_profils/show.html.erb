@@ -65,6 +65,11 @@
       <li><strong>Total :</strong> <%= @player_profil.user.attendances.count %></li>
     </ul>
   </div>
+  <div class="montant-penalites">
+    <h2>Pénalités de <%= @player_profil.full_name %></h2>
+    <h3>Nombre de pénalités : <%= @player_profil.total_penalties %></h3>
+    <h3>Total à soustraire en fin de saison : <%= @player_profil.total_penalties_amount %> €</h3>
+  </div>
 
 <% else %>
   <h3>Mes absences / retards</h3>
@@ -105,6 +110,11 @@
         <li><strong>Excusé :</strong> <%= current_user.attendances.excused.count %></li>
         <li><strong>Total :</strong> <%= current_user.attendances.count %></li>
       </ul>
+    </div>
+    <div class="montant-penalites">
+      <h2>Mes Pénalités</h2>
+      <h3>Nombre de pénalités : <%= @player_profil.total_penalties %></h3>
+      <h3>Total à soustraire en fin de saison : <%= @player_profil.total_penalties_amount %> €</h3>
     </div>
   <% end %>
 
