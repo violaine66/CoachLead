@@ -1,6 +1,10 @@
 @import "show";
 @import "new";
 
+.container {
+  color:white
+}
+
 .add-player-profil a,
 .player-profil-index-container a {
   text-decoration: none;
@@ -13,6 +17,7 @@
 }
 
 .card {
+  background-color: rgb(35, 11, 11);
   min-height: 235px;
   min-width: 260px;
   max-width: 260px;
