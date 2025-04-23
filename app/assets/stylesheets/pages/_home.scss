@@ -18,5 +18,24 @@
 
 .prochain-entrainement {
   text-align: center;
+}
 
+/* Par défaut (mobile) */
+.responsive-row {
+  margin-left: 0;
+  margin-right: 0;
+  display: block;
+}
+
+/* Tablette et plus grand */
+@media (min-width: 576px) {
+  .responsive-row {
+    display: flex;
+    justify-content: center;
+    margin-left: 175px;
+    padding-left: 0;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+  }
 }
