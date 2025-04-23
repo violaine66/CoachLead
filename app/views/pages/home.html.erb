@@ -32,6 +32,15 @@
 
   <% elsif current_user.joueur? %>
     <h1 class="text-center mt-5">Bienvenue <%= current_user.email %> !</h1>
+       <div class="prochain-entrainement mt-3">
+        <% if @next_training %>
+          <p>Prochain entraînement : <%= l(@next_training.date, format: :long) %></p>
+          <%= link_to "Voir l'entraînement", training_path(@next_training), class: "btn btn-primary" %>
+        <% else %>
+          <p>Aucun entraînement à venir pour le moment.</p>
+        <% end %>
+      </div>
+
       <div class="row mx-auto d-flex justify-content-center mt-5" style="max-width: 1000px;">
         <div class="col-8 col-sm-8 col-md-6">
           <div class="card-home text-center">
@@ -61,14 +70,6 @@
     </div>
   </div>
 
-      <div class="prochain-entrainement">
-        <% if @next_training %>
-          <p>Prochain entraînement : <%= l(@next_training.date, format: :long) %></p>
-          <%= link_to "Voir l'entraînement", training_path(@next_training), class: "btn btn-primary" %>
-        <% else %>
-          <p>Aucun entraînement à venir pour le moment.</p>
-        <% end %>
-      </div>
 
   <% end %>
 </div>
