@@ -1,9 +1,7 @@
 @import "show";
 @import "new";
 
-.container {
-  color:white
-}
+
 
 .add-player-profil a,
 .player-profil-index-container a {
@@ -17,15 +15,27 @@
 }
 
 .card {
-  background-color: rgb(35, 11, 11);
+
+  background:linear-gradient( #380000,  #8B0000);
   min-height: 235px;
   min-width: 260px;
   max-width: 260px;
   border-radius: 10px;
-  border: 3px solid #A3A3A3;
+  border: 3px solid black;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
 }
 
 .card-img-top {
   max-width: 100%;
   height: auto;
+}
+
+.card {
+  strong {
+  color:white
+}
 }

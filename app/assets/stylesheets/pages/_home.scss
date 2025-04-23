@@ -20,6 +20,17 @@
   text-align: center;
 }
 
+.card-home {
+  h2 {
+    font-weight: bolder;
+  }
+}
+
+.card-home:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+  color:white
+}
 /* Par défaut (mobile) */
 .responsive-row {
   margin-left: 0;
