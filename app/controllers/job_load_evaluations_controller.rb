@@ -26,7 +26,7 @@ end
     if @job_load_evaluation.save
       redirect_to @job_load_evaluation, notice: 'Job load evaluation was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

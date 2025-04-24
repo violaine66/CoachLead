@@ -33,7 +33,7 @@ class TrainingsController < ApplicationController
     if @training.save
       redirect_to @training, notice: 'Entraînement créé avec succès.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -54,7 +54,7 @@ class TrainingsController < ApplicationController
   def destroy
     authorize @training
     @training.destroy
-    redirect_to trainings_path, notice: 'Entraînement supprimé avec succès.'
+    redirect_to trainings_path, notice: 'Entraînement supprimé avec succès.', status: :see_other
   end
 
   private

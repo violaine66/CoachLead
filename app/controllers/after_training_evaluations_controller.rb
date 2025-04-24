@@ -30,7 +30,7 @@ class AfterTrainingEvaluationsController < ApplicationController
     if @after_training_evaluation.save
       redirect_to training_path(@training), notice: 'Evaluation enregistrée.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

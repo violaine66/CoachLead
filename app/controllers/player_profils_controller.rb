@@ -28,7 +28,7 @@ class PlayerProfilsController < ApplicationController
       redirect_to @player_profil, notice: 'Player profile was successfully created.'
     else
       puts @player_profil.errors.full_messages
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -48,7 +48,7 @@ class PlayerProfilsController < ApplicationController
   def destroy
     authorize @player_profil
     @player_profil.destroy
-    redirect_to player_profils_url, notice: 'Profil du joueur supprimé.'
+    redirect_to player_profils_url, notice: 'Profil du joueur supprimé.', status: :see_other
   end
 
   private

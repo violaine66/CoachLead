@@ -1,0 +1,5 @@
+fr:
+  simple_form:
+    labels:
+      user:
+        remember_me: "Se souvenir de moi"

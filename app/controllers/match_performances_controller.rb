@@ -40,7 +40,7 @@ class MatchPerformancesController < ApplicationController
     if @match_performance.save
       redirect_to @match_performance, notice: 'La performance du match a été créée avec succès.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
