@@ -1,0 +1,29 @@
+fr:
+  date:
+    day_names:
+      - "Dimanche"
+      - "Lundi"
+      - "Mardi"
+      - "Mercredi"
+      - "Jeudi"
+      - "Vendredi"
+      - "Samedi"
+    month_names:
+      - "Janvier"
+      - "Février"
+      - "Mars"
+      - "Avril"
+      - "Mai"
+      - "Juin"
+      - "Juillet"
+      - "Août"
+      - "Septembre"
+      - "Octobre"
+      - "Novembre"
+      - "Décembre"
+fr:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d %b"
+      long: "%A %d %B %Y"
