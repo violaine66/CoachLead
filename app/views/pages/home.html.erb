@@ -1,7 +1,4 @@
 <div class="container mt-5">
-  <% if user_signed_in? %>
-  <%= link_to 'Modifier mon mot de passe', edit_user_registration_path %>
-<% end %>
 
   <% if current_user.entraineur? %>
    <h1 class="text-center mt-5">Bienvenue Coach <%= current_user.pseudo %> !</h1>
@@ -38,7 +35,7 @@
     <h1 class="text-center mt-5">Bienvenue <%= current_user.email %> !</h1>
        <div class="prochain-entrainement mt-3">
         <% if @next_training %>
-          <p>Prochain entraînement : <%= l(@next_training.date, format: :long) %></p>
+          <p>Prochain entraînement : <%= l(@next_training.date, format: "%A %d %B %Y") %></p>
           <%= link_to "Voir l'entraînement", training_path(@next_training), class: "btn btn-primary" %>
         <% else %>
           <p>Aucun entraînement à venir pour le moment.</p>

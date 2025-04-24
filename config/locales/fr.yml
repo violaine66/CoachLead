@@ -21,9 +21,6 @@ fr:
       - "Octobre"
       - "Novembre"
       - "Décembre"
-fr:
-  date:
     formats:
-      default: "%d/%m/%Y"
-      short: "%d %b"
-      long: "%A %d %B %Y"
+      long: "%A %d %B %Y"  # Exemple : lundi 15 avril 2025
+      training_time: "%A %d %B %Y à %H:%M"  # Exemple : lundi 15 avril 2025 à 14:30

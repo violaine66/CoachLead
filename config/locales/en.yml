@@ -29,3 +29,8 @@
 
 en:
   hello: "Hello world"
+en:
+  date:
+    formats:
+      long: "%A %d %B %Y"
+      training_time: "%A %d %B %Y at %H:%M"  # Exemple : Monday, 15 April 2025 at 14:30
