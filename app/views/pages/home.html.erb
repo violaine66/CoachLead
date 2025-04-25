@@ -36,7 +36,7 @@
        <div class="prochain-entrainement mt-3">
         <% if @next_training %>
           <p>Prochain entraînement : <%= l(@next_training.date, format: "%A %d %B %Y") %></p>
-          <%= link_to "Voir l'entraînement", training_path(@next_training), class: "btn btn-primary" %>
+          <%= link_to "Voir l'entraînement", training_path(@next_training), class: "btn btn-primary text-white" %>
         <% else %>
           <p>Aucun entraînement à venir pour le moment.</p>
         <% end %>

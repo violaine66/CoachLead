@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div>
+  <div class="training-joueur">
     <h2>Détails de l'entraînement</h2>
       <p><%= @training.date%></p>
       <p><%= @training.title%></p>
@@ -12,7 +12,7 @@
 
 <% if current_user.joueur? %>
   <% if @pre_training_evaluation.present? %>
-    <div class="mt-5">
+    <div class=".training-joueur mt-5">
       <h4>Ton évaluation pré-entrainement</h4>
       <ul>
         <li>Présent : <%= @pre_training_evaluation.present ? "Oui" : "Non" %></li>
@@ -22,10 +22,10 @@
       </ul>
     </div>
   <% else %>
-    <%= link_to "Faire mon évaluation pré-entrainement", new_training_pre_training_evaluation_path(@training), class: "btn btn-primary mt-3" %>
+    <%= link_to "Faire mon évaluation pré-entrainement", new_training_pre_training_evaluation_path(@training), class: "btn btn-primary text-white mt-3" %>
   <% end %>
   <% if @after_training_evaluation.present? %>
-    <div class="mt-5">
+    <div class=" training-joueur mt-5">
       <h4>Ton évaluation post-entrainement</h4>
       <ul>
         <li>Intensité de l'entraînement : <%= @after_training_evaluation.after_intensity %></li>
@@ -34,7 +34,7 @@
       </ul>
     </div>
   <% else %>
-    <%= link_to "Faire mon évaluation post-entrainement", new_training_after_training_evaluation_path(@training), class: "btn btn-primary mt-3" %>
+    <%= link_to "Faire mon évaluation post-entrainement", new_training_after_training_evaluation_path(@training), class: "btn btn-primary text-white mt-3" %>
   <% end %>
 <% end %>
 
