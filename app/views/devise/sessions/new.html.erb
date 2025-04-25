@@ -1,8 +1,9 @@
 <div class="container">
-  <div class="row d-flex justify-content-center">
-    <div class="col-12 col-md-6 col-md-3">
+  <div class="row d-flex justify-content-center ">
+    <div class="col-12 col-md-6 col-md-3 card mt-3">
       <h2 class="my-3">Connexion</h2>
-      <% I18n.locale = :fr %>
+
+        <% I18n.locale = :fr %>
 
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
@@ -22,6 +23,8 @@
         </div>
       <% end %>
       <%= render "devise/shared/links" %>
+
+      </div>
+
     </div>
   </div>
-</div>

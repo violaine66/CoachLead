@@ -1,34 +1,39 @@
 <div class="container">
-   <% if current_user.entraineur? %>
+  <div class="row d-flex justify-content-center">
+    <div class="col-10">
+      <% if current_user.entraineur? %>
       <div class="training-new text-end mt-3">
           <h2><%= link_to "Créer un entraînement", new_training_path, class:"btn btn-success text-white py-2" %></h2>
         </div>
     <% end %>
 
-  <h1 class="my-3 text-center">Mes Entrainements</h1>
+    <h1 class="my-3 text-center">Mes Entrainements</h1>
 
-  <div class="list-entrainements mt-5">
-     <% @trainings.each do |t| %>
-      <%= link_to training_path(t) do %>
-        <%= t.date %>
-        <%= t.title %>
-        <%= t.location %>
-        <%= t.description %>
-          <% if policy(Training).create?%>
-            <%= link_to edit_training_path(t) do %>
-            <i class="fa-solid fa-pen-to-square"></i>
+      <div class="list-entrainements mt-5">
+        <% @trainings.each do |t| %>
+          <%= link_to training_path(t) do %>
+            <%= t.date %>
+            <%= t.title %>
+            <%= t.location %>
+            <%= t.description %>
+              <% if policy(Training).create?%>
+                <%= link_to edit_training_path(t) do %>
+                <i class="fa-solid fa-pen-to-square"></i>
+              <% end %>
+            <% end %>
+              <% if policy(Training).destroy? %>
+                <%= link_to training_path(t), data: { turbo_method: :delete, turbo_confirm: "Are you sure" } do %>
+                  <i class="fa-solid fa-trash"></i>
+                <% end %>
+              <% end %>
+                  <hr>
           <% end %>
         <% end %>
-          <% if policy(Training).destroy? %>
-            <%= link_to training_path(t), data: { turbo_method: :delete, turbo_confirm: "Are you sure" } do %>
-              <i class="fa-solid fa-trash"></i>
-            <% end %>
-          <% end %>
-              <hr>
-      <% end %>
-    <% end %>
-  </div>
-  <div class= "my-5">
-    <p><%= link_to "Retour", root_path, class:"btn btn-secondary text-white"%></p>
+      </div>
+      <div class= "my-5">
+        <p><%= link_to "Retour", root_path, class:"btn btn-secondary text-white"%></p>
+      </div>
+
+    </div>
   </div>
 </div>
