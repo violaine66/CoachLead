@@ -2,6 +2,9 @@
   <h1>Évaluations de pénibilité</h1>
 
   <% if current_user.entraineur? %>
+    <div class="text-end mb-3">
+    <%= link_to "Créer une nouvelle évaluation", new_job_load_evaluation_path, class: "btn btn-success text-white" %>
+  </div>
     <p>Liste de toutes les évaluations :</p>
   <% else %>
     <p>Voici vos évaluations :</p>
@@ -33,9 +36,7 @@
       <% end %>
     </tbody>
   </table>
-  <div>
-    <%= link_to "Créer une nouvelle évaluation", new_job_load_evaluation_path, class: "btn btn-success" %>
-  </div>
-  <div>
-    <%= link_to "Retour", root_path, class: "btn btn-secondary mt-3" %>
+
+  <div class="my-3">
+    <%= link_to "Retour", root_path, class: "btn btn-secondary text-white mt-3" %>
 </div>
