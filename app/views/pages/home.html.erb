@@ -1,6 +1,5 @@
 <div class="container-home">
   <% if current_user.entraineur? %>
-   <h1 class="text-center ">Bienvenue Coach <%= current_user.pseudo %> !</h1>
     <div class="row responsive-row mt-5">
       <div class="col-8 col-sm-4 col-md-6">
         <div class="card-home">
@@ -31,7 +30,6 @@
     </div>
 
   <% elsif current_user.joueur? %>
-    <h1 class="text-center ">Bienvenue <%= current_user.email %> !</h1>
        <div class="prochain-entrainement mt-3">
         <% if @next_training %>
           <p>Prochain entraînement : <%= l(@next_training.date, format: "%A %d %B %Y") %></p>

@@ -13,3 +13,19 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: cover; /* super important pour ne pas déformer l'image */
+  border-radius: 50%;
+}
+
+.nom {
+  display: flex;
+  align-items: center;
+}
+#nom {
+  font-family: "Russo One", sans-serif;
+}
+ 

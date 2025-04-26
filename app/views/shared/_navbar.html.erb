@@ -1,16 +1,14 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-   <% if @player_profil.present? && @player_profil.persisted? %>
-    <%= link_to player_profil_path(@player_profil), class: "navbar-brand" do %>
-      <% if @player_profil.avatar.attached? %>
-        <%= cl_image_tag @player_profil.avatar.key, class: "avatar-navbar", alt: "Avatar du joueur" %>
-      <% else %>
-        Mon Profil
-      <% end %>
-    <% end %>
-  <% else %>
-  <span class="navbar-brand">CoachLead</span>
-  <% end %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon d-flex align_items center">
+  <div class="container-fluid ">
+    <div>
+      <a class="navbar-brand" href=" <%= root_path %>">
+      <%= image_tag "ballon-herbe.jpg", class: "navbar-logo" %>
+      </a>
+    </div>
+
+  <div class="nom">
+    <h1 class="text-dark" id="nom">CoachLead</h1>
+  </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
