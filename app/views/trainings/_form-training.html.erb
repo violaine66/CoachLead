@@ -2,17 +2,19 @@
   <div class="form-training">
     <div class="row d-flex justify-content-center">
       <div class="col-10 col-md-8 col-md-6">
-        <h1 class="mt-5">Créer un entraînement</h1>
+        <h1 class="mt-5 text-center">Nouvel entraînement</h1>
           <%= simple_form_for @training do |f| %>
             <div class="form-inputs">
-              <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
-              <%= f.input :title %>
-              <%= f.input :location %>
+              <%= f.input :date, as: :string,
+                label: "Date de l'entraînement",
+                          input_html: { data: { controller: "datepicker" }} %>
+              <%= f.input :title, label:"Nom de l'entraînement" %>
+              <%= f.input :location, label: "Lieu" %>
               <%= f.input :description %>
             </div>
 
             <div class="form-actions">
-              <%= f.button :submit, "Créer l'entraînement" %>
+              <%= f.button :submit, "Créer l'entraînement", class: "btn btn-primary text-white" %>
             </div>
          <% end %>
         <div class="mt-5">
