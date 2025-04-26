@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-3">
   <div class="add-absence">
       <% if current_user.entraineur? %>
         <p><%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn btn-success text-white mt-3"%></p>
@@ -107,8 +107,8 @@
         <tr>
           <th>Joueur</th>
           <th>Date</th>
-          <th>Statut</th>
-          <th>Actions</th>
+          <th class="text-center">Statut</th>
+          <th class="text-center">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -116,7 +116,7 @@
           <tr>
             <td><%= "#{a.user.player_profil.first_name} #{a.user.player_profil.last_name}" %></td>
             <td><%= l(a.training.date, format: :long) %></td>
-            <td>
+            <td class="text-center">
               <% badge_class = case a.status
                   when "present" then "badge bg-success"
                   when "absent" then "badge bg-danger"
@@ -128,9 +128,9 @@
                 <%= a.status.present? ? a.status.capitalize : "Non défini" %>
               </span>
             </td>
-            <td>
+            <td class="text-center">
               <%= link_to edit_training_attendance_path(@training, a), class: "text-decoration-none" do %>
-                <i class="fas fa-edit"></i>
+                <i class="fas fa-edit text-dark"></i>
               <% end %>
             </td>
           </tr>
