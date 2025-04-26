@@ -1,4 +1,10 @@
 <div class="container mt-5">
+  <div class="add-absence">
+      <% if current_user.entraineur? %>
+        <p><%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn btn-success text-white mt-3"%></p>
+      <% end %>
+  </div>
+
   <div class="training-joueur d-flex justify-content-center">
     <div class="training-details">
       <strong><p><%= @training.title%></p></strong>
@@ -8,9 +14,6 @@
     </div>
   </div>
 
-  <% if current_user.entraineur? %>
-   <p><%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn btn-primary mt-3"%></p>
-  <% end %>
 
 <% if current_user.joueur? %>
   <% if @pre_training_evaluation.present? %>

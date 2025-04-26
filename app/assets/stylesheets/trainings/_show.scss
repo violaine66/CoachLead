@@ -1,6 +1,6 @@
 .training-details {
   padding: 20px;
-  background-color: #F0F1F3;
+  background-color: #EBFFEB;
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
@@ -10,4 +10,8 @@
   color: black;
   text-align: center;
   font-size: 1.2em;
+ }
+
+ .table-bordered > th{
+  background-color: #EBFFEB;
  }
