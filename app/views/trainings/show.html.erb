@@ -14,34 +14,36 @@
     </div>
   </div>
 
+<div class="evaluations d-flex justify-content-around align-items-center">
+  <% if current_user.joueur? %>
+    <% if @pre_training_evaluation.present? %>
+      <div class=".training-joueur mt-5">
+        <h4>Ton évaluation pré-entrainement</h4>
+        <ul>
+          <li>Présent : <%= @pre_training_evaluation.present ? "Oui" : "Non" %></li>
+          <li>Fatigue cognitive : <%= @pre_training_evaluation.cognitive_fatigue %></li>
+          <li>Fatigue physique : <%= @pre_training_evaluation.physical_fatigue %></li>
+          <li>Humeur : <%= @pre_training_evaluation.mood %></li>
+        </ul>
+      </div>
+    <% else %>
+      <%= link_to "Faire mon évaluation pré-entrainement", new_training_pre_training_evaluation_path(@training), class: "btn btn-primary fs-4 text-white mt-3" %>
+    <% end %>
+    <% if @after_training_evaluation.present? %>
+      <div class=" training-joueur mt-5">
+        <h4>Ton évaluation post-entrainement</h4>
+        <ul>
+          <li>Intensité de l'entraînement : <%= @after_training_evaluation.after_intensity %></li>
+          <li>Fatigue physique : <%= @after_training_evaluation.after_fatigue %></li>
+          <li>Plaisir de l'entraînement : <%= @after_training_evaluation.pleasure ? "Oui" : "Non" %></li>
+        </ul>
+      </div>
+      <% else %>
+        <%= link_to "Faire mon évaluation post-entrainement", new_training_after_training_evaluation_path(@training), class: "btn btn-primary fs-4 text-white mt-3" %>
+      <% end %>
+  <% end %>
+</div>
 
-<% if current_user.joueur? %>
-  <% if @pre_training_evaluation.present? %>
-    <div class=".training-joueur mt-5">
-      <h4>Ton évaluation pré-entrainement</h4>
-      <ul>
-        <li>Présent : <%= @pre_training_evaluation.present ? "Oui" : "Non" %></li>
-        <li>Fatigue cognitive : <%= @pre_training_evaluation.cognitive_fatigue %></li>
-        <li>Fatigue physique : <%= @pre_training_evaluation.physical_fatigue %></li>
-        <li>Humeur : <%= @pre_training_evaluation.mood %></li>
-      </ul>
-    </div>
-  <% else %>
-    <%= link_to "Faire mon évaluation pré-entrainement", new_training_pre_training_evaluation_path(@training), class: "btn btn-primary text-white mt-3" %>
-  <% end %>
-  <% if @after_training_evaluation.present? %>
-    <div class=" training-joueur mt-5">
-      <h4>Ton évaluation post-entrainement</h4>
-      <ul>
-        <li>Intensité de l'entraînement : <%= @after_training_evaluation.after_intensity %></li>
-        <li>Fatigue physique : <%= @after_training_evaluation.after_fatigue %></li>
-        <li>Plaisir de l'entraînement : <%= @after_training_evaluation.pleasure ? "Oui" : "Non" %></li>
-      </ul>
-    </div>
-  <% else %>
-    <%= link_to "Faire mon évaluation post-entrainement", new_training_after_training_evaluation_path(@training), class: "btn btn-primary text-white mt-3" %>
-  <% end %>
-<% end %>
 
 <% if current_user.entraineur? %>
   <div class="mt-5">
