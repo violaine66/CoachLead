@@ -1,6 +1,10 @@
 // Specific CSS for your home-page
 .card-home {
-  background-color: rgb(23, 13, 12);
+  // background-color: rgb(23, 13, 12);
+  background-image: url("ballon-noiretblanc.avif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 10px;
   padding: 20px;
   margin: 10px;
@@ -14,7 +18,10 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s;
   cursor: pointer;
+  opacity: 0.9;
 }
+
+
 
 .prochain-entrainement {
   text-align: center;
@@ -27,8 +34,6 @@
 }
 
 .card-home:hover {
-  transform: scale(1.05);
-  transition: transform 0.2s;
   color:white
 }
 /* Par défaut (mobile) */

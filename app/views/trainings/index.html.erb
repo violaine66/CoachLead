@@ -12,10 +12,8 @@
       <div class="list-entrainements mt-5">
         <% @trainings.each do |t| %>
           <%= link_to training_path(t) do %>
-            <%= t.date %>
+            <%= t.date.strftime("%d/%m/%Y") %>
             <%= t.title %>
-            <%= t.location %>
-            <%= t.description %>
               <% if policy(Training).create?%>
                 <%= link_to edit_training_path(t) do %>
                 <i class="fa-solid fa-pen-to-square"></i>

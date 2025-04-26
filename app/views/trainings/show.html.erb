@@ -1,11 +1,13 @@
 <div class="container mt-5">
-  <div class="training-joueur">
-    <h2>Détails de l'entraînement</h2>
-      <p><%= @training.date%></p>
-      <p><%= @training.title%></p>
-      <p><%= @training.location%></p>
+  <div class="training-joueur d-flex justify-content-center">
+    <div class="training-details">
+      <strong><p><%= @training.title%></p></strong>
+      <p><i class="fa-solid fa-calendar-days me-2 text-dark "></i><strong><%= @training.date.strftime("%d %m %Y")%></strong></p>
+      <p> <i class="fa-solid fa-location-dot me-2 text-dark"></i><%= @training.location %></p>
       <p><%= @training.description%></p>
+    </div>
   </div>
+
   <% if current_user.entraineur? %>
    <p><%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn btn-primary mt-3"%></p>
   <% end %>
