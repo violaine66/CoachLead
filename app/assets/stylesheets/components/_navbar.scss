@@ -28,4 +28,10 @@
 #nom {
   font-family: "Russo One", sans-serif;
 }
- 
+
+.dropdown-menu {
+  right: 0;
+  left: auto;
+  min-width: max-content;
+  z-index: 1050;
+}

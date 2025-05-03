@@ -1,44 +1,38 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon d-flex align_items center">
-  <div class="container-fluid ">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon d-flex align-items-center">
+  <div class="container-fluid">
     <div>
-      <a class="navbar-brand" href=" <%= root_path %>">
-      <%= image_tag "ballon-herbe.jpg", class: "navbar-logo" %>
+      <a class="navbar-brand" href="<%= root_path %>">
+        <%= image_tag "ballon-herbe.jpg", class: "navbar-logo" %>
       </a>
     </div>
 
-  <div class="nom">
-    <h1 class="text-dark" id="nom">CoachLead</h1>
-  </div>
+    <div class="nom">
+      <h1 class="text-dark" id="nom">CoachLead</h1>
+    </div>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+              data-bs-toggle="dropdown" aria-expanded="false">
               Mon compte
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><%= link_to 'Modifier mon mot de passe', edit_user_registration_path, class:"dropdown-item text-dark" %></li>
-              <%# <li>
-             <% if current_user.joueur? && current_user.player_profil.present? %>
-                <%# <li> %>
-                <%# <%= link_to 'Ajouter une photo', edit_player_profil_path(current_user.player_profil), class: "dropdown-item text-dark" %>
-              <%# </li> %>
-              <%# <% end %>
-             <%# </li> %>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+              <li><%= link_to 'Modifier mon mot de passe', edit_user_registration_path, class: "dropdown-item text-dark" %></li>
               <li><%= link_to "Se déconnecter", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item text-dark" %></li>
             </ul>
+          </li>
         <% else %>
           <li class="nav-item">
             <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
-        </div>
       </ul>
     </div>
   </div>
