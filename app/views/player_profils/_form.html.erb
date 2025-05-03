@@ -3,10 +3,10 @@
     <div class="col-10 col-sm-8 col-md-6 col-lg-6 ">
       <div class="new-player-profil">
         <div class="form-player-profil">
-          <%= simple_form_for (@player_profil) do |f| %>
+          <%= simple_form_for(@player_profil, html: { multipart: true }) do |f| %>
           <%= f.input :last_name, label: "Nom" %>
           <%= f.input :first_name, label: "Prénom"%>
-          <%= f.input :avatar, as: :file, label: "Photo" %>
+          <%= f.input :photo, as: :file, label: "Photo" %>
           <%= f.input :age, label: "Age"%>
           <%= f.input :weight, label: "Poids"%>
           <%= f.input :job, label: "Activité professionnelle"%>

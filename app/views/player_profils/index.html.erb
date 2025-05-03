@@ -7,8 +7,8 @@
         <div class="col-8 col-sm-6 col-md-4 col-lg-3 mb-4 mx-auto">
           <%= link_to player_profil_path(player), class: "text-decoration-none text-dark" do %>
             <div class="card h-100 shadow-sm">
-              <% if current_user.player_profil&.avatar&.attached? %>
-                <%= image_tag url_for(current_user.player_profil.avatar), class: "card-img-top", alt: "Avatar du joueur", style: "width:250px; height:170px; object-fit:cover;" %>
+              <% if player.photo.attached? %>
+                <%= cl_image_tag player.photo.key, width: 250, height: 170, crop: :fill, gravity: :auto, class: "card-img-top", alt: "Photo du joueur" %>
               <% else %>
                 <i class="fa-solid fa-circle-user fa-5x my-3 d-block mx-auto"></i>
               <% end %>

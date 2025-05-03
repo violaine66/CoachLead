@@ -1,6 +1,6 @@
 class PlayerProfil < ApplicationRecord
   belongs_to :user
-  has_one_attached :avatar
+  has_one_attached :photo
 
   # validations
   validates :age, numericality: { only_integer: true, greater_than: 0 }
