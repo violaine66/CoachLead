@@ -11,11 +11,11 @@
   margin: 20px;
   padding: 20px;
   border-radius: 10px;
-  background-color: #f8f9fa;
+  background-color: #F5F5F5;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
   width: 250px;
-  height: 280px;
+  height: 250px;
 }
 
 .player-card-show>p {
@@ -38,4 +38,21 @@ strong {
   align-items: center;
   justify-content: space-around;
   margin: 10px 0;
+}
+
+.total {
+  background: #F5F5F5;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  color: black;
+  margin: 20px 0;
+}
+
+.total > p {
+  color:black;
+}
+
+h4 {
+  font-weight: bolder;
 }
