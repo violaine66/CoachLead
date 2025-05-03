@@ -1,15 +1,10 @@
 <div class="container">
   <div class= "d-flex justify-content-center">
-      <% if user_signed_in? %>
-        <%= link_to 'Modifier mon mot de passe', edit_user_registration_path %>
-      <% end %>
-
-      <% if current_user.player_profil&.avatar&.attached? %>
-
-                <%= image_tag url_for(current_user.player_profil.avatar), class: "card-img-top", alt: "Avatar du joueur", style: "width:250px; height:170px; object-fit:cover;" %>
-              <% else %>
-                <i class="fa-solid fa-circle-user fa-5x my-3 d-block mx-auto"></i>
-      <% end %>
+    <% if current_user.player_profil&.avatar&.attached? %>
+      <%= image_tag url_for(current_user.player_profil.avatar), class: "card-img-top", alt: "Avatar du joueur", style: "width:250px; height:170px; object-fit:cover;" %>
+    <% else %>
+      <i class="fa-solid fa-circle-user fa-5x my-3 d-block mx-auto"></i>
+    <% end %>
 
     <div class="player-card-show mt-5">
       <p><strong><%= @player_profil.full_name %></strong></p>
