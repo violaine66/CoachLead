@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :job_load_evaluations
   has_many :match_performances
   has_one :player_profil, dependent: :destroy
- 
+  has_one_attached :avatar
 
   # Validations
   validates :email, presence: true, uniqueness: true

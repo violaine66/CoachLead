@@ -1,0 +1,15 @@
+<!-- app/views/users/registrations/edit_avatar.html.erb -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-10 colmd-6 col-lg-4 mx-auto">
+      <h2 class="text-center mb-3">Ajouter / modifier votre photo de profil</h2>
+        <%= simple_form_for current_user, url: update_avatar_user_path, method: :patch, html: { multipart: true } do |f| %>
+          <div class="mb-3">
+            <%= f.input :avatar, as: :file, label: "Choisir une photo" %>
+          </div>
+
+          <%= f.button :submit, "Mettre à jour", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -19,4 +19,9 @@ class ApplicationController < ActionController::Base
     action_name == "index" && !skip_pundit?
   end
 
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:photo])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:photo])
+  end
+
 end

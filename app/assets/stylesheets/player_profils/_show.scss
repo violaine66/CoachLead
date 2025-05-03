@@ -15,6 +15,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
   width: 250px;
+  height: 280px;
 }
 
 .player-card-show>p {
@@ -32,3 +33,9 @@ strong {
   align-items: center;
 }
 
+.details-player-profil {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px 0;
+}

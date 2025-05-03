@@ -1,13 +1,22 @@
 <div class="container">
-  <div class= "d-flex justify-content-center">
-
-      <% if @player_profil.photo.attached? %>
-        <%= image_tag url_for(@player_profil.photo), class: "card-img-top", alt: "Photo du joueur", style: "width:250px; height:170px; object-fit:cover;" %>
-      <% else %>
-        <i class="fa-solid fa-circle-user fa-5x my-3 d-block mx-auto"></i>
-      <% end %>
-
-
+  <div class= details-player-profil>
+    <div class="player-card-show mt-5">
+        <% if @player_profil.photo.attached? %>
+          <%= image_tag url_for(@player_profil.photo), class: "card-img-top", alt: "Photo du joueur", style: "width:250px; height:170px; object-fit:cover;" %>
+          <% if current_user.entraineur?%>
+            <%= link_to edit_player_profil_path do%>
+              <i class="fa-regular fa-pen-to-square text-dark"></i>
+            <% end %>
+          <% end %>
+        <% else %>
+          <i class="fa-solid fa-circle-user fa-5x my-3 d-block mx-auto text-dark"></i>
+          <% if current_user.entraineur?%>
+            <%= link_to edit_player_profil_path do%>
+              <i class="fa-regular fa-pen-to-square text-dark"></i>
+            <% end %>
+          <% end %>
+        <% end %>
+    </div>
 
     <div class="player-card-show mt-5">
       <p><strong><%= @player_profil.full_name %></strong></p>
@@ -20,16 +29,6 @@
         <p>Aucun enfant</p>
       <% end %>
     </div>
-  </div>
-
-
-  <div class="mt-5">
-    <% if current_user.entraineur?%>
-      <%= simple_form_for (@player_profil), html: { multipart: true } do |f| %>
-      <%= f.input :photo, as: :file %>
-        <%= f.button :submit %>
-      <% end %>
-    <% end %>
   </div>
 
 
