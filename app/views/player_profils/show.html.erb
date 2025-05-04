@@ -19,7 +19,7 @@
         <% if @player_profil.photo.attached? %>
          <%= cl_image_tag @player_profil.photo.key,
               width: 250,
-              height: 400,
+              height: 200,
               crop: "fill",
               gravity: "face",
               fetch_format: "auto",
