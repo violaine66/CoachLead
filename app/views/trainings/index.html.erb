@@ -6,10 +6,11 @@
             <h2><%= link_to "Créer un entraînement", new_training_path, class:"btn btn-success text-white py-2" %></h2>
           </div>
       <% end %>
-      <div class="row">
-        <div class="col-12">
-          <h1>Mes Entrainements</h1>
-          <div class="list-entrainements mt-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-8 text-center">
+          <h1 class="mb-5">Mes Entrainements</h1>
+
             <% @trainings.each do |t| %>
             <div class="d-flex justify-content-between align-items-center">
               <div>
@@ -34,6 +35,7 @@
               <% end %>
             <% end %>
           </div>
+          
           <div class= "my-5">
             <p><%= link_to "Retour", root_path, class:"btn btn-secondary text-white"%></p>
           </div>
@@ -41,5 +43,4 @@
       </div>
     </div>
   </div>
-</div>
 </div>
