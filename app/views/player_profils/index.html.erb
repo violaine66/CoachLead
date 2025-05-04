@@ -2,9 +2,9 @@
   <div class="text-end mt-3">
     <%= link_to "Ajouter un profil", new_player_profil_path, class: "btn btn-success text-dark text-end mt-3" %>
   </div>
-  <div class="row mt-5 justify-content-center">
+  <div class="row mt-5 d-flex justify-content-center">
       <% @player_profils.each do |player| %>
-        <div class="col-8 col-sm-6 col-md-4 col-lg-3 mb-4 mx-auto">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 mx-auto">
           <%= link_to player_profil_path(player), class: "text-decoration-none text-dark" do %>
             <div class="card h-100 shadow-sm">
               <% if player.photo.attached? %>
@@ -13,14 +13,12 @@
                 <i class="fa-solid fa-circle-user fa-5x my-3 d-block mx-auto"></i>
               <% end %>
               <div class="card-body text-center">
-                <h5 class="card-title"><strong><%= player.full_name %></strong></h5>
+                <h5 class="card-title "><strong><%= player.full_name %></strong></h5>
               </div>
             </div>
           <% end %>
         </div>
       <% end %>
     </div>
-  <div class="mt-3">
-    <%= link_to "Retour", root_path, class: "btn btn-secondary text-white mb-3" %>
-  </div>
+
 </div>
