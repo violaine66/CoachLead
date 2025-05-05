@@ -1,4 +1,4 @@
-<div class="container ">
+<div class="container">
   <div class="text-end mt-3 fs-4">
      <% if policy(PlayerProfil).create?%>
     <%= link_to edit_player_profil_path(@player_profil) do %>
@@ -43,10 +43,12 @@
         <% end %>
     </div>
 
+
     <div class="player-card-show">
       <p><strong><%= @player_profil.age %> ans</strong></p>
       <p><strong><%= @player_profil.weight %> kg</strong></p>
       <p><strong><%= @player_profil.job %></strong></p>
+      <p><em><strong><%= link_to "Autoevaluation du travail", job_load_evaluations_path, class:"text-dark" %></strong></em></p>
       <% if @player_profil.children_count > 0 %>
         <p><strong><%= @player_profil.children_count %> enfants</strong></p>
       <% else %>

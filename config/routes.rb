@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resources :after_training_evaluations, only: [:index, :show, :new, :create]
   end
   resources :player_profils
+  # resources :users do
+  #   resources :job_load_evaluations, only: [:new, :create, :show]
+  # end
   resources :job_load_evaluations, only: [:index, :show, :new, :create]
   resources :match_performances, only: [:index, :show, :new, :create]
   # config/routes.rb

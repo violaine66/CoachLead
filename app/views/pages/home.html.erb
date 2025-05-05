@@ -1,72 +1,55 @@
-<div class="container-home">
+<div class="container-home d-flex flex-column align-items-center justify-content-center min-vh-100">
 
   <% if current_user.entraineur? %>
-    <div class="row responsive-row mt-3">
-      <div class="col-12 col-sm-4 col-md-6">
-        <div class="card-home">
+    <div class="w-100 d-flex flex-column align-items-center">
+      <div class="w-100 d-flex justify-content-center mb-4">
+        <div class="card-home text-center">
           <h2><%= link_to "Joueurs", player_profils_path, class:"text-white text-decoration-none" %></h2>
         </div>
       </div>
-      <div class="col-12 col-sm-4 col-md-6">
-        <div class="card-home">
-          <div class="entrainements">
-            <h2><%= link_to "Entrainements", trainings_path, class:"text-white text-decoration-none" %></h2>
-          </div>
+
+      <div class="w-100 d-flex justify-content-center mb-4">
+        <div class="card-home text-center">
+          <h2><%= link_to "Entrainements", trainings_path, class:"text-white text-decoration-none" %></h2>
         </div>
       </div>
-      <div class="col-12 col-sm-4 col-md-6">
-        <div class="card-home">
-          <div class="penibilite-index">
-            <h2><%= link_to "Evaluations", job_load_evaluations_path, class:"text-white text-decoration-none" %></h2>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-sm-4 col-md-6">
-        <div class="card-home mb-5">
-          <div class="match-performances-index">
-            <h2><%= link_to "Matchs", match_performances_path, class:"text-white text-decoration-none" %></h2>
-          </div>
+
+      <div class="w-100 d-flex justify-content-center mb-5">
+        <div class="card-home text-center">
+          <h2><%= link_to "Matchs", match_performances_path, class:"text-white text-decoration-none" %></h2>
         </div>
       </div>
     </div>
 
   <% elsif current_user.joueur? %>
-       <div class="prochain-entrainement mt-5 mx-2">
-        <% if @next_training %>
-          <p>Prochain entraînement : <%= l(@next_training.date, format: "%A %d %B %Y") %></p>
-          <%= link_to "Voir l'entraînement", training_path(@next_training), class: "btn btn-primary text-white" %>
-        <% else %>
-          <p>Aucun entraînement à venir pour le moment.</p>
-        <% end %>
-      </div>
-    <div class="row responsive-row mt-5">
-        <div class="col-12 col-sm-8 col-md-6">
-          <div class="card-home text-center">
-            <h2 class="mt-3"><%= link_to "Mon profil", player_profil_path(current_user.player_profil), class:"text-white text-decoration-none" %></h2>
-          </div>
-        </div>
-      <div class="col-12 col-sm-8 col-md-6">
+    <div class="prochain-entrainement mt-5 mx-2 text-center">
+      <% if @next_training %>
+        <p>Prochain entraînement : <%= l(@next_training.date, format: "%A %d %B %Y") %></p>
+        <%= link_to "Voir l'entraînement", training_path(@next_training), class: "btn btn-primary text-white" %>
+      <% else %>
+        <p>Aucun entraînement à venir pour le moment.</p>
+      <% end %>
+    </div>
+
+    <div class="w-100 d-flex flex-column align-items-center mt-5">
+      <div class="w-100 d-flex justify-content-center mb-4">
         <div class="card-home text-center">
-          <div class="penibilite-joueur">
-            <h2><%= link_to "Mes évaluations de pénibilité", job_load_evaluations_path, class:"text-white text-decoration-none" %></h2>
-          </div>
+          <h2><%= link_to "Mon profil", player_profil_path(current_user.player_profil), class:"text-white text-decoration-none" %></h2>
         </div>
       </div>
-      <div class="col-12 col-sm-8 col-md-6">
-          <div class="card-home text-center">
-            <div class="entrainements-joueur">
-              <h2><%= link_to "Mes Entrainements", trainings_path, class:"text-white text-decoration-none" %></h2>
-            </div>
-          </div>
+
+      <div class="w-100 d-flex justify-content-center mb-4">
+        <div class="card-home text-center">
+          <h2><%= link_to "Mes Entrainements", trainings_path, class:"text-white text-decoration-none" %></h2>
         </div>
-      <div class="col-12 col-sm-8 col-md-6">
-        <div class="card-home text-center mb-5">
-          <div class="match-performances-joueur">
-            <h2><%= link_to "Mes performances de match", match_performances_path, class:"text-white text-decoration-none" %></h2>
-          </div>
+      </div>
+
+      <div class="w-100 d-flex justify-content-center mb-5">
+        <div class="card-home text-center">
+          <h2><%= link_to "Mes performances de match", match_performances_path, class:"text-white text-decoration-none" %></h2>
+        </div>
       </div>
     </div>
-  </div>
-
   <% end %>
+
 </div>
