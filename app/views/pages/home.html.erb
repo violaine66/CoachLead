@@ -31,7 +31,7 @@
     </div>
 
   <% elsif current_user.joueur? %>
-       <div class="prochain-entrainement mt-3 mx-2">
+       <div class="prochain-entrainement mt-5 mx-2">
         <% if @next_training %>
           <p>Prochain entraînement : <%= l(@next_training.date, format: "%A %d %B %Y") %></p>
           <%= link_to "Voir l'entraînement", training_path(@next_training), class: "btn btn-primary text-white" %>

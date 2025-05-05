@@ -24,7 +24,7 @@
           <i class="fa-solid fa-people-group fs-2 "></i>
         <% end %>
       <% elsif current_user.player_profil.present? %>
-        <%= link_to player_profil_path(current_user.player_profil),  class: "nav-link #{'active' if current_page?(player_profil_path)}"  do %>
+        <%= link_to player_profil_path(current_user.player_profil), class: "nav-link #{'active' if current_page?(player_profil_path(current_user.player_profil))}" do %>
           <i class="fa-solid fa-user fs-2 "></i>
         <% end %>
       <% end %>

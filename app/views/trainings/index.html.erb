@@ -15,21 +15,10 @@
             <div class="d-flex justify-content-between align-items-center">
               <div>
                 <%= link_to training_path(t) do %>
-                  <%= t.date.strftime("%d/%m/%Y") %>
+                  <span class="text-white"><%= t.date.strftime("%d/%m/%Y") %></span>
                   <%= t.title %>
               </div>
-              <div>
-                <% if policy(Training).create?%>
-                      <%= link_to edit_training_path(t) do %>
-                      <i class="fa-solid fa-pen-to-square"></i>
-                    <% end %>
-                  <% end %>
-                    <% if policy(Training).destroy? %>
-                      <%= link_to training_path(t), data: { turbo_method: :delete, turbo_confirm: "Are you sure" } do %>
-                        <i class="fa-solid fa-trash"></i>
-                      <% end %>
-                  <% end %>
-              </div>
+
             </div>
             <hr>
               <% end %>

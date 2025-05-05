@@ -1,4 +1,5 @@
 <div class="container mt-3">
+
   <div class="add-absence">
       <% if current_user.entraineur? %>
         <p><%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn btn-success text-white mt-3"%></p>
@@ -6,15 +7,30 @@
   </div>
 
   <div class="training-joueur d-flex justify-content-center">
+
     <div class="training-details">
       <strong><p><%= @training.title%></p></strong>
       <p><i class="fa-solid fa-calendar-days me-2 text-dark "></i><strong><%= @training.date.strftime("%d %m %Y")%></strong></p>
       <p> <i class="fa-solid fa-location-dot me-2 text-dark"></i><%= @training.location %></p>
       <p><%= @training.description%></p>
+        <div class="text-end">
+              <% if policy(Training).create?%>
+                    <%= link_to edit_training_path do %>
+                    <i class="fa-solid fa-pen-to-square text-dark"></i>
+                  <% end %>
+                <% end %>
+                  <% if policy(Training).destroy? %>
+                    <%= link_to training_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure" } do %>
+                      <i class="fa-solid fa-trash text-dark"></i>
+                    <% end %>
+                <% end %>
+        </div>
     </div>
   </div>
 
-<div class="evaluations d-flex justify-content-around align-items-center">
+<div class="row">
+  <div class="col-12 col-md-6">
+    <div class="evaluations">
   <% if current_user.joueur? %>
     <% if @pre_training_evaluation.present? %>
       <div class=".training-joueur mt-5">
@@ -42,6 +58,10 @@
         <%= link_to "Faire mon évaluation post-entrainement", new_training_after_training_evaluation_path(@training), class: "btn btn-primary fs-4 text-white mt-3" %>
       <% end %>
   <% end %>
+</div>
+
+
+  </div>
 </div>
 
 
