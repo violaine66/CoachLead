@@ -48,7 +48,7 @@
       <p><strong><%= @player_profil.age %> ans</strong></p>
       <p><strong><%= @player_profil.weight %> kg</strong></p>
       <p><strong><%= @player_profil.job %></strong></p>
-      <p><em><strong><%= link_to "Autoevaluation du travail", job_load_evaluations_path, class:"text-dark" %></strong></em></p>
+      <p><em><strong><%= link_to "Autoevaluation du travail", job_load_evaluations_path, class:"text-dark text-center" %></strong></em></p>
       <% if @player_profil.children_count > 0 %>
         <p><strong><%= @player_profil.children_count %> enfants</strong></p>
       <% else %>
