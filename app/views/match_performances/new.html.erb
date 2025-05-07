@@ -1,26 +1,43 @@
 <div class="container mt-5">
   <h2>Nouvelle performance de match</h2>
-  <div class="form-match-performance">
+
   <%= simple_form_for @match_performance do |f| %>
-  <%= f.input :user_id,
-      label: "Joueur",
-      collection: @joueurs,
-      as: :select,
-      include_blank: false,
-      prompt: "Sélectionner un joueur",
-      label_method: :full_name,
-      value_method: :id %>
+    <div class="form-group">
+      <!-- Sélection du joueur -->
+      <%= f.label :user_id, "Joueur" %>
+      <%= f.select :user_id,
+          @player_profils.collect { |profile| [profile.full_name, profile.user_id] },
+          { include_blank: "Sélectionner un joueur" },
+          { class: "form-control" } %>
+    </div>
 
-  <%= f.input :match_date, label: "Date du match" %>
-  <%= f.input :played, label: "Participation", as: :boolean %>
-  <%= f.input :yellow_card, collection: (0..10).to_a, selected: f.object.yellow_card || 0, label: "Valeur" %>
-  <%= f.input :commentaires, label: "Commentaires" %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+    <div class="form-group">
+      <!-- Saisie de la date du match -->
+      <%= f.label :match_date, "Date du match" %>
+      <%= f.datetime_local_field :match_date, class: "form-control" %>  <!-- Permet la saisie de la date et de l'heure -->
+    </div>
 
-  </div>
+    <div class="form-group">
+      <!-- Participation -->
+      <%= f.input :played, label: "Participation", as: :boolean %>
+    </div>
 
-  <div>
-    <%= link_to "Retour", match_performances_path, class: "btn btn-secondary mt-3" %>
+    <div class="form-group">
+      <!-- Cartons jaunes -->
+      <%= f.input :yellow_card, collection: (0..10).to_a, selected: f.object.yellow_card || 0, label: "Carton jaune" %>
+    </div>
+
+    <div class="form-group">
+      <!-- Commentaires -->
+      <%= f.input :commentaires, label: "Commentaires" %>
+    </div>
+
+    <!-- Bouton de soumission -->
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>  <!-- Cette ligne ferme le bloc simple_form_for -->
+
+  <div class="mt-3">
+    <%= link_to "Retour", match_performances_path, class: "btn btn-secondary" %>
   </div>
 </div>
+

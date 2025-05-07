@@ -3,9 +3,10 @@ class MatchPerformancesController < ApplicationController
   before_action :set_match_performance, only: [:show]
   after_action :verify_policy_scoped, only: :index  # Vérifie la politique du scope pour l'index
 
-
   def index
     @match_performances = policy_scope(MatchPerformance)
+    @match_performance = MatchPerformance.new
+    @player_profils = PlayerProfil.all
     @stats_by_player = @match_performances
     .group_by(&:user)
     .transform_values do |performances|
@@ -22,10 +23,10 @@ class MatchPerformancesController < ApplicationController
 
   def new
     @match_performance = MatchPerformance.new
-    @users = User.all
-    @joueurs = User.joins(:player_profil).select(:id, 'player_profils.first_name', 'player_profils.last_name')
-
+    @player_profils = PlayerProfil.all
+    puts @player_profils.inspect
     authorize @match_performance
+
   end
 
   def create
@@ -45,7 +46,6 @@ class MatchPerformancesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
 
   private
   def match_performance_params
