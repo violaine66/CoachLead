@@ -23,6 +23,8 @@ class MatchPerformancesController < ApplicationController
   def new
     @match_performance = MatchPerformance.new
     @users = User.all
+    @joueurs = User.joins(:player_profil).select(:id, 'player_profils.first_name', 'player_profils.last_name')
+
     authorize @match_performance
   end
 

@@ -1,20 +1,25 @@
 <div class="container mt-5">
   <h2>Nouvelle performance de match</h2>
   <div class="form-match-performance">
-      <%= simple_form_for @match_performance do |f| %>
-      <%= f.input :user_id, label: "Joueur",
-          collection: User.joins(:player_profil).collect { |u|
-            "#{u.player_profil.first_name} #{u.player_profil.last_name}" # Affichage nom et prénom
-            [u.player_profil.first_name + " " + u.player_profil.last_name, u.id] # Affichage du nom et du prénom dans la collection
-          },
-          as: :select, include_blank: false %>
-      <%= f.input :match_date, label: "Date du match" %>
-      <%= f.input :played, label: "Participation", as: :boolean %>
-      <%= f.input :yellow_card,   collection: (0..10).to_a,selected: f.object.yellow_card || 0, label: "Valeur" %>
-      <%= f.input :commentaires, label: "Commentaires" %>
-      <%= f.button :submit, class: "btn btn-primary" %>
-    <% end %>
+  <%= simple_form_for @match_performance do |f| %>
+  <%= f.input :user_id,
+      label: "Joueur",
+      collection: @joueurs,
+      as: :select,
+      include_blank: false,
+      prompt: "Sélectionner un joueur",
+      label_method: :full_name,
+      value_method: :id %>
+
+  <%= f.input :match_date, label: "Date du match" %>
+  <%= f.input :played, label: "Participation", as: :boolean %>
+  <%= f.input :yellow_card, collection: (0..10).to_a, selected: f.object.yellow_card || 0, label: "Valeur" %>
+  <%= f.input :commentaires, label: "Commentaires" %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+
   </div>
+
   <div>
     <%= link_to "Retour", match_performances_path, class: "btn btn-secondary mt-3" %>
   </div>
