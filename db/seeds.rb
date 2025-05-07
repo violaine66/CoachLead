@@ -24,13 +24,18 @@ User.destroy_all
 
 
 puts "Création de l'utilisateur développeur..."
-entraineur = User.create!(
+entraineur1 = User.create!(
   email: "lou@app.fr",
   password: "violaine",
   pseudo: "Lou",
   role: :entraineur,
 )
-
+entraineur2 = User.create!(
+  email: "mehdi@app.fr",
+  password: "football",
+  pseudo: "Mehdi",
+  role: :entraineur,
+)
 puts "Utilisateur développeur créé avec succès."
 
 puts "Création des entraînements..."
