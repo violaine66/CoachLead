@@ -5,7 +5,6 @@
     <div class="text-end mb-3">
     <%= link_to "Nouvelle évaluation", new_job_load_evaluation_path, class: "btn btn-success text-white" %>
   </div>
-    <p>Liste de toutes les évaluations :</p>
   <% else %>
     <p>Voici vos évaluations :</p>
   <% end %>
@@ -30,7 +29,7 @@
           <td><%= evaluation.period %></td>
           <td><%= evaluation.rating %></td>
           <td>
-            <%= link_to "Voir", job_load_evaluation_path(evaluation), class: "btn btn-sm btn-primary" %>
+            <%= link_to "Voir", job_load_evaluation_path(evaluation), class: "btn btn-sm btn-primary text-white" %>
           </td>
         </tr>
       <% end %>
