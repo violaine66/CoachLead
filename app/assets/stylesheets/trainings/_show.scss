@@ -16,4 +16,9 @@
   background-color: #EBFFEB;
  }
 
-  
+ @media (max-width: 768px) {
+  table th, table td {
+    font-size: 12px; /* Réduire la taille de la police */
+    padding: 5px;   /* Réduire l'espace dans les cellules */
+  }
+}
