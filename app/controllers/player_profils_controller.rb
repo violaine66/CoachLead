@@ -25,7 +25,7 @@ class PlayerProfilsController < ApplicationController
     @player_profil.user = current_user
 
     if @player_profil.save
-      redirect_to @player_profil, notice: 'Player profile was successfully created.'
+      redirect_to @player_profil, notice: 'Profil du joueur créé avec succès.'
     else
       puts @player_profil.errors.full_messages
       render :new, status: :unprocessable_entity
