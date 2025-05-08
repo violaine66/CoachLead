@@ -1,24 +1,34 @@
 <div class="container mt-5">
-  <h2 class="text-center">Nouvelle évaluation de pénilibilité de l'activité professionnelle</h2>
+  <h2 class="text-center">Nouvelle évaluation de pénibilité de l'activité professionnelle</h2>
   <div class="form-job-load-evaluation mt-3">
     <div class="row d-flex justify-content-center">
       <div class="col-6 col-sm-4 col-md-4 col-lg-4 ">
         <%= simple_form_for @job_load_evaluation do |f| %>
-         <div class="form-group mt-4">
-          <!-- Sélection du joueur -->
-          <%= f.label :user_id, "Joueur" %>
-          <%= f.select :user_id,
-              @player_profils.collect { |profile| [profile.full_name, profile.user_id] },
-              { include_blank: "Sélectionner un joueur" },
-              { class: "form-control" } %>
-        </div>
-        <%= f.input :period, label: "Période" %>
-        <%= f.input :rating, label: "Note " %>
-        <%= f.button :submit, "Créer", class: "btn btn-primary" %>
+
+          <!-- Sélection du joueur (uniquement pour l'entraîneur) -->
+          <% if current_user.entraineur? %>
+            <div class="form-group mt-4">
+              <%= f.label :user_id, "Joueur" %>
+              <%= f.select :user_id,
+                  @player_profils.map { |p| ["#{p.first_name} #{p.last_name}", p.user_id] },
+                  { include_blank: "Sélectionner un joueur" },
+                  class: "form-control" %>
+            </div>
+          <% end %>
+
+          <!-- Période et note -->
+          <%= f.input :period, label: "Période", class: "form-control" %>
+          <%= f.input :rating, label: "Note", class: "form-control" %>
+
+          <!-- Bouton de soumission -->
+          <%= f.button :submit, "Créer", class: "btn btn-primary mt-3" %>
+
         <% end %>
       </div>
     </div>
   </div>
+
+  <!-- Lien de retour -->
   <div class="text-start mt-3">
     <%= link_to "Retour", job_load_evaluations_path, class: "btn btn-secondary text-white mt-3" %>
   </div>
