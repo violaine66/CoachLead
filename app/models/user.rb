@@ -26,4 +26,5 @@ class User < ApplicationRecord
     if player_profil.present?
       "#{player_profil.first_name} #{player_profil.last_name}"
     end
+  end
 end
