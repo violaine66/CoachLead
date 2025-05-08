@@ -1,11 +1,20 @@
 class PlayerProfil < ApplicationRecord
   belongs_to :user
+  before_destroy :destroy_user_related_records
   has_one_attached :photo
 
   # validations
   validates :age, numericality: { only_integer: true, greater_than: 0 }
   validates :weight, numericality: { greater_than_or_equal_to: 30 }
   validates :children_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  def destroy_user_related_records
+    return unless user.present?
+
+    user.attendances.destroy_all
+    user.job_load_evaluations.destroy_all
+    user.match_performances.destroy_all
+  end
 
   def full_name
     "#{first_name} #{last_name}"

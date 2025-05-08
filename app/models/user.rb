@@ -23,6 +23,7 @@ class User < ApplicationRecord
   validates :pseudo, presence: true, uniqueness: true
   enum role: { joueur: "joueur", entraineur: "entraineur"}
   def full_name
-    "#{player_profil.first_name} #{player_profil.last_name}"
-  end
+    if player_profil.present?
+      "#{player_profil.first_name} #{player_profil.last_name}"
+    end
 end
