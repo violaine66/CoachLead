@@ -16,7 +16,7 @@ class AttendancesController < ApplicationController
   def new
     @attendance = Attendance.new
     # @users = User.includes(:player_profil).where(role: 'joueur')
-    @player_profils = PlayerProfil.includes(:user).all
+    @player_profils = PlayerProfil.all
     @training = Training.find(params[:training_id])
     authorize @attendance
   end
@@ -29,7 +29,7 @@ class AttendancesController < ApplicationController
     authorize @attendance
 
     if current_user.entraineur?
-      @attendance.training = @training
+      @attendance.user_id = attendance_params[:user_id]
     else
       @attendance.user = current_user
     end
@@ -40,6 +40,7 @@ class AttendancesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
 
 
   def edit

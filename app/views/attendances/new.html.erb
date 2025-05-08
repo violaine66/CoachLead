@@ -3,24 +3,36 @@
   <h2 class="text-center">Nouvelle présence pour l'entraînement du <%= l(@training.date, format: :long) %></h2>
 <div class="row d-flex justify-content-center">
   <div class="col-8 col-sm-6 col-md-6 col-lg-6 ">
-      <%= simple_form_for([@training, @attendance]) do |f| %>
-
-      <%= f.label :user_id, "Joueur" %>
-          <%= f.select :user_id,
-              @player_profils.collect { |profile| [profile.full_name, profile.user_id] },
-              { include_blank: "Sélectionner un joueur" },
-              { class: "form-control" } %>
-        </div>
-
-      <div class="form-group">
-        <%= f.input :status, as: :select, collection: Attendance.statuses.keys.map { |s| [s.capitalize, s] }, prompt: "Choisir un statut", label: "Statut de présence" %>
-      </div>
-
-      <div class="form-group mt-3">
-        <%= f.button :submit, "Enregistrer", class: "btn btn-primary" %>
-        <%= link_to "Annuler", training_attendances_path(@training), class: "btn btn-secondary ms-2" %>
+    <% if @attendance.errors.any? %>
+      <div class="alert alert-danger">
+        <h5>Erreurs :</h5>
+        <ul>
+          <% @attendance.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
       </div>
     <% end %>
+
+      <%= simple_form_for([@training, @attendance]) do |f| %>
+
+        <div class="form-group">
+          <%= f.label :user_id, "Joueur" %>
+          <%= f.select :user_id,
+          @player_profils.collect { |profile| [profile.full_name, profile.user_id] },
+          { include_blank: "Sélectionner un joueur" },
+          { class: "form-control" } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :status, as: :select, collection: Attendance.statuses.keys.map { |s| [s.capitalize, s] }, prompt: "Choisir un statut", label: "Statut de présence" %>
+        </div>
+
+        <div class="form-group mt-3">
+          <%= f.button :submit, "Enregistrer", class: "btn btn-primary" %>
+          <%= link_to "Annuler", training_attendances_path(@training), class: "btn btn-secondary ms-2" %>
+        </div>
+      <% end %>
 
   </div>
 </div>
