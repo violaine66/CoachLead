@@ -15,6 +15,7 @@ end
 
   def new
     @job_load_evaluation = JobLoadEvaluation.new
+    @player_profils = PlayerProfil.all
     authorize @job_load_evaluation
   end
 

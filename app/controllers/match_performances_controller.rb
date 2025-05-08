@@ -24,7 +24,6 @@ class MatchPerformancesController < ApplicationController
   def new
     @match_performance = MatchPerformance.new
     @player_profils = PlayerProfil.all
-    puts @player_profils.inspect
     authorize @match_performance
 
   end

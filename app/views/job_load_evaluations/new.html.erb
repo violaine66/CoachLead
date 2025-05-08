@@ -4,6 +4,14 @@
     <div class="row d-flex justify-content-center">
       <div class="col-6 col-sm-4 col-md-4 col-lg-4 ">
         <%= simple_form_for @job_load_evaluation do |f| %>
+         <div class="form-group mt-4">
+          <!-- Sélection du joueur -->
+          <%= f.label :user_id, "Joueur" %>
+          <%= f.select :user_id,
+              @player_profils.collect { |profile| [profile.full_name, profile.user_id] },
+              { include_blank: "Sélectionner un joueur" },
+              { class: "form-control" } %>
+        </div>
         <%= f.input :period, label: "Période" %>
         <%= f.input :rating, label: "Note " %>
         <%= f.button :submit, "Créer", class: "btn btn-primary" %>

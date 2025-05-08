@@ -4,10 +4,13 @@
 <div class="row d-flex justify-content-center">
   <div class="col-8 col-sm-6 col-md-6 col-lg-6 ">
       <%= simple_form_for([@training, @attendance]) do |f| %>
- 
-      <div class="form-group">
-        <%= f.input :user_id, collection: @users.map { |u| [u.player_profil&.full_name || u.email, u.id] }, prompt: "Sélectionner un joueur", label: "Joueur" %>
-      </div>
+
+      <%= f.label :user_id, "Joueur" %>
+          <%= f.select :user_id,
+              @player_profils.collect { |profile| [profile.full_name, profile.user_id] },
+              { include_blank: "Sélectionner un joueur" },
+              { class: "form-control" } %>
+        </div>
 
       <div class="form-group">
         <%= f.input :status, as: :select, collection: Attendance.statuses.keys.map { |s| [s.capitalize, s] }, prompt: "Choisir un statut", label: "Statut de présence" %>
