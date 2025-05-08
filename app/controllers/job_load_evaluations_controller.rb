@@ -3,9 +3,8 @@ class JobLoadEvaluationsController < ApplicationController
   before_action :authenticate_user!
   after_action :verify_policy_scoped, only: :index  # Vérifie la politique du scope pour l'index
 
-
-
   def index
+    @player_profils = PlayerProfil.all
     @job_load_evaluations = policy_scope(JobLoadEvaluation)
 end
 

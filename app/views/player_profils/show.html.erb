@@ -49,8 +49,10 @@
       <p><strong><%= @player_profil.weight %> kg</strong></p>
       <p><strong><%= @player_profil.job %></strong></p>
       <p><em><strong><%= link_to "Evaluation du travail", job_load_evaluations_path, class:"text-dark text-center" %></strong></em></p>
-      <% if @player_profil.children_count > 0 %>
+      <% if @player_profil.children_count >  1 %>
         <p><strong><%= @player_profil.children_count %> enfants</strong></p>
+      <% elsif @player_profil.children_count == 1 %>
+        <p><strong><%= @player_profil.children_count %> enfant</strong></p>
       <% else %>
         <p><strong>Aucun enfant</strong></p>
       <% end %>
