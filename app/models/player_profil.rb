@@ -14,6 +14,8 @@ class PlayerProfil < ApplicationRecord
     user.attendances.destroy_all
     user.job_load_evaluations.destroy_all
     user.match_performances.destroy_all
+    user.pre_training_evaluations.destroy_all
+    user.after_training_evaluations.destroy_all
   end
 
   def full_name
