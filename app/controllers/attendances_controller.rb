@@ -41,11 +41,10 @@ class AttendancesController < ApplicationController
     end
   end
 
-
-
   def edit
     @training = @attendance.training
-    @users = User.includes(:player_profil).where(role: 'joueur')
+    @player_profils = PlayerProfil.includes(:user)
+
     authorize @attendance
     end
 
