@@ -36,3 +36,16 @@ body {
 * {
   color : white;
 }
+
+.btn-add {
+  background-color: $btn-add;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  border-color: $btn-add;
+
+  &:hover {
+    background-color: darken($btn-add, 5%);
+    border-color: darken($btn-add, 5%);
+  }
+}

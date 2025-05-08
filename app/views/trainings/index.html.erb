@@ -1,31 +1,28 @@
 <div class="container mt-5">
-    <div class="row d-flex justify-content-center">
-      <div class="col-10">
-        <% if current_user.entraineur? %>
-        <div class="training-new text-end">
-            <h2><%= link_to "Créer un entraînement", new_training_path, class:"btn btn-success text-white py-2" %></h2>
-          </div>
-      <% end %>
 
-      <div class="row d-flex justify-content-center">
-        <div class="col-12 text-center">
-          <h1 class="my-4">Mes Entrainements</h1>
-
-            <% @trainings.each do |t| %>
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <%= link_to training_path(t) do %>
-                  <span class="text-white"><%= t.date.strftime("%d/%m/%Y") %></span>
-                  <span class="fs-5"><%= t.title %></span>
-              </div>
-
-            </div>
-            <hr>
-              <% end %>
-            <% end %>
-          </div>
-
-      </div>
-    </div>
+  <% if current_user.entraineur? %>
+  <div class="training-new text-end mb-3">
+    <%= link_to "Créer un entraînement", new_training_path, class:"btn-add text-white" %>
   </div>
+  <% end %>
+
+    <div class="row d-flex justify-content-center">
+      <div class="col-12">
+        <h1 class="my-4 text-center">Mes Entrainements</h1>
+
+          <% @trainings.each do |t| %>
+          <div class="d-flex align-items-center">
+            <div>
+              <%= link_to training_path(t) do %>
+                <span class="text-white"><%= t.date.strftime("%d/%m/%Y") %></span>
+                <span class="fs-5"><%= t.title %></span>
+            </div>
+
+          </div>
+          <hr>
+            <% end %>
+          <% end %>
+        </div>
+
+    </div>
 </div>

@@ -2,8 +2,8 @@
   <h1>Évaluations de pénibilité de l'activité professionnelle</h1>
 
   <% if current_user.entraineur? %>
-    <div class="text-end mb-3">
-    <%= link_to "Nouvelle évaluation", new_job_load_evaluation_path, class: "btn btn-success text-white" %>
+    <div class="text-end my-4">
+    <%= link_to "Nouvelle évaluation", new_job_load_evaluation_path, class: "btn-add text-white" %>
   </div>
   <% else %>
     <p>Voici vos évaluations :</p>

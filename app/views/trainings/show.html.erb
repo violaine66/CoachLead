@@ -1,8 +1,8 @@
 <div class="container mt-3">
 
-  <div class="add-absence">
+  <div class="add-absence mt-5">
       <% if current_user.entraineur? %>
-        <p><%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn btn-success text-white mt-3"%></p>
+        <p><%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn-add text-white mt-3"%></p>
       <% end %>
   </div>
 
