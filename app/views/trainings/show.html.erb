@@ -4,7 +4,7 @@
     <h2 class="my-3 fw-bold text-dark text-center">Détails de l'entrainement</h2>
     <div class="add-absence">
       <% if current_user.entraineur? %>
-        <p><%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn-add text-white"%></p>
+        <p><%= link_to "Absences/retards des joueurs", new_training_attendance_path(@training), class: "btn-add text-white"%></p>
       <% end %>
     </div>
   </div>
