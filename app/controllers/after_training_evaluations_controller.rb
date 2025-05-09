@@ -40,7 +40,7 @@ class AfterTrainingEvaluationsController < ApplicationController
   end
 
   def after_training_evaluation_params
-    params.require(:after_training_evaluation).permit(:after_intensity, :after_fatigue_fatigue, :pleasure, :user_id, :training_id)
+    params.require(:after_training_evaluation).permit(:after_intensity, :after_fatigue, :pleasure, :user_id, :training_id)
   end
 
   def set_training
