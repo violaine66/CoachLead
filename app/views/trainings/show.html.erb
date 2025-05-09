@@ -1,10 +1,14 @@
-<div class="container mt-3">
-
-  <div class="add-absence mt-5">
+<div class="container">
+<div class="row d-flex justify-content-center">
+  <div class="col-sm-10 col-md-6 col-lg-4 mx-auto">
+    <h2 class="my-3 fw-bold text-dark text-center">Détails de l'entrainement</h2>
+    <div class="add-absence">
       <% if current_user.entraineur? %>
-        <p><%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn-add text-white mt-3"%></p>
+        <p><%= link_to "Renseigner les absences/retards des joueurs", new_training_attendance_path(@training), class: "btn-add text-white"%></p>
       <% end %>
+    </div>
   </div>
+</div>
 
   <div class="training-joueur d-flex justify-content-center">
 
