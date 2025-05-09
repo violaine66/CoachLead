@@ -24,7 +24,7 @@
                   <% end %>
                 <% end %>
                   <% if policy(Training).destroy? %>
-                    <%= link_to training_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure" } do %>
+                    <%= link_to training_path, data: { turbo_method: :delete, turbo_confirm: "ES-tu sûr ?" } do %>
                       <i class="fa-solid fa-trash text-dark"></i>
                     <% end %>
                 <% end %>
