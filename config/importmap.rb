@@ -11,3 +11,4 @@ pin "chartkick" # @5.0.1
 pin "chart.js" # @4.4.9
 pin "@kurkle/color", to: "@kurkle--color.js" # @0.3.4
 pin "flatpickr" # @4.6.13
+pin "sweetalert2" # @11.21.0
