@@ -6,7 +6,7 @@
     <% end %>
   <% end %>
     <% if policy(PlayerProfil).destroy? %>
-      <%= link_to player_profil_path(@player_profil), data: { turbo_method: :delete, turbo_confirm: "Are you sure" } do %>
+      <%= link_to player_profil_path(@player_profil), data: { turbo_method: :delete, turbo_confirm: "Es-tu sûr?" } do %>
         <i class="fa-solid fa-trash"></i>
       <% end %>
     <% end %>
