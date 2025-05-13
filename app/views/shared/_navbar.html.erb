@@ -1,10 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon d-flex align-items-center">
   <div class="container-fluid">
     <div class="d-flex align-items-center">
-      <% if user_signed_in? && current_user.avatar.attached? %>
-        <%= image_tag current_user.avatar, class: "rounded-circle", crop: :fill, gravity: :auto, style: "width:50px; height:50px;" %>
-      <% else %>
-        <i class="fa-solid fa-circle-user fs-1 text-dark"></i>
+      <% if user_signed_in? %>
+        <%= image_tag "club-logo.webp", class: "rounded-circle", size: "50x50" %>
       <% end %>
     </div>
 
@@ -27,7 +25,6 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
               <li><%= link_to 'Modifier mon mot de passe', edit_user_registration_path, class: "dropdown-item text-dark" %></li>
-              <li><%= link_to "Ajouter/Modifier ma photo", edit_avatar_user_path, class: "dropdown-item text-dark" %></li>
               <li><%= link_to "Se déconnecter", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item text-dark" %></li>
             </ul>
           </li>

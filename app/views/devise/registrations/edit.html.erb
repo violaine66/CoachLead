@@ -1,39 +1,43 @@
-<div class="container mt-5">
-  <h2 class="text-center">Nouvelle présence pour l'entraînement du <%= l(@training.date, format: :long) %></h2>
-<div class="row d-flex justify-content-center">
-  <div class="col-8 col-sm-6 col-md-6 col-lg-6 ">
-    <% if @attendance.errors.any? %>
-      <div class="alert alert-danger">
-        <h5>Erreurs :</h5>
-        <ul>
-          <% @attendance.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+<div class="container mt-3">
+   <div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-6 col-md-3">
+          <h2 class="mt-2">Mon compte</h2>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :email, required: true, autofocus: true %>
 
-      <%= simple_form_for([@training, @attendance]) do |f| %>
+            <%= f.input :password,
+                        hint: "Laissez vide si vous ne voulez pas changer de mot de passe",
+                        required: false,
+                        label: "Nouveau mot de passe" %>
 
-        <div class="form-group">
-          <%= f.label :user_id, "Joueur" %>
-          <%= f.select :user_id,
-          @player_profils.collect { |profile| [profile.full_name, profile.user_id] },
-          { include_blank: "Sélectionner un joueur" },
-          { class: "form-control" } %>
-        </div>
+            <%= f.input :password_confirmation,
+                        required: false,
+                        label: "Confirmation du mot de passe" %>
 
-        <div class="form-group">
-          <%= f.input :status, as: :select, collection: Attendance.statuses.keys.map { |s| [s.capitalize, s] }, prompt: "Choisir un statut", label: "Statut de présence" %>
-        </div>
+            <%= f.input :current_password,
+                        hint: "Nous avons besoin de votre mot de passe actuel pour valider les changements",
+                        required: true,
+                        class: "text-white",
+                        input_html: { autocomplete: "Mot de passe actuel" },
+                        label: "Mot de passe actuel" %>
 
-        <div class="form-group mt-3">
-          <%= f.button :submit, "Enregistrer", class: "btn btn-primary" %>
-          <%= link_to "Annuler", training_attendances_path(@training), class: "btn btn-secondary ms-2" %>
-        </div>
-      <% end %>
 
+            <!-- Ajouter le champ avatar -->
+            <%= f.input :avatar, as: :file, required: false, label: "Modifier votre photo de profil" %>
+
+          </div>
+
+          <div class="form-actions">
+                    <%= f.button :submit, "Mettre à jour", class:"btn btn-primary text-white" %>
+          </div>
+        <% end %>
+        <h3 class="mt-5">Supprimer mon compte</h3>
+
+        <div class="my-3">Pas satisfait? <%= button_to "Supprimer mon compte", registration_path(resource_name), class: "btn btn-primary text-white mt-1", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+
+        <%= link_to "Retour", :back %>
+    </div>
   </div>
-</div>
-
 </div>

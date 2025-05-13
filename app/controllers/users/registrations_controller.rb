@@ -1,4 +1,3 @@
-# app/controllers/users/registrations_controller.rb
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :authenticate_user!
 
@@ -7,19 +6,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # Pas besoin d'ajouter de logique ici, on utilise la vue
   end
 
-  # Mettre à jour uniquement l'avatar
   def update_avatar
-    if current_user.update(avatar_params)
-      redirect_to edit_avatar_user_path, notice: 'Votre photo a été mise à jour.'
+    if current_user.update(user_params)
+      redirect_to edit_avatar_user_path, notice: "Avatar mis à jour avec succès."
     else
-      render :edit_avatar, alert: 'Une erreur est survenue lors de la mise à jour de votre photo.'
+      render :edit_avatar, status: :unprocessable_entity
     end
   end
 
   private
 
-  # Autoriser seulement l'avatar
-  def avatar_params
+  def user_params
     params.require(:user).permit(:avatar)
   end
-end
+end 

@@ -28,3 +28,13 @@
 .nav-link i {
   color: rgb(38, 38, 38); /* noir pour les icônes non actives */
 }
+
+.footer .nav-link {
+  text-decoration: none;
+  color:black;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+

@@ -20,15 +20,11 @@
                         required: true,
                         input_html: { autocomplete: "new-password" },
                         label: "Confirmer le mot de passe" %>
-            <%= f.input :avatar,
-                        as: :file,
-                        label: "Photo de profil",
-                        hint: f.object.avatar.attached? ? image_tag(f.object.avatar, class: "avatar-preview") : content_tag(:span, "Aucune photo sélectionnée") %>
-            
+
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "S'enregistrer" %>
+            <%= f.button :submit, "S'enregistrer", class:"text-white" %>
           </div>
         <% end %>
 
