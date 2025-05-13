@@ -2,30 +2,30 @@
   <div class="footer fixed-bottom d-flex justify-content-around align-items-center">
 
       <%= link_to root_path,  class: "nav-link #{'active' if current_page?(root_path)}"  do %>
-        <i class="fa-solid fa-house fs-2 "></i>
+        <i class="fa-solid fa-house fs-2 "></i>Accueil
       <% end %>
 
 
 
       <%= link_to trainings_path,  class: "nav-link #{'active' if current_page?(trainings_path)}" do %>
-        <i class="fa-solid fa-person-running fs-2 "></i>
+        <i class="fa-solid fa-person-running fs-2 "></i>Entraînements
       <% end %>
 
 
 
       <%= link_to match_performances_path,  class: "nav-link #{'active' if current_page?(match_performances_path)}" do %>
-        <i class="fa-solid fa-futbol fs-2 "></i>
+        <i class="fa-solid fa-futbol fs-2 "></i>Matchs
       <% end %>
 
 
 
       <% if current_user.entraineur? %>
         <%= link_to player_profils_path,  class: "nav-link #{'active' if current_page?(player_profils_path)}" do %>
-          <i class="fa-solid fa-people-group fs-2 "></i>
+          <i class="fa-solid fa-people-group fs-2 "></i>Joueurs
         <% end %>
       <% elsif current_user.player_profil.present? %>
         <%= link_to player_profil_path(current_user.player_profil), class: "nav-link #{'active' if current_page?(player_profil_path(current_user.player_profil))}" do %>
-          <i class="fa-solid fa-user fs-2 "></i>
+          <i class="fa-solid fa-user fs-2 "></i>Profil
         <% end %>
       <% end %>
 

@@ -35,3 +35,12 @@
   min-width: max-content;
   z-index: 1050;
 }
+
+.footer .nav-link {
+  text-decoration: none;
+  color:black;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
