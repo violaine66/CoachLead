@@ -1,3 +1,6 @@
+# © 2025 Violaine Soulas Tous droits réservés.
+#  Propriété exclusive de Violaine Soulas.
+#  Toute reproduction, même partielle, est interdite sans l'autorisation écrite de Violaine Soulas.
 class PlayerProfil < ApplicationRecord
   belongs_to :user
   before_destroy :destroy_user_related_records

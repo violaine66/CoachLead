@@ -1,3 +1,6 @@
+# © 2025 Violaine Soulas Tous droits réservés.
+#  Propriété exclusive de Violaine Soulas.
+#  Toute reproduction, même partielle, est interdite sans l'autorisation écrite de Violaine Soulas.
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -22,7 +25,7 @@ class User < ApplicationRecord
   validates :email, presence:  { message: I18n.t('activerecord.errors.models.user.attributes.email.blank') }, uniqueness: true
   validates :password, presence: true, length: { minimum: 6, message: I18n.t('activerecord.errors.models.user.attributes.password.too_short') }
   validates :password_confirmation, confirmation: { message: I18n.t('activerecord.errors.models.user.attributes.password_confirmation.confirmation') }
-  
+
 
   validates :pseudo, presence: { message: "Un pseudo est obligatoire"}, uniqueness: true
   enum role: { joueur: "joueur", entraineur: "entraineur"}

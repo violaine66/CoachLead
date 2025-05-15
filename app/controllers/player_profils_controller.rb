@@ -1,3 +1,6 @@
+# © 2025 Violaine Soulas Tous droits réservés.
+#  Propriété exclusive de Violaine Soulas.
+#  Toute reproduction, même partielle, est interdite sans l'autorisation écrite de Violaine Soulas.
 class PlayerProfilsController < ApplicationController
   before_action :set_player_profil, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
