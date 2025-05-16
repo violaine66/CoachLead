@@ -36,11 +36,10 @@
     <div class="col-sm-10 col-md-6 col-lg-4 mx-auto">
       <div class="evaluations">
     <% if current_user.joueur? %>
-      <% if @pre_training_evaluation.present? %>
+      <% if @pre_training_evaluation %>
         <div class=".training-joueur mt-5">
           <h4>Ton évaluation pré-entrainement</h4>
           <ul>
-            <li>Présent : <%= @pre_training_evaluation.present ? "Oui" : "Non" %></li>
             <li>Fatigue cognitive : <%= @pre_training_evaluation.cognitive_fatigue %></li>
             <li>Fatigue physique : <%= @pre_training_evaluation.physical_fatigue %></li>
             <li>Humeur : <%= @pre_training_evaluation.mood %></li>
@@ -78,7 +77,6 @@
               <thead>
                 <tr class="text-center">
                   <th class="text-center">Joueur</th>
-                  <th class="text-center">Présent</th>
                   <th class="text-center">Fatigue cognitive</th>
                   <th class="text-center">Fatigue physique</th>
                   <th class="text-center" >Humeur</th>
@@ -88,7 +86,6 @@
                 <% @pre_training_evaluations.each do |evaluation| %>
                   <tr>
                     <td><%= "#{evaluation.user.player_profil.first_name} #{evaluation.user.player_profil.last_name}" %></td>
-                    <td><%= evaluation.present ? "Oui" : "Non" %></td>
                     <td><%= evaluation.cognitive_fatigue %></td>
                     <td><%= evaluation.physical_fatigue %></td>
                     <td><%= evaluation.mood %></td>

@@ -45,7 +45,7 @@ class PreTrainingEvaluationsController < ApplicationController
   end
 
   def pre_training_evaluation_params
-    params.require(:pre_training_evaluation).permit(:present, :cognitive_fatigue, :physical_fatigue,:mood, :user_id, :training_id)
+    params.require(:pre_training_evaluation).permit(:cognitive_fatigue, :physical_fatigue,:mood, :user_id, :training_id)
   end
 
   def set_training
