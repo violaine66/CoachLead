@@ -55,7 +55,6 @@
                     <th>Joueur</th>
                   <% end %>
                   <th>Date</th>
-                  <th>Actif</th>
                   <th>Buts</th>
                   <th>Passes décisives</th>
                   <th>Cartons jaunes</th>
@@ -63,7 +62,8 @@
                 </tr>
               </thead>
               <tbody>
-                <% @match_performances.each do |performance| %>
+               <% @match_performances.select(&:played).each do |performance| %>
+
                   <tr>
                     <% if current_user.entraineur?  %>
                       <td>
@@ -75,7 +75,6 @@
                       </td>
                     <% end %>
                     <td><%= performance.match_date.strftime("%d/%m/%y") %></td>
-                    <td><%= performance.played ? "Oui" : "Non" %></td>
                     <td><%= performance.buts %></td>
                     <td><%= performance.passes %></td>
                     <td><%= performance.yellow_card %></td>
@@ -100,7 +99,7 @@
     <thead>
       <tr>
         <th>Date</th>
-        <th id="petite-taille">Participation</th>
+        <th>Participation</th>
         <th>Buts</th>
         <th>Passes décisives</th>
         <th>Cartons jaunes</th>
