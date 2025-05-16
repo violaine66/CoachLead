@@ -24,6 +24,10 @@
         </div>
 
         <div class="form-group mt-2">
+        <!-- Buts du joueur -->
+        <%= f.input :buts, collection: (0..15).to_a, selected: f.object.buts || 0, label: "Buts" %>
+
+        <div class="form-group mt-2">
           <!-- Cartons jaunes -->
           <%= f.input :yellow_card, collection: (0..10).to_a, selected: f.object.yellow_card || 0, label: "Carton jaune" %>
         </div>

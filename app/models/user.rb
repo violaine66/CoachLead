@@ -34,4 +34,9 @@ class User < ApplicationRecord
       "#{player_profil.first_name} #{player_profil.last_name}"
     end
   end
+
+
+  def buts
+    match_performances.sum(:buts)
+  end
 end

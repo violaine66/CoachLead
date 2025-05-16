@@ -11,6 +11,7 @@
           <tr>
             <th>Joueur</th>
             <th>Matchs joués</th>
+            <th>Buts</th>
             <th>Cartons jaunes</th>
           </tr>
         </thead>
@@ -25,6 +26,7 @@
                 <% end %>
               </td>
               <td><%= stats[:total_played] %></td>
+              <td><%= user.buts %></td>
               <% if  stats[:total_yellow_cards] >= 2 %>
                 <td class="badge bg-warning text-dark"><%= stats[:total_yellow_cards] %></td>
               <% else %>
@@ -50,6 +52,7 @@
                   <% end %>
                   <th>Date</th>
                   <th>Participation</th>
+                  <th>Buts</th>
                   <th>Cartons jaunes</th>
                   <th></th>
                 </tr>
@@ -68,6 +71,7 @@
                     <% end %>
                     <td><%= performance.match_date.strftime("%d/%m/%Y") %></td>
                     <td><%= performance.played ? "Oui" : "Non" %></td>
+                    <td><%= performance.buts %></td>
                     <td><%= performance.yellow_card %></td>
                     <td>
                       <%= link_to "Voir", match_performance_path(performance), class: "btn btn-sm btn-primary text-white"%>
@@ -91,6 +95,7 @@
       <tr>
         <th>Date</th>
         <th>Participation</th>
+        <th>Buts</th>
         <th>Cartons jaunes</th>
         <th></th>
       </tr>
@@ -109,6 +114,7 @@
           <% end %>
           <td><%= performance.match_date.strftime("%d/%m/%Y") %></td>
           <td><%= performance.played ? "Oui" : "Non" %></td>
+          <td><%= performance.buts %></td>
           <td><%= performance.yellow_card %></td>
           <td>
             <%= link_to "Voir", match_performance_path(performance), class: "btn btn-sm btn-primary text-white"%>
