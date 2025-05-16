@@ -39,4 +39,8 @@ class User < ApplicationRecord
   def buts
     match_performances.sum(:buts)
   end
+
+  def passes
+    match_performances.sum(:passes)
+  end
 end

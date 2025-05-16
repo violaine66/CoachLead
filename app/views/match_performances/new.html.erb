@@ -27,6 +27,10 @@
         <!-- Buts du joueur -->
         <%= f.input :buts, collection: (0..15).to_a, selected: f.object.buts || 0, label: "Buts" %>
 
+          <div class="form-group mt-2">
+        <!-- Passes décisives du joueur -->
+        <%= f.input :passes, collection: (0..100).to_a, selected: f.object.passes || 0, label: "Passes décisives" %>
+
         <div class="form-group mt-2">
           <!-- Cartons jaunes -->
           <%= f.input :yellow_card, collection: (0..10).to_a, selected: f.object.yellow_card || 0, label: "Carton jaune" %>
