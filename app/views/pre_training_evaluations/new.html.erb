@@ -6,8 +6,8 @@
           <%= simple_form_for [@training, @pre_training_evaluation] do |f| %>
 
             <div class="my-5">
-              <label for="cognitive_fatigue">🧠 A quel point te sens-tu mentalement fatigué ?
-                    <p>(0 = pas du tout fatigué, 5 = extrêmement fatigué)</p></label>
+              <label for="cognitive_fatigue">🧠<strong class="text-white"> A quel point te sens-tu mentalement fatigué ?</strong>
+                    <p class="text-center"><em>(0 = pas du tout fatigué, 5 = extrêmement fatigué)</em></p></label>
               <input type="range" min="0" max="5" step="1"
                     name="pre_training_evaluation[cognitive_fatigue]"
                     id="pre_training_evaluation_cognitive_fatigue"
@@ -19,8 +19,8 @@
             </div>
 
             <div class="mb-5">
-              <label for="physical_fatigue">💪 A quel point te sens-tu physiquement fatigué ?
-                    <p>(0 = en pleine forme, 5 = épuisé)</p></label>
+              <label for="physical_fatigue"><strong class="text-white">💪 A quel point te sens-tu physiquement fatigué ?</strong>
+                    <p class="text-center"><em>(0 = en pleine forme, 5 = épuisé)</em></p></label>
               <input type="range" min="0" max="5" step="1"
                     name="pre_training_evaluation[physical_fatigue]"
                     id="pre_training_evaluation_physical_fatigue"
@@ -32,8 +32,8 @@
             </div>
 
             <div class="mb-3">
-              <label for="mood">🙂 Comment te sens-tu globalement aujourd’hui ?
-              <p>(0 = très mal, 5 = très bien)</p></label>
+              <label for="mood"><strong class="text-white"></strong>🙂 Comment te sens-tu globalement aujourd’hui ?
+              <p class="text-center"><em>(0 = très mal, 5 = très bien)</em></p></label>
               <input type="range" min="0" max="5" step="1"
                     name="pre_training_evaluation[mood]"
                     id="pre_training_evaluation_mood"
