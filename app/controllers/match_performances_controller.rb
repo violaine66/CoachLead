@@ -51,7 +51,7 @@ class MatchPerformancesController < ApplicationController
 
   private
   def match_performance_params
-    params.require(:match_performance).permit(:match_date, :played, :yellow_card, :user_id, :buts, :passes)
+    params.require(:match_performance).permit(:match_date,:commentaires, :played, :yellow_card, :user_id, :buts, :passes)
   end
 
   def set_match_performance
