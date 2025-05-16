@@ -112,7 +112,25 @@ players_data = [
 players_data.each do |player_data|
   player = PlayerProfil.create!(player_data)
   puts "Profil du joueur #{player.first_name} #{player.last_name} créé."
+
+
+  # Rechercher un fichier d'image correspondant au prénom (insensible à l'extension)
+  image_files = Dir.glob(Rails.root.join("app/assets/images/#{player.first_name.downcase}.*"))
+
+  if image_files.any?
+    image_path = image_files.first
+    player.photo.attach(
+      io: File.open(image_path),
+      filename: File.basename(image_path),
+      content_type: Marcel::MimeType.for(Pathname.new(image_path))
+    )
+    puts "📸 Photo attachée pour #{player.first_name} (#{File.basename(image_path)})"
+  else
+    puts "⚠️ Aucune image trouvée pour #{player.first_name}"
+  end
 end
+
+
 
 puts "10 utilisateurs et 10 profils de joueurs ont été créés avec succès."
 
