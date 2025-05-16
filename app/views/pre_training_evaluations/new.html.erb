@@ -1,12 +1,54 @@
-<div class="container">
-  <h1>Nouvelle évaluation pré-entraînement</h1>
+<div class="container mt-3" data-controller="slider">
+  <div class="row d-flex justift-content-center">
+    <div class="col-sm-10 col-md-6 col-lg-6 mx-auto">
+        <h1 class="text-center">Nouvelle évaluation pré-entraînement</h1>
 
-<%= simple_form_for [@training, @pre_training_evaluation] do |f| %>
-  <%= f.input :cognitive_fatigue, label: "Fatigue cognitive (0–10)" %>
-  <%= f.input :physical_fatigue, label: "Fatigue physique (0–10)" %>
-  <%= f.input :mood, label: "Humeur (0–10)" %>
-  <%= f.button :submit, "Enregistrer", class: "btn btn-primary" %>
-<% end %>
+          <%= simple_form_for [@training, @pre_training_evaluation] do |f| %>
 
+            <div class="my-5">
+              <label for="cognitive_fatigue">🧠 A quel point te sens-tu mentalement fatigué ?
+                    <p>(0 = pas du tout fatigué, 5 = extrêmement fatigué)</p></label>
+              <input type="range" min="0" max="5" step="1"
+                    name="pre_training_evaluation[cognitive_fatigue]"
+                    id="pre_training_evaluation_cognitive_fatigue"
+                    value="<%= @pre_training_evaluation.cognitive_fatigue || 2 %>"
+                    data-slider-target="input"
+                    data-action="input->slider#update"
+                    class="form-range">
+              <span  data-slider-target="output">2</span>
+            </div>
+
+            <div class="mb-5">
+              <label for="physical_fatigue">💪 A quel point te sens-tu physiquement fatigué ?
+                    <p>(0 = en pleine forme, 5 = épuisé)</p></label>
+              <input type="range" min="0" max="5" step="1"
+                    name="pre_training_evaluation[physical_fatigue]"
+                    id="pre_training_evaluation_physical_fatigue"
+                    value="<%= @pre_training_evaluation.physical_fatigue || 2 %>"
+                    data-slider-target="input"
+                    data-action="input->slider#update"
+                    class="form-range">
+              <span data-slider-target="output">2</span>
+            </div>
+
+            <div class="mb-3">
+              <label for="mood">🙂 Comment te sens-tu globalement aujourd’hui ?
+              <p>(0 = très mal, 5 = très bien)</p></label>
+              <input type="range" min="0" max="5" step="1"
+                    name="pre_training_evaluation[mood]"
+                    id="pre_training_evaluation_mood"
+                    value="<%= @pre_training_evaluation.mood || 2 %>"
+                    data-slider-target="input"
+                    data-action="input->slider#update"
+                    class="form-range">
+              <span data-slider-target="output">2</span>
+            </div>
+
+            <%= f.button :submit, "Enregistrer", class: "btn btn-primary mb-5" %>
+          <% end %>
+
+
+    </div>
+  </div>
 
 </div>

@@ -14,9 +14,9 @@
     <% @pre_training_evaluations.each do |evaluation| %>
       <tr>
         <td><%= "#{evaluation.user.player_profil.first_name} #{evaluation.user.player_profil.last_name}" %></td>
-        <td><%= evaluation.cognitive_fatigue %></td>
-        <td><%= evaluation.physical_fatigue %></td>
-        <td><%= evaluation.mood %></td>
+        <td><%= evaluation.cognitive_fatigue %> /5</td>
+        <td><%= evaluation.physical_fatigue%> /5</td>
+        <td><%= evaluation.mood %> /5</td>
       </tr>
     <% end %>
   </tbody>
