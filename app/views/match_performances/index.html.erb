@@ -30,7 +30,7 @@
               <td><%= user.buts %></td>
               <td><%= user.passes %></td>
               <% if  stats[:total_yellow_cards] >= 2 %>
-                <td class="badge text-dark" style="background-color: yellow;"><%= stats[:total_yellow_cards] %></td>
+                <td class="text-dark" style="background-color: yellow;"><%= stats[:total_yellow_cards] %></td>
               <% else %>
               <td><%= stats[:total_yellow_cards] %></td>
               <% end %>
