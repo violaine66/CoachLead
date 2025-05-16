@@ -43,17 +43,19 @@
 
   <div data-controller="toggle" class="form mb-3">
     <button class="btn btn-outline-primary my-4" data-action="click->toggle#fire">Détails</button>
-      <div class="row">
-        <div class="col">
+      <div class="row d-flex justify-content-center">
+        <div class="col-sm-12 col-md-10 col-lg-10">
           <div data-toggle-target="togglableElement" class="d-none">
+            <div class="table-reponsive">
             <table class="table">
               <thead>
                 <tr>
+
                   <% if current_user.entraineur? %>
                     <th>Joueur</th>
                   <% end %>
                   <th>Date</th>
-                  <th>Participation</th>
+                  <th>Actif</th>
                   <th>Buts</th>
                   <th>Passes décisives</th>
                   <th>Cartons jaunes</th>
@@ -63,7 +65,7 @@
               <tbody>
                 <% @match_performances.each do |performance| %>
                   <tr>
-                    <% if current_user.entraineur? %>
+                    <% if current_user.entraineur?  %>
                       <td>
                         <% if performance.user.player_profil.present? %>
                           <%= "#{performance.user.player_profil.first_name} #{performance.user.player_profil.last_name}" %>
@@ -72,7 +74,7 @@
                         <% end %>
                       </td>
                     <% end %>
-                    <td><%= performance.match_date.strftime("%d/%m/%Y") %></td>
+                    <td><%= performance.match_date.strftime("%d/%m/%y") %></td>
                     <td><%= performance.played ? "Oui" : "Non" %></td>
                     <td><%= performance.buts %></td>
                     <td><%= performance.passes %></td>
@@ -84,8 +86,8 @@
                 <% end %>
               </tbody>
             </table>
+            </div>
           </div>
-
         </div>
       </div>
   </div>
@@ -98,7 +100,7 @@
     <thead>
       <tr>
         <th>Date</th>
-        <th>Participation</th>
+        <th id="petite-taille">Participation</th>
         <th>Buts</th>
         <th>Passes décisives</th>
         <th>Cartons jaunes</th>

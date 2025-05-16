@@ -1,8 +1,5 @@
 <div class="container">
-
   <h2>Évaluations pré-entraînement – <%= @training.title %> du <%= l(@training.date, format: :long) %></h2>
-
-
 <table class="table">
   <thead>
     <tr>
@@ -11,21 +8,15 @@
       <th>Fatigue cognitive</th>
       <th>Fatigue physique</th>
       <th>Humeur</th>
-
-
-
     </tr>
   </thead>
   <tbody>
     <% @pre_training_evaluations.each do |evaluation| %>
       <tr>
         <td><%= "#{evaluation.user.player_profil.first_name} #{evaluation.user.player_profil.last_name}" %></td>
-
         <td><%= evaluation.cognitive_fatigue %></td>
         <td><%= evaluation.physical_fatigue %></td>
         <td><%= evaluation.mood %></td>
-
-
       </tr>
     <% end %>
   </tbody>
