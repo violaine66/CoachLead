@@ -18,8 +18,8 @@
     <div class="player-card-show ">
         <% if @player_profil.photo.attached? %>
          <%= cl_image_tag @player_profil.photo.key,
-              width: 250,
-              height: 200,
+              width: 300,
+              height: 420,
               crop: "fill",
               gravity: "face",
               fetch_format: "auto",
