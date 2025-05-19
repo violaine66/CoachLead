@@ -1,0 +1,21 @@
+{
+  "name": "Coach Lead",
+  "short_name": "Coach",
+  "description": "A web application for managing and coaching leads and players.",
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    <% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select { |f| !File.directory?(f) && f =~ /-\d+x\d+\.png$/ } %>
+    <% files.each_with_index do |file, index| %>
+      <% match = file.match(/.+-(?<size>\d{2,3}x\d{2,3})\.png/) %>
+      {
+        "src": "<%= image_path("icons/#{file}") %>",
+        "sizes": "<%= match[:size] %>",
+        "type": "image/png"
+      }<%= "," unless index == files.size - 1 %>
+    <% end %>
+  ]
+}
+
