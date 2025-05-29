@@ -11,7 +11,9 @@ class TrainingsController < ApplicationController
   end
 
   def show
+    @training = Training.includes(attendances: { user: :player_profil }).find(params[:id])
     authorize @training
+
     if current_user.joueur?
       @pre_training_evaluation = PreTrainingEvaluation.find_by(training: @training, user: current_user)
     elsif current_user.entraineur?

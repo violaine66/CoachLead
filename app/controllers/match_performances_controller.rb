@@ -7,7 +7,7 @@ class MatchPerformancesController < ApplicationController
   after_action :verify_policy_scoped, only: :index  # Vérifie la politique du scope pour l'index
 
   def index
-    @match_performances = policy_scope(MatchPerformance)
+    @match_performances = policy_scope(MatchPerformance).includes(user: :player_profil)
     @match_performance = MatchPerformance.new
     @player_profils = PlayerProfil.all
     @stats_by_player = @match_performances

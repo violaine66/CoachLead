@@ -37,11 +37,10 @@ class PlayerProfil < ApplicationRecord
   end
 
   def self.average_penalties
-    profils = all.includes(user: :attendances)
+    profils = all # Pas d'includes ici
     total = profils.map(&:total_penalties).sum
     count = profils.size
     return 0 if count == 0
     (total.to_f / count).round(2)
   end
-
 end
