@@ -33,6 +33,7 @@ body {
   // background-color: #3D3E3E;
   background-color: #262626;
   overflow-x: hidden;
+  padding-bottom: 70px;
 }
 
 * {
@@ -50,8 +51,4 @@ body {
     background-color: darken($btn-add, 5%);
     border-color: darken($btn-add, 5%);
   }
-}
-
-main {
-  padding-bottom: 60px; // Adjust this value to match the height of your footer
 }

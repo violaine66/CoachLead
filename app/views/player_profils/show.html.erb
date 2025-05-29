@@ -19,13 +19,13 @@
         <% if @player_profil.photo.attached? %>
          <%= cl_image_tag @player_profil.photo.key,
               width: 300,
-              height: 420,
+              height: 350,
               crop: "fill",
               gravity: "face",
               fetch_format: "auto",
               quality: "auto",
-              class: "card-img-top",
-              alt: "Photo du joueur",
+              class: "card-img-top",              alt: "Photo du joueur",
+
               style: "object-fit:cover;" %>
 
           <% if current_user.entraineur?%>
@@ -136,7 +136,7 @@
   <div class="presences">
     <div class="row">
        <div class="col-sm-12 col-md-12 col-lg-10 mx-auto">
-        <h3>Mes absences / retards</h3>
+        <h3 class="text-center">Mes absences / retards</h3>
           <table class="table table-bordered mt-3">
             <thead>
               <tr>
