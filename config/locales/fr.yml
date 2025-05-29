@@ -9,6 +9,7 @@ fr:
       - "Vendredi"
       - "Samedi"
     month_names:
+      -
       - "Janvier"
       - "Février"
       - "Mars"
@@ -21,6 +22,3 @@ fr:
       - "Octobre"
       - "Novembre"
       - "Décembre"
-    formats:
-      long: "%A %d %B %Y"  # Exemple : lundi 15 avril 2025
-      training_time: "%A %d %B %Y à %H:%M"  # Exemple : lundi 15 avril 2025 à 14:30
