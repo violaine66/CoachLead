@@ -1,13 +1,48 @@
-<div class="container">
-  <h1>Nouvelle évaluation post-entraînement</h1>
-<%= simple_form_for [@training, @after_training_evaluation] do |f| %>
-  <%= f.input :after_intensity, label: "Intensité de l'entraînement' (0–10)" %>
-  <%= f.input :after_fatigue, label: "Fatigue physique après l'entraînement(0–10)" %>
-  <%= f.input :pleasure, as: :boolean, label: "Plaisir de l'entraînement ?" %>
+<div class="container mt-3" data-controller="slider">
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-8 col-md-6 col-lg-6 mx-auto">
+        <h1 class="text-center">Nouvelle évaluation post-entraînement</h1>
+
+          <%= simple_form_for [@training, @after_training_evaluation] do |f| %>
+
+            <div class="my-5">
+              <label for="after_intensity">🔥<strong class="text-white"> A quel point évalues-tu l'intensité de l'entraînement?</strong>
+                    <p class="text-center"><em>(0 = pas du tout intense, 5 = extrêmement intense)</em></p></label>
+              <input type="range" min="0" max="5" step="1"
+                    name="after_training_evaluation[after_intensity]"
+                    id="after_training_evaluation_after_intensity"
+                    value="<%= @after_training_evaluation.after_intensity|| 2 %>"
+                    data-slider-target="input"
+                    data-action="input->slider#update"
+                    class="form-range">
+              <span  data-slider-target="output">2</span>
+            </div>
+
+            <div class="mb-5">
+              <label for="after_fatigue"><strong class="text-white">💪 A quel point te sens-tu fatigué après cet entrainement?</strong>
+                    <p class="text-center"><em>(0 = en pleine forme, 5 = épuisé)</em></p></label>
+              <input type="range" min="0" max="5" step="1"
+                    name="after_training_evaluation[after_fatigue]"
+                    id="after_training_evaluation_after_fatigue"
+                    value="<%= @after_training_evaluation.after_fatigue || 2 %>"
+                    data-slider-target="input"
+                    data-action="input->slider#update"
+                    class="form-range">
+              <span data-slider-target="output">2</span>
+            </div>
+
+          <div class="mb-5">
+            <div class="form-check">
+              <%= f.input :pleasure, as: :boolean, label: "😊 As-tu eu du plaisir à l'entraînement ?", input_html: { class: "form-check-input" }, label_html: { class: "form-check-label text-white" } %>
+            </div>
+          </div>
 
 
-  <%= f.button :submit, "Enregistrer", class: "btn btn-primary" %>
-<% end %>
+            <%= f.button :submit, "Enregistrer", class: "btn btn-primary mb-5" %>
+          <% end %>
 
+
+    </div>
+  </div>
 
 </div>
