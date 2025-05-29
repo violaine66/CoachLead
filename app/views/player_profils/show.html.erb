@@ -73,7 +73,7 @@
           <tbody>
             <% @player_profil.user.attendances.each do |attendance| %>
               <tr>
-                <td><%= l(attendance.training.date, format: :long) %></td>
+                <td><%= attendance.training.date.strftime("%d/%m/%Y") %></td>
                 <td>
                   <%# Badge selon le statut %>
                   <% status = attendance.status %>
