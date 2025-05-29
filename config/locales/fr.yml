@@ -22,3 +22,5 @@ fr:
       - "Octobre"
       - "Novembre"
       - "Décembre"
+    formats:
+        log:"%d %m %Y"
