@@ -147,7 +147,7 @@
             <tbody>
               <% current_user.attendances.each do |attendance| %>
                 <tr>
-                  <td><%= l(attendance.training.date, format: :long) %></td>
+                  <td><%= attendance.training.date.strftime("%d/%m/%Y") %></td>
                   <td>
                     <% status = attendance.status %>
                     <% badge_class = case status
