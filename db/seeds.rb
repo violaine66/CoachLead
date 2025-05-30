@@ -27,13 +27,13 @@ puts "Création de l'utilisateur développeur..."
 entraineur1 = User.create!(
   email: "lou@app.fr",
   password: "violaine",
-  pseudo: "Lou",
+  pseudo: "lou",
   role: :entraineur,
 )
 entraineur2 = User.create!(
   email: "mehdi@app.fr",
   password: "football",
-  pseudo: "Mehdi",
+  pseudo: "mehdi",
   role: :entraineur,
 )
 puts "Utilisateur développeur créé avec succès."

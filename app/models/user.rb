@@ -7,8 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
           authentication_keys: [:pseudo]
-  before_validation :downcase_pseudo
-  
+
+
   # Associations
   has_many :pre_training_evaluations
   has_many :trainings, through: :pre_training_evaluations, source: :training
@@ -36,12 +36,6 @@ class User < ApplicationRecord
       "#{player_profil.first_name} #{player_profil.last_name}"
     end
   end
-
-
-  def downcase_pseudo
-    self.pseudo = pseudo.downcase if pseudo.present?
-  end
-
 
   def buts
     match_performances.sum(:buts)
