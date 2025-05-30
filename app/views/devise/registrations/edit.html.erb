@@ -5,40 +5,37 @@
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
           <%= f.error_notification %>
           <div class="form-inputs">
-            <%= f.input :pseudo,
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "Pseudo" } %>
+            <h5 class="mt-4">Modifier mon pseudo</h5>
+
+              <%= f.input :pseudo,
+                          hint: "Laissez si vous ne voulez pas changer de pseudo",
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "Pseudo" } %>
 
 
-            <%= f.input :password,
-                        hint: "Laissez vide si vous ne voulez pas changer de mot de passe",
-                        required: false,
-                        label: "Nouveau mot de passe" %>
+              <%= f.input :password,
+                          hint: "Laissez vide si vous ne voulez pas changer de mot de passe",
+                          required: false,
+                          label: "Nouveau mot de passe" %>
 
-            <%= f.input :password_confirmation,
-                        required: false,
-                        label: "Confirmation du mot de passe" %>
+              <%= f.input :password_confirmation,
+                          required: false,
+                          label: "Confirmation du mot de passe" %>
 
-            <%= f.input :current_password,
-                        hint: "Nous avons besoin de votre mot de passe actuel pour valider les changements",
-                        required: true,
-                        class: "text-white",
-                        input_html: { autocomplete: "Mot de passe actuel" },
-                        label: "Mot de passe actuel" %>
-
-
-
+              <%= f.input :current_password,
+                          hint: "Nous avons besoin de votre mot de passe actuel pour valider les changements",
+                          required: true,
+                          class: "text-white",
+                          input_html: { autocomplete: "Mot de passe actuel" },
+                          label: "Mot de passe actuel" %>
 
           </div>
 
           <div class="form-actions">
-                    <%= f.button :submit, "Mettre à jour", class:"btn btn-primary text-white" %>
+                    <%= f.button :submit, "Mettre à jour", class:"btn btn-primary text-white mb-3" %>
           </div>
         <% end %>
-        <h3 class="mt-5">Supprimer mon compte</h3>
-
-        <div class="my-3">Pas satisfait? <%= button_to "Supprimer mon compte", registration_path(resource_name), class: "btn btn-primary text-white mt-1", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
         <%= link_to "Retour", :back %>
     </div>
