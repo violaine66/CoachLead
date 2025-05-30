@@ -32,6 +32,7 @@ body {
   // background-color: #716969;
   // background-color: #3D3E3E;
   background-color: #262626;
+  // background-color: F5F5F5;
   overflow-x: hidden;
   padding-bottom: 80px;
 }
@@ -51,4 +52,9 @@ body {
     background-color: darken($btn-add, 5%);
     border-color: darken($btn-add, 5%);
   }
+}
+
+.form-text {
+  color:white;
+  font-size: 12px;
 }
