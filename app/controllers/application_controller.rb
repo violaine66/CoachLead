@@ -23,9 +23,11 @@ class ApplicationController < ActionController::Base
     action_name == "index" && !skip_pundit?
   end
 
+     protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar, :photo])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar, :photo])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:pseudo])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:pseudo])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:pseudo])
   end
 
 end

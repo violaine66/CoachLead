@@ -5,10 +5,11 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+          authentication_keys: [:pseudo]
+  before_validation :downcase_pseudo
+  
   # Associations
-
-
   has_many :pre_training_evaluations
   has_many :trainings, through: :pre_training_evaluations, source: :training
 
@@ -22,17 +23,23 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   # Validations
-  validates :email, presence:  { message: I18n.t('activerecord.errors.models.user.attributes.email.blank') }, uniqueness: true
+  validates :email, uniqueness: true, allow_blank: true
   validates :password, presence: true, length: { minimum: 6, message: I18n.t('activerecord.errors.models.user.attributes.password.too_short') }
   validates :password_confirmation, confirmation: { message: I18n.t('activerecord.errors.models.user.attributes.password_confirmation.confirmation') }
-
-
-  validates :pseudo, presence: { message: "Un pseudo est obligatoire"}, uniqueness: true
+  validates :pseudo, presence: true, uniqueness: { case_sensitive: false }
   enum role: { joueur: "joueur", entraineur: "entraineur"}
+
+
+
   def full_name
     if player_profil.present?
       "#{player_profil.first_name} #{player_profil.last_name}"
     end
+  end
+
+
+  def downcase_pseudo
+    self.pseudo = pseudo.downcase if pseudo.present?
   end
 
 
@@ -43,4 +50,17 @@ class User < ApplicationRecord
   def passes
     match_performances.sum(:passes)
   end
+
+  # Email n'est pas requis à l'inscription (mais le devient si on veut la récupération)
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
+  end
+
 end
+
+# Mais… Devise attend un email valide pour certaines opérations (notamment recoverable), donc je te recommande quand même de préremplir un email par défaut
+#  dans les seeds ou via un formulaire admin. Ex : player1@coachlead.com.
