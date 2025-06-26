@@ -1,11 +1,14 @@
 <div class="container mt-5">
-  <h1 class="my-3 text-center">Performances de match</h1>
   <% if current_user.entraineur? %>
     <div class="text-end my-4">
-    <%= link_to "Créer une nouvelle performance", new_match_performance_path, class: "btn-add text-white" %>
-  </div>
+      <%= link_to "Créer une nouvelle performance", new_match_performance_path, class: "btn-add text-white" %>
+    </div>
+  <% end %>
+
   <div class="row d-flex justify-content-center">
     <div class="col-sm-12 col-md-10 col-lg-10">
+      <h1 class="my-3 text-center">Performances de match</h1>
+
       <% if @stats_by_player.present? %>
         <table class="table table-bordered mt-2">
           <thead>
@@ -21,132 +24,108 @@
             <% @stats_by_player.each do |user, stats| %>
               <tr>
                 <td>
-                  <% if user.player_profil.present? %>
-                    <%= "#{user.player_profil.first_name} #{user.player_profil.last_name}" %>
-                  <% else %>
-                    <%= "Profil manquant" %>
-                  <% end %>
+                  <%= user.player_profil.present? ? "#{user.player_profil.first_name} #{user.player_profil.last_name}" : "Profil manquant" %>
                 </td>
                 <td><%= stats[:total_played] %></td>
                 <td><%= user.buts %></td>
                 <td><%= user.passes %></td>
-                <% if  stats[:total_yellow_cards] >= 2 %>
-                  <td class="badge text-dark" style="background-color: yellow;"><%= stats[:total_yellow_cards] %></td>
-                <% else %>
-                <td><%= stats[:total_yellow_cards] %></td>
-                <% end %>
+                <td class="<%= stats[:total_yellow_cards] >= 2 ? 'badge text-dark bg-warning' : '' %>">
+                  <%= stats[:total_yellow_cards] %>
+                </td>
               </tr>
             <% end %>
           </tbody>
         </table>
       <% else %>
-        <div class="text-center">
-          <p><em>Aucune performance de match pour le moment </em></p>
-        </div>
+        <p class="text-center"><em>Aucune donnée disponible</em></p>
       <% end %>
     </div>
   </div>
- <% if @match_performances.present?%>
-  <div data-controller="toggle" class="form mb-3">
-    <button class="btn btn-outline-primary my-4" data-action="click->toggle#fire">Détails</button>
+
+  <% if @match_performances.present? %>
+    <div data-controller="toggle" class="form mb-3">
+      <button class="btn btn-outline-primary my-4" data-action="click->toggle#fire">Détails</button>
       <div class="row d-flex justify-content-center">
         <div class="col-sm-12 col-md-10 col-lg-10">
           <div data-toggle-target="togglableElement" class="d-none">
-            <div class="table-reponsive">
-            <table class="table">
-              <thead>
-                <tr>
-
-                  <% if current_user.entraineur? %>
-                    <th>Joueur</th>
-                  <% end %>
-                  <th>Date</th>
-                  <th>Buts</th>
-                  <th>Passes décisives</th>
-                  <th>Cartons jaunes</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-               <% @match_performances.select(&:played).each do |performance| %>
-
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
                   <tr>
-                    <% if current_user.entraineur?  %>
-                      <td>
-                        <% if performance.user.player_profil.present? %>
-                          <%= "#{performance.user.player_profil.first_name} #{performance.user.player_profil.last_name}" %>
-                        <% else %>
-                          <%= "Profil manquant" %>
-                        <% end %>
-                      </td>
+                    <% if current_user.entraineur? %>
+                      <th>Joueur</th>
                     <% end %>
-                    <td><%= performance.match_date.strftime("%d/%m/%y") %></td>
-                    <td><%= performance.buts %></td>
-                    <td><%= performance.passes %></td>
-                    <td><%= performance.yellow_card %></td>
-                    <td>
-                      <%= link_to "Voir", match_performance_path(performance), class: "btn btn-sm btn-primary text-white"%>
-                    </td>
+                    <th>Date</th>
+                    <th>Buts</th>
+                    <th>Passes décisives</th>
+                    <th>Cartons jaunes</th>
+                    <th></th>
                   </tr>
-                <% end %>
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  <% @match_performances.select(&:played).each do |performance| %>
+                    <tr>
+                      <% if current_user.entraineur? %>
+                        <td>
+                          <%= performance.user.player_profil.present? ? "#{performance.user.player_profil.first_name} #{performance.user.player_profil.last_name}" : "Profil manquant" %>
+                        </td>
+                      <% end %>
+                      <td><%= performance.match_date.strftime("%d/%m/%y") %></td>
+                      <td><%= performance.buts %></td>
+                      <td><%= performance.passes %></td>
+                      <td><%= performance.yellow_card %></td>
+                      <td>
+                        <%= link_to "Voir", match_performance_path(performance), class: "btn btn-sm btn-primary text-white" %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
-  </div>
-  <% end %>
-
-
+    </div>
   <% else %>
     <div class="row d-flex justify-content-center">
       <div class="col-sm-10 col-md-10 col-lg-10">
-         <% if @match_performances.present?%>
-
-          <div class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Participation</th>
-                  <th>Buts</th>
-                  <th>Passes décisives</th>
-                  <th>Cartons jaunes</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @match_performances.each do |performance| %>
-                  <tr>
-                    <% if current_user.entraineur? %>
-                      <td>
-                        <% if performance.user.player_profil.present? %>
-                          <%= "#{performance.user.player_profil.first_name} #{performance.user.player_profil.last_name}" %>
-                        <% else %>
-                          <%= "Profil manquant" %>
-                        <% end %>
-                      </td>
-                    <% end %>
-                    <td><%= performance.match_date.strftime("%d/%m/%Y") %></td>
-                    <td><%= performance.played ? "Oui" : "Non" %></td>
-                    <td><%= performance.buts %></td>
-                    <td><%= performance.passes %></td>
-                    <td><%= performance.yellow_card %></td>
-                    <td>
-                      <%= link_to "Voir", match_performance_path(performance), class: "btn btn-sm btn-primary text-white"%>
-                    </td>
-                  </tr>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <% if current_user.entraineur? %>
+                  <th>Joueur</th>
                 <% end %>
-              </tbody>
-            </table>
-          </div>
-        <% else %>
-          <div class="text-center">
-            <p><em>Aucune performance de match pour le moment </em></p>
-          </div>
-        <% end %>
+                <th>Date</th>
+                <th>Participation</th>
+                <th>Buts</th>
+                <th>Passes décisives</th>
+                <th>Cartons jaunes</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @match_performances.each do |performance| %>
+                <tr>
+                  <% if current_user.entraineur? %>
+                    <td>
+                      <%= performance.user.player_profil.present? ? "#{performance.user.player_profil.first_name} #{performance.user.player_profil.last_name}" : "Profil manquant" %>
+                    </td>
+                  <% end %>
+                  <td><%= performance.match_date.strftime("%d/%m/%Y") %></td>
+                  <td><%= performance.played ? "Oui" : "Non" %></td>
+                  <td><%= performance.buts %></td>
+                  <td><%= performance.passes %></td>
+                  <td><%= performance.yellow_card %></td>
+                  <td>
+                    <%= link_to "Voir", match_performance_path(performance), class: "btn btn-sm btn-primary text-white" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
- <% end %>
+  <% end %>
 </div>
