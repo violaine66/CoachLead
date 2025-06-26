@@ -38,9 +38,7 @@ entraineur2 = User.create!(
 )
 puts "Utilisateur développeur créé avec succès."
 
-puts "Création des entraînements..."
-# db/seeds.rb
-
+# puts "Création des entraînements..."
 # Créer quelques entraînements
 # Training.create!(
 #   date: Date.today + 1.day,
@@ -130,54 +128,52 @@ players_data.each do |player_data|
   end
 end
 
-
-
 puts "10 utilisateurs et 10 profils de joueurs ont été créés avec succès."
 
-puts "création de 10 évaluations de charge de travail..."
-users.each do |user|
-  JobLoadEvaluation.create!(
-    period: "Avril 2025",                    # Tu peux modifier la période selon ton besoin
-    rating: rand(1..5),                     # Une note entre 1 et 5 (par exemple)
-    user: user
-  )
-end
- puts "10 évaluations de charge de travail créées avec succès."
+
+# puts "création de 10 évaluations de charge de travail..."
+# users.each do |user|
+#   JobLoadEvaluation.create!(
+#     period: "Avril 2025",                    # Tu peux modifier la période selon ton besoin
+#     rating: rand(1..5),                     # Une note entre 1 et 5 (par exemple)
+#     user: user
+#   )
+# end
+#  puts "10 évaluations de charge de travail créées avec succès."
 
 # Créez des performances de match pour chaque utilisateur
-puts "Création de performances de match..."
-users.each do |user|
-  # Créez plusieurs performances de match pour chaque utilisateur (par exemple, 5 matchs)
-  5.times do |i|
-    # Créez une performance de match pour un utilisateur avec des données simples
-    MatchPerformance.create(
-      user_id: user.id,
-      match_date: Date.new(2025, 4, i+1),  # Dates fixes pour les matchs (ex: 1er avril, 2 avril, etc.)
-      played: [true, false].sample,  # Match joué ou non, sélectionné aléatoirement
-      yellow_card: rand(0..2)  # Carton jaune aléatoire (0, 1 ou 2)
-    )
-  end
-end
+# puts "Création de performances de match..."
+# users.each do |user|
+#   # Créez plusieurs performances de match pour chaque utilisateur (par exemple, 5 matchs)
+#   5.times do |i|
+#     # Créez une performance de match pour un utilisateur avec des données simples
+#     MatchPerformance.create(
+#       user_id: user.id,
+#       match_date: Date.new(2025, 4, i+1),  # Dates fixes pour les matchs (ex: 1er avril, 2 avril, etc.)
+#       played: [true, false].sample,  # Match joué ou non, sélectionné aléatoirement
+#       yellow_card: rand(0..2)  # Carton jaune aléatoire (0, 1 ou 2)
+#     )
+#   end
+# end
 
-# db/seeds.rb
+# # db/seeds.rb
 
-# On récupère quelques users et trainings existants
-joueurs = User.where(role: "joueur")  # ou :player si tu utilises un enum
-trainings = Training.all
+# # On récupère quelques users et trainings existants
+# joueurs = User.where(role: "joueur")  # ou :player si tu utilises un enum
+# trainings = Training.all
 
-# Statuts possibles
-statuses = %w[present absent late excused]
+# # Statuts possibles
+# statuses = %w[present absent late excused]
 
-puts "Creating attendances..."
+# puts "Creating attendances..."
+# trainings.each do |training|
+#   joueurs.sample(5).each do |joueur|
+#     Attendance.create!(
+#       user: joueur,
+#       training: training,
+#       status: statuses.sample
+#     )
+#   end
+# end
 
-trainings.each do |training|
-  joueurs.sample(5).each do |joueur|
-    Attendance.create!(
-      user: joueur,
-      training: training,
-      status: statuses.sample
-    )
-  end
-end
-
-puts "✅ Attendances created successfully!"
+# puts "✅ Attendances created successfully!"
