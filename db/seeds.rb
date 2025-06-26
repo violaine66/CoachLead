@@ -39,7 +39,7 @@ entraineur2 = User.create!(
 puts "Utilisateur développeur.entraîneur créé avec succès."
 
 puts "Création des entraînements..."
-purs "Créer quelques entraînements"
+puts "Créer quelques entraînements"
 Training.create!(
   date: Date.today + 1.day,
   location: "Stade de Paris",
@@ -141,7 +141,7 @@ users.each do |user|
 end
  puts "10 évaluations de charge de travail créées avec succès."
 
-Créez des performances de match pour chaque utilisateur
+puts "Créez des performances de match pour chaque utilisateur"
 puts "Création de performances de match..."
 users.each do |user|
   # Créez plusieurs performances de match pour chaque utilisateur (par exemple, 5 matchs)
