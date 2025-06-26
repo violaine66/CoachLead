@@ -30,7 +30,7 @@ class PlayerProfilsController < ApplicationController
     first_name = params.dig(:player_profil, :first_name).to_s.downcase.strip
     last_name  = params.dig(:player_profil, :last_name).to_s.downcase.strip
 
-    base_pseudo = "#{first_name}_#{last_name}".gsub(/\s+/, "_")
+    base_pseudo = "#{first_name}-#{last_name}".gsub(/\s+/, "_")
     pseudo = generate_unique_pseudo(base_pseudo)
 
 
