@@ -29,9 +29,17 @@
                 <td><%= stats[:total_played] %></td>
                 <td><%= user.buts %></td>
                 <td><%= user.passes %></td>
-                <td class="<%= stats[:total_yellow_cards] >= 2 ? 'badge text-dark bg-warning' : '' %>">
-                  <%= stats[:total_yellow_cards] %>
+                <td>
+                  <% if stats[:total_yellow_cards] >= 2 %>
+                    <span class="badge text-dark" style="background-color: #ffff00;">
+                      <%= stats[:total_yellow_cards] %>
+                    </span>
+                  <% else %>
+                    <%= stats[:total_yellow_cards] %>
+                  <% end %>
                 </td>
+
+
               </tr>
             <% end %>
           </tbody>

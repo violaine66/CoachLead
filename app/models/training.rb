@@ -8,7 +8,7 @@ class Training < ApplicationRecord
  has_many :users, through: :pre_training_evaluations
  has_many :users, through: :after_training_evaluations
 
-  has_many :attendances
+  has_many :attendances, dependent: :destroy
 
   after_create :create_participations_for_all_players
 
