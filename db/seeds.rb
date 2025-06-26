@@ -70,7 +70,7 @@ puts "Utilisateur développeur.entraîneur créé avec succès."
 # puts "Entraînements créés avec succès."
 
 
-# Création de 10 utilisateurs
+# puts "Création de 10 utilisateurs"
 # users_data = [
 #   { email: "user1@example.com", password: "password", pseudo: "player1", role: "joueur" },
 #   { email: "user2@example.com", password: "password", pseudo: "player2", role: "joueur" },

@@ -3,23 +3,27 @@
     <%= link_to "Ajouter un profil", new_player_profil_path, class: "btn-add text-white text-end" %>
   </div>
   <div class="row mt-5">
-  <% @player_profils.each do |player| %>
-    <div class="col-12 col-sm-6 col-md-2col-lg-3 mb-4 d-flex justify-content-center">
-      <%= link_to player_profil_path(player), class: "text-decoration-none text-dark" do %>
-        <div class="card h-100 shadow-sm" style="width: 100%; max-width: 300px;">
-          <% if player.photo.attached? %>
-            <%= cl_image_tag player.photo.key, width: 250, height: 170, crop: :fill, gravity: :auto, class: "card-img-top", alt: "Photo du joueur" %>
-          <% else %>
-            <i class="fa-solid fa-circle-user fa-5x my-3 d-block mx-auto"></i>
+    <% if @player_profils.present? %>
+      <% @player_profils.each do |player| %>
+        <div class="col-12 col-sm-6 col-md-2col-lg-3 mb-4 d-flex justify-content-center">
+          <%= link_to player_profil_path(player), class: "text-decoration-none text-dark" do %>
+            <div class="card h-100 shadow-sm" style="width: 100%; max-width: 300px;">
+              <% if player.photo.attached? %>
+                <%= cl_image_tag player.photo.key, width: 250, height: 170, crop: :fill, gravity: :auto, class: "card-img-top", alt: "Photo du joueur" %>
+              <% else %>
+                <i class="fa-solid fa-circle-user fa-5x my-3 d-block mx-auto"></i>
+              <% end %>
+              <div class="card-body text-center">
+                <h5 class="card-title"><strong><%= player.full_name %></strong></h5>
+              </div>
+            </div>
           <% end %>
-          <div class="card-body text-center">
-            <h5 class="card-title"><strong><%= player.full_name %></strong></h5>
-          </div>
         </div>
       <% end %>
-    </div>
-  <% end %>
-</div>
-
-
+    <% else %>
+      <div class="text-center">
+        <p><em>Aucun profil de joueur pour le moment </em></p>
+      </div>
+    <% end %>
+  </div>
 </div>
