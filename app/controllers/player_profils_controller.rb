@@ -24,14 +24,39 @@ class PlayerProfilsController < ApplicationController
   def create
     @player_profil = PlayerProfil.new(player_profil_params)
     authorize @player_profil
-    @player_profil.user = current_user
+    # @player_profil.user = current_user
+    common_email = "provisoire@example.com"
+    common_password = "football2025"
+    first_name = params.dig(:player_profil, :first_name).to_s.downcase.strip
+    last_name  = params.dig(:player_profil, :last_name).to_s.downcase.strip
 
-    if @player_profil.save
-      redirect_to @player_profil, notice: 'Profil du joueur créé avec succès.'
+    base_pseudo = "#{first_name}_#{last_name}".gsub(/\s+/, "_")
+    pseudo = generate_unique_pseudo(base_pseudo)
+
+
+    user = User.new(
+      email: common_email,
+      password: common_password,
+      password_confirmation: common_password,
+      pseudo: pseudo,
+      role: "joueur"
+    )
+
+    if user.save
+      @player_profil = user.build_player_profil(player_profil_params)
+
+      if @player_profil.save
+        redirect_to @player_profil, notice: "Profil et utilisateur créés avec succès."
+      else
+        user.destroy
+        puts @player_profil.errors.full_messages
+        render :new, status: :unprocessable_entity
+      end
     else
-      puts @player_profil.errors.full_messages
+      puts user.errors.full_messages
       render :new, status: :unprocessable_entity
     end
+
   end
 
   def edit
@@ -66,4 +91,16 @@ class PlayerProfilsController < ApplicationController
     # Vérifie si l'utilisateur connecté est un 'entraineur'
     authorize :player_profil, :index?  # Cela utilise la politique définie dans PlayerProfilPolicy
   end
+
+  def generate_unique_pseudo(base)
+  pseudo = base
+  count = 1
+
+  while User.exists?(pseudo: pseudo)
+    pseudo = "#{base}_#{count}"
+    count += 1
+  end
+
+  pseudo
+end
 end

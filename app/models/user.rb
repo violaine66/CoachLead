@@ -23,7 +23,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   # Validations
-  validates :email, uniqueness: true, allow_blank: true
+ 
   validates :password, presence: true, length: { minimum: 6, message: I18n.t('activerecord.errors.models.user.attributes.password.too_short') }
   validates :password_confirmation, confirmation: { message: I18n.t('activerecord.errors.models.user.attributes.password_confirmation.confirmation') }
   validates :pseudo, presence: true, uniqueness: { case_sensitive: false }
