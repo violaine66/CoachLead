@@ -35,7 +35,7 @@ class PlayerProfilsController < ApplicationController
 
 
     user = User.new(
-      email: unique_email_email,
+      email: unique_email,
       password: common_password,
       password_confirmation: common_password,
       pseudo: pseudo,
