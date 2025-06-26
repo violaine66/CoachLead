@@ -25,7 +25,7 @@ class PlayerProfilsController < ApplicationController
     @player_profil = PlayerProfil.new(player_profil_params)
     authorize @player_profil
     # @player_profil.user = current_user
-    common_email = "provisoire@example.com"
+    unique_email = "provisoire+#{SecureRandom.hex(3)}@example.com"
     common_password = "football2025"
     first_name = params.dig(:player_profil, :first_name).to_s.downcase.strip
     last_name  = params.dig(:player_profil, :last_name).to_s.downcase.strip
@@ -35,7 +35,7 @@ class PlayerProfilsController < ApplicationController
 
 
     user = User.new(
-      email: common_email,
+      email: unique_email_email,
       password: common_password,
       password_confirmation: common_password,
       pseudo: pseudo,
