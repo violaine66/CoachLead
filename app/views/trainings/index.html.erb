@@ -9,7 +9,7 @@
     <div class="row d-flex justify-content-center">
       <div class="col-12">
         <h1 class="my-4 text-center">Mes Entrainements</h1>
-
+        <% if @training.present? %>
           <% @trainings.each do |t| %>
           <div class="d-flex align-items-center">
             <div>
@@ -17,12 +17,17 @@
                 <span class="text-white"><%= t.date.strftime("%d/%m/%Y") %></span>
                 <span><%= t.title %></span>
             </div>
-
           </div>
           <hr>
             <% end %>
           <% end %>
+        <% else %>
+        <div class="text-center">
+          <p><em>Aucun entraînement pour le moment </em></p>
         </div>
+      <% end %>
+
+      </div>
 
     </div>
 </div>
