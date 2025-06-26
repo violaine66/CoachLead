@@ -10,13 +10,4 @@ class Training < ApplicationRecord
 
   has_many :attendances, dependent: :destroy
 
-  after_create :create_participations_for_all_players
-
-  private
-
-  def create_participations_for_all_players
-    User.joueur.find_each do |player|
-      PreTrainingEvaluation.create(training: self, user: player)
-    end
-  end
 end
