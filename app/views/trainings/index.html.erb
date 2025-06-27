@@ -1,7 +1,7 @@
 <div class="container mt-5">
 
   <% if current_user.entraineur? %>
-  <div class="training-new text-end mb-3">
+  <div class="training-new text-end mb-4">
     <%= link_to "Créer un entraînement", new_training_path, class:"btn-add text-white" %>
   </div>
   <% end %>
@@ -28,5 +28,5 @@
       <% end %>
       </div>
     </div>
-   
+
 </div>
