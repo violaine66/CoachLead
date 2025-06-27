@@ -4,16 +4,29 @@
        <h2 class="text-center">Nouveau joueur</h2>
       <div class="new-player-profil">
         <div class="form-player-profil">
-          <%= simple_form_for(@player_profil, html: { multipart: true }) do |f| %>
-          <%= f.input :last_name, label: "Nom" %>
-          <%= f.input :first_name, label: "Prénom"%>
-          <%= f.input :photo, input_html: { class: 'd-none'}, label_html: { class: 'upload-photo'}, label: '📷 Télécharge une photo' %>
-          <%= f.input :age, label: "Age"%>
-          <%= f.input :weight, label: "Poids"%>
-          <%= f.input :job, label: "Activité professionnelle"%>
-          <%= f.input :children_count , label: "Nombre d'enfants"%>
-          <%= f.button :submit, "Créer/Modifier le profil", class:'btn-new-joueur mb-3' %>
-          <% end %>
+            <%= simple_form_for(@player_profil, html: { multipart: true }) do |f| %>
+            <%= f.input :last_name,     as: :string, label: "Nom" %>
+            <%= f.input :first_name,    as: :string, label: "Prénom" %>
+            <%= f.input :photo,
+                        as: :file,
+                        input_html: { class: 'd-none' },
+                        label_html: { class: 'upload-photo' },
+                        label: '📷 Télécharge une photo' %>
+
+            <!-- Passage sur un champ HTML5 date pour éviter le problème de collection -->
+            <%= f.input :date_of_birth,
+                        as: :string,
+                        input_html: { type: 'date' },
+                        label: "Date de naissance" %>
+
+            <%= f.input :age,            label: "Âge" %>
+            <%= f.input :weight,          label: "Poids (kg)" %>
+            <%= f.input :job,            as: :string, label: "Activité professionnelle" %>
+            <%= f.input :children_count,  label: "Nombre d'enfants" %>
+
+            <%= f.button :submit, "Créer/Modifier le profil", class: 'btn-new-joueur mb-3' %>
+            <% end %>
+
         </div>
       </div>
       <div class="mb-4">

@@ -85,7 +85,7 @@ class PlayerProfilsController < ApplicationController
   end
 
   def player_profil_params
-    params.require(:player_profil).permit(:age, :weight, :children_count, :job, :photo, :first_name, :last_name)
+    params.require(:player_profil).permit(:age, :weight, :children_count, :job, :photo, :first_name, :last_name, :date_of_birth)
   end
 
   def authorize_user

@@ -43,6 +43,13 @@
 
     <div class="player-card-show">
       <p><strong><%= @player_profil.age.present? ? "#{@player_profil.age} ans" : "Âge non renseigné" %></strong></p>
+      <p><strong>
+        <% if @player_profil.date_of_birth.present? %>
+          <%= @player_profil.date_of_birth.strftime("%d/%m/%Y") %>
+        <% else %>
+          Date de naissance non renseignée
+        <% end %>
+      </strong></p>
       <p><strong><%= @player_profil.weight.present? ? "#{@player_profil.weight} kg" : "Poids non renseigné" %></strong></p>
       <p><strong><%= @player_profil.job.present? ? @player_profil.job : "Travail non renseigné" %></strong></p>
 
