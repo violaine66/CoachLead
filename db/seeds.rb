@@ -72,7 +72,7 @@ puts "Utilisateur développeur.entraîneur créé avec succès."
 
 puts "Création de 10 utilisateurs"
 users_data = [
-  { email: "ackah@example.com", password: ENV.fetch("COMMON_PASSWORD"),pseudo: "aloïs-ackah", role: "joueur" },
+  { email: "ackah@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "aloïs-ackah", role: "joueur" },
   { email: "belomri@example.com",password: ENV.fetch("COMMON_PASSWORD"), pseudo: "zinedine-belomri", role: "joueur" }
 #   { email: "user3@example.com", password: "password", pseudo: "player3", role: "joueur" },
 #   { email: "user4@example.com", password: "password", pseudo: "player4", role: "joueur" },
@@ -94,8 +94,8 @@ end
 
 # Création des profils de joueurs associés aux utilisateurs
 players_data = [
-  { first_name: "Aloïs", last_name: "Ackah", age: 19, job: "",  user_id: users[0].id },
-  { first_name: "Zine Dine", last_name: "Belomri", age: 20, job: "Attaquant", user_id: users[1].id }
+  { first_name: "Aloïs", last_name: "Ackah", age: 19, date_of_birth: "23/062006", job: "",  user_id: users[0].id },
+  { first_name: "Zine Dine", last_name: "Belomri", age: 20, date_of_birth:"24/01/2005", job: "", user_id: users[1].id }
   # { first_name: "Zine Dine", last_name: "belomri", age: 31, job: "Attaquant", weight: 70, children_count: 1, user_id: users[2].id },
 #   { first_name: "Kylian", last_name: "Mbappé", age: 24, job: "Attaquant", weight: 73, children_count: 0, user_id: users[3].id },
 #   { first_name: "Luka", last_name: "Modrić", age: 39, job: "Milieu", weight: 65, children_count: 2, user_id: users[4].id },
