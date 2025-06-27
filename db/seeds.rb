@@ -25,15 +25,15 @@ User.destroy_all
 
 puts "Création de l'utilisateur développeur..."
 entraineur1 = User.create!(
-  email: "lou@app.fr",
-  password: "violaine",
-  pseudo: "lou",
+  email: ENV.fetch("ADMIN1_EMAIL"),
+  password: ENV.fetch("ADMIN1_PASSWORD"),
+  pseudo: ENV.fetch("ADMIN1_PSEUDO"),
   role: :entraineur,
 )
 entraineur2 = User.create!(
-  email: "mehdi@app.fr",
-  password: "football",
-  pseudo: "mehdi",
+  email: ENV.fetch("ADMIN2_EMAIL"),
+  password: ENV.fetch("ADMIN2_PASSWORD"),
+  pseudo: ENV.fetch("ADMIN2_PSEUDO"),
   role: :entraineur,
 )
 puts "Utilisateur développeur.entraîneur créé avec succès."

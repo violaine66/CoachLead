@@ -26,7 +26,7 @@ class PlayerProfilsController < ApplicationController
     authorize @player_profil
     # @player_profil.user = current_user
     unique_email = "provisoire+#{SecureRandom.hex(3)}@example.com"
-    common_password = "football2025"
+    common_password = "snaf2025"
     first_name = params.dig(:player_profil, :first_name).to_s.downcase.strip
     last_name  = params.dig(:player_profil, :last_name).to_s.downcase.strip
 
@@ -59,7 +59,7 @@ class PlayerProfilsController < ApplicationController
 
   end
 
-  def edit
+  def edi
     authorize @player_profil
   end
 
