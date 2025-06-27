@@ -94,7 +94,7 @@ end
 
 # Création des profils de joueurs associés aux utilisateurs
 players_data = [
-  { first_name: "Aloïs", last_name: "Ackah", age: 19, date_of_birth: "23/062006", job: "",  user_id: users[0].id },
+  { first_name: "Aloïs", last_name: "Ackah", age: 19, date_of_birth: "23/06/2006", job: "",  user_id: users[0].id },
   { first_name: "Zine Dine", last_name: "Belomri", age: 20, date_of_birth:"24/01/2005", job: "", user_id: users[1].id }
   # { first_name: "Zine Dine", last_name: "belomri", age: 31, job: "Attaquant", weight: 70, children_count: 1, user_id: users[2].id },
 #   { first_name: "Kylian", last_name: "Mbappé", age: 24, job: "Attaquant", weight: 73, children_count: 0, user_id: users[3].id },
