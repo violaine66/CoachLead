@@ -127,7 +127,7 @@
             <% end %>
           </div>
         <% else %>
-          <p class="text-center">Aucune donnée disponible pour le moment </p>
+          <p class="text-center"><em>Aucune donnée disponible pour le moment </em></p>
         <% end %>
       </div>
     </div>
@@ -142,7 +142,7 @@
                 <p><strong>Nombre de pénalités :</strong> <%= @player_profil.total_penalties %></p>
                 <p><strong>Total à soustraire en fin de saison :</strong> <%= @player_profil.total_penalties_amount %> €</p>
               <% else %>
-                <p class="text-center">Aucune donnée disponible pour le moment </p>
+                <p class="text-center"><em>Aucune donnée disponible pour le moment</em> </p>
               <% end %>
           </div>
         </div>
@@ -196,7 +196,7 @@
               <p><strong>Total :</strong> <%= current_user.attendances.count %></p>
             </div>
           <% else %>
-          <p class="text-center">Aucune donnée disponible pour le moment</p>
+          <p class="text-center"><em>Aucune donnée disponible pour le moment</em></p>
           <% end %>
         </div>
       </div>
@@ -211,7 +211,7 @@
                     <p><strong>Total à soustraire en fin de saison :</strong> <%= @player_profil.total_penalties_amount %> €</p>
                     </div>
                   <% else %>
-                    <p class="text-center">Aucune donnée disponible pour le moment</p>
+                    <p class="text-center"><em>Aucune donnée disponible pour le moment</em></p>
                   <% end %>
             </div>
           </div>
