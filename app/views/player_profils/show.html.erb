@@ -46,8 +46,8 @@
 
     <div class="player-card-show">
       <p><strong><%= @player_profil.age.present? ? "#{@player_profil.age} ans" : "Âge non renseigné" %></strong></p>
-      <p><strong><%= @player_profil.weight.present? ? "#{@player_profil.weight} kg" : "Poids non renseigné" %></strong></p>
-      <p><strong><%= @player_profil.job.present? ? @player_profil.job : "Métier non renseigné" %></strong></p>
+      <p><strong><%= @player_profil.weight.present? ? "#{@player_profil.weight} kg" : "Poids non renseigné" %></></p>
+      <p><em><%= @player_profil.job.present? ? @player_profil.job : "Métier non renseigné" %></em></p>
       <p class="text-center">
     <%= link_to job_load_evaluations_path do %>
       <strong ><em>
