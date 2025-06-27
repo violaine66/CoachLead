@@ -70,10 +70,10 @@ puts "Utilisateur développeur.entraîneur créé avec succès."
 # puts "Entraînements créés avec succès."
 
 
-# puts "Création de 10 utilisateurs"
-# users_data = [
-#   { email: "user1@example.com", password: "password", pseudo: "player1", role: "joueur" },
-#   { email: "user2@example.com", password: "password", pseudo: "player2", role: "joueur" },
+puts "Création de 10 utilisateurs"
+users_data = [
+  { email: "ackah@example.com", password: ENV.fetch("COMMON_PASSWORD"),pseudo: "aloïs-ackah", role: "joueur" },
+  { email: "belomri@example.com",password: ENV.fetch("COMMON_PASSWORD"), pseudo: "zinedine-belomri", role: "joueur" }
 #   { email: "user3@example.com", password: "password", pseudo: "player3", role: "joueur" },
 #   { email: "user4@example.com", password: "password", pseudo: "player4", role: "joueur" },
 #   { email: "user5@example.com", password: "password", pseudo: "player5", role: "joueur" },
@@ -82,21 +82,21 @@ puts "Utilisateur développeur.entraîneur créé avec succès."
 #   { email: "user8@example.com", password: "password", pseudo: "player8", role: "joueur" },
 #   { email: "user9@example.com", password: "password", pseudo: "player9", role: "joueur" },
 #   { email: "user10@example.com", password: "password", pseudo: "player10", role: "joueur" }
-# ]
+]
 
-# # Création des utilisateurs
-# users = []
-# users_data.each do |user_data|
-#   user = User.create!(user_data)
-#   puts "Utilisateur #{user.pseudo} créé."
-#   users << user # Stocker les utilisateurs créés pour les associer aux profils
-# end
+# Création des utilisateurs
+users = []
+users_data.each do |user_data|
+  user = User.create!(user_data)
+  puts "Utilisateur #{user.pseudo} créé."
+  users << user # Stocker les utilisateurs créés pour les associer aux profils
+end
 
-# # Création des profils de joueurs associés aux utilisateurs
-# players_data = [
-#   { first_name: "Lionel", last_name: "Messi", age: 35, job: "Attaquant", weight: 72, children_count: 3, user_id: users[0].id },
-#   { first_name: "Cristiano", last_name: "Ronaldo", age: 38, job: "Attaquant", weight: 83, children_count: 5, user_id: users[1].id },
-#   { first_name: "Neymar", last_name: "Jr", age: 31, job: "Attaquant", weight: 70, children_count: 1, user_id: users[2].id },
+# Création des profils de joueurs associés aux utilisateurs
+players_data = [
+  { first_name: "Aloïs", last_name: "Ackah", age: 19, job: "",  user_id: users[0].id },
+  { first_name: "Zine Dine", last_name: "Belomri", age: 20, job: "Attaquant", user_id: users[1].id }
+  # { first_name: "Zine Dine", last_name: "belomri", age: 31, job: "Attaquant", weight: 70, children_count: 1, user_id: users[2].id },
 #   { first_name: "Kylian", last_name: "Mbappé", age: 24, job: "Attaquant", weight: 73, children_count: 0, user_id: users[3].id },
 #   { first_name: "Luka", last_name: "Modrić", age: 39, job: "Milieu", weight: 65, children_count: 2, user_id: users[4].id },
 #   { first_name: "Sergio", last_name: "Ramos", age: 37, job: "Défenseur", weight: 82, children_count: 4, user_id: users[5].id },
@@ -104,12 +104,12 @@ puts "Utilisateur développeur.entraîneur créé avec succès."
 #   { first_name: "Kevin", last_name: "De Bruyne", age: 32, job: "Milieu", weight: 70, children_count: 3, user_id: users[7].id },
 #   { first_name: "Mohamed", last_name: "Salah", age: 31, job: "Attaquant", weight: 74, children_count: 2, user_id: users[8].id },
 #   { first_name: "Karim", last_name: "Benzema", age: 35, job: "Attaquant", weight: 81, children_count: 3, user_id: users[9].id }
-# ]
+]
 
-# # Création des profils de joueurs
-# players_data.each do |player_data|
-#   player = PlayerProfil.create!(player_data)
-#   puts "Profil du joueur #{player.first_name} #{player.last_name} créé."
+# Création des profils de joueurs
+players_data.each do |player_data|
+  player = PlayerProfil.create!(player_data)
+  puts "Profil du joueur #{player.first_name} #{player.last_name} créé."
 
 
 #   # Rechercher un fichier d'image correspondant au prénom (insensible à l'extension)
@@ -126,9 +126,9 @@ puts "Utilisateur développeur.entraîneur créé avec succès."
 #   else
 #     puts "⚠️ Aucune image trouvée pour #{player.first_name}"
 #   end
-# end
+end
 
-# puts "10 utilisateurs et 10 profils de joueurs ont été créés avec succès."
+puts "10 utilisateurs et 10 profils de joueurs ont été créés avec succès."
 
 
 # puts "création de 10 évaluations de charge de travail..."

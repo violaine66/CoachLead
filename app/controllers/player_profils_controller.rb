@@ -24,9 +24,10 @@ class PlayerProfilsController < ApplicationController
   def create
     @player_profil = PlayerProfil.new(player_profil_params)
     authorize @player_profil
-    # @player_profil.user = current_user
+
+
     unique_email = "provisoire+#{SecureRandom.hex(3)}@example.com"
-    common_password = "snaf2025"
+    common_password=ENV.fetch("COMMON_PASSWORD"),
     first_name = params.dig(:player_profil, :first_name).to_s.downcase.strip
     last_name  = params.dig(:player_profil, :last_name).to_s.downcase.strip
 

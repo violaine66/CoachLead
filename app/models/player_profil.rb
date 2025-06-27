@@ -7,9 +7,9 @@ class PlayerProfil < ApplicationRecord
   has_one_attached :photo
 
   # validations
-  validates :age, numericality: { only_integer: true, greater_than: 0 }
-  validates :weight, numericality: { greater_than_or_equal_to: 30 }
-  validates :children_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :age, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
+  validates :weight, numericality: { greater_than_or_equal_to: 30 }, allow_nil: true
+  validates :children_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
 
   def destroy_user_related_records
     return unless user.present?
