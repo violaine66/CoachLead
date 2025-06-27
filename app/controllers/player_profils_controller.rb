@@ -60,7 +60,7 @@ class PlayerProfilsController < ApplicationController
 
   end
 
-  def edi
+  def edit
     authorize @player_profil
   end
 

@@ -1,6 +1,7 @@
 <div class="container mt-5">
-  <h1>Évaluations de pénibilité de l'activité professionnelle</h1>
+  <h1 class="text-center">Évaluations de pénibilité de l'activité professionnelle</h1>
 
+<% if @job_load_evaluations.present? %>
   <% if current_user.entraineur? %>
     <div class="text-end my-4">
     <%= link_to "Nouvelle évaluation", new_job_load_evaluation_path, class: "btn-add text-white" %>
@@ -36,6 +37,11 @@
     </tbody>
   </table>
 
+<% else %>
+  <p class="text-center">Pas de données pour le moment</p>
+<% end %>
+
   <div class="my-3">
     <%= link_to "Retour", root_path, class: "btn btn-secondary text-white mt-3" %>
+</div>
 </div>
