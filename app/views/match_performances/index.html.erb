@@ -9,7 +9,7 @@
     <div class="col-sm-12 col-md-10 col-lg-10">
       <h1 class="my-3 text-center">Performances de match</h1>
 
-      <% if @stats_by_player.present? %>
+      <% if @stats_by_player.any? { |_user, stats| stats[:total_played].to_i > 0 } %>
         <table class="table table-bordered mt-2">
           <thead>
             <tr>
@@ -22,6 +22,7 @@
           </thead>
           <tbody>
             <% @stats_by_player.each do |user, stats| %>
+              <% next if stats[:total_played].to_i.zero? %>
               <tr>
                 <td>
                   <%= user.player_profil.present? ? "#{user.player_profil.first_name} #{user.player_profil.last_name}" : "Profil manquant" %>
@@ -38,8 +39,6 @@
                     <%= stats[:total_yellow_cards] %>
                   <% end %>
                 </td>
-
-
               </tr>
             <% end %>
           </tbody>
@@ -50,7 +49,7 @@
     </div>
   </div>
 
-  <% if @match_performances.present? %>
+  <% if @match_performances.any?(&:played) %>
     <div data-controller="toggle" class="form mb-3">
       <button class="btn btn-outline-primary my-4" data-action="click->toggle#fire">Détails</button>
       <div class="row d-flex justify-content-center">
@@ -94,7 +93,7 @@
         </div>
       </div>
     </div>
-  <% else %>
+  <% elsif @match_performances.present? %>
     <div class="row d-flex justify-content-center">
       <div class="col-sm-10 col-md-10 col-lg-10">
         <div class="table-responsive">
@@ -135,6 +134,6 @@
         </div>
       </div>
     </div>
+ 
   <% end %>
-
 </div>
