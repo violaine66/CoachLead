@@ -12,6 +12,7 @@ class PlayerProfil < ApplicationRecord
   validates :weight, numericality: { greater_than_or_equal_to: 30 }, allow_nil: true
   validates :children_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
 
+
   def destroy_user_related_records
     return unless user.present?
 

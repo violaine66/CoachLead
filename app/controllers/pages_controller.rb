@@ -9,6 +9,7 @@ class PagesController < ApplicationController
     @next_training = Training.where("date >= ?", Date.today).order(:date).first
 
   end
+
   def index
   end
 
