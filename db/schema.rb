@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_27_181230) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_27_203948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,7 +96,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_27_181230) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.date "date_of_birth"
+    t.string "date_of_birth"
     t.index ["user_id"], name: "index_player_profils_on_user_id"
   end
 
