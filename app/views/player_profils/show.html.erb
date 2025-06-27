@@ -48,12 +48,13 @@
       <p><strong><%= @player_profil.age.present? ? "#{@player_profil.age} ans" : "Âge non renseigné" %></strong></p>
       <p><strong><%= @player_profil.weight.present? ? "#{@player_profil.weight} kg" : "Poids non renseigné" %></strong></p>
       <p><strong><%= @player_profil.job.present? ? @player_profil.job : "Métier non renseigné" %></strong></p>
-
-      <p>
-        <em><strong>
-          <%= link_to "Évaluation du travail", job_load_evaluations_path, class: "text-dark text-center" %>
-        </strong></em>
-      </p>
+      <p class="text-center">
+    <%= link_to job_load_evaluations_path do %>
+      <strong ><em>
+        <span class="text-dark">Évaluation du travail <i class="fa-solid fa-arrow-up-right-from-square ms-1 text-dark"></i></span>
+      </em></strong>
+    <% end %>
+  </p>
 
       <% if @player_profil.children_count.present? %>
         <% if @player_profil.children_count > 1 %>
