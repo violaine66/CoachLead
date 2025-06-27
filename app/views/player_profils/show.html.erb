@@ -45,7 +45,7 @@
       <p><strong><%= @player_profil.age.present? ? "#{@player_profil.age} ans" : "Âge non renseigné" %></strong></p>
       <p><strong>
         <% if @player_profil.date_of_birth.present? %>
-          <%= @player_profil.date_of_birth.strftime("%d/%m/%Y") %>
+          <%= @player_profil.date_of_birth %>
         <% else %>
           Date de naissance non renseignée
         <% end %>
