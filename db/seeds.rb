@@ -75,7 +75,6 @@ users_data = [
   { email: "ackah@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "aloïs-ackah", role: "joueur" },
   { email: "belomri@example.com",password: ENV.fetch("COMMON_PASSWORD"), pseudo: "zinedine-belomri", role: "joueur" },
   { email: "coprot@example.com",password: ENV.fetch("COMMON_PASSWORD"), pseudo: "matéo-coprot", role: "joueur" },
-  { email: "coprot@example.com",password: ENV.fetch("COMMON_PASSWORD"), pseudo: "matéo-coprot", role: "joueur" },
   { email: "dasilva@example.com",password: ENV.fetch("COMMON_PASSWORD"), pseudo: "gabriel-dasilva", role: "joueur" },
   { email: "david@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "samuel-david", role: "joueur" },
   { email: "delespaul@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "valentin-delespaul", role: "joueur" },
@@ -148,20 +147,20 @@ players_data.each do |player_data|
   puts "Profil du joueur #{player.first_name} #{player.last_name} créé."
 
 
-#   # Rechercher un fichier d'image correspondant au prénom (insensible à l'extension)
-#   image_files = Dir.glob(Rails.root.join("app/assets/images/#{player.first_name.downcase}.*"))
+  # Rechercher un fichier d'image correspondant au prénom (insensible à l'extension)
+  image_files = Dir.glob(Rails.root.join("app/assets/images/#{player.first_name.downcase}.*"))
 
-#   if image_files.any?
-#     image_path = image_files.first
-#     player.photo.attach(
-#       io: File.open(image_path),
-#       filename: File.basename(image_path),
-#       content_type: Marcel::MimeType.for(Pathname.new(image_path))
-#     )
-#     puts "📸 Photo attachée pour #{player.first_name} (#{File.basename(image_path)})"
-#   else
-#     puts "⚠️ Aucune image trouvée pour #{player.first_name}"
-#   end
+  if image_files.any?
+    image_path = image_files.first
+    player.photo.attach(
+      io: File.open(image_path),
+      filename: File.basename(image_path),
+      content_type: Marcel::MimeType.for(Pathname.new(image_path))
+    )
+    puts "📸 Photo attachée pour #{player.first_name} (#{File.basename(image_path)})"
+  else
+    puts "⚠️ Aucune image trouvée pour #{player.first_name}"
+  end
 end
 
 puts "utilisateurs et profils de joueurs créés avec succès."
