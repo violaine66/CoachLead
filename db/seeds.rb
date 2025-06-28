@@ -73,16 +73,35 @@ puts "Utilisateur développeur.entraîneur créé avec succès."
 puts "Création de 10 utilisateurs"
 users_data = [
   { email: "ackah@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "aloïs-ackah", role: "joueur" },
-  { email: "belomri@example.com",password: ENV.fetch("COMMON_PASSWORD"), pseudo: "zinedine-belomri", role: "joueur" }
-#   { email: "user3@example.com", password: "password", pseudo: "player3", role: "joueur" },
-#   { email: "user4@example.com", password: "password", pseudo: "player4", role: "joueur" },
-#   { email: "user5@example.com", password: "password", pseudo: "player5", role: "joueur" },
-#   { email: "user6@example.com", password: "password", pseudo: "player6", role: "joueur" },
-#   { email: "user7@example.com", password: "password", pseudo: "player7", role: "joueur" },
-#   { email: "user8@example.com", password: "password", pseudo: "player8", role: "joueur" },
-#   { email: "user9@example.com", password: "password", pseudo: "player9", role: "joueur" },
-#   { email: "user10@example.com", password: "password", pseudo: "player10", role: "joueur" }
+  { email: "belomri@example.com",password: ENV.fetch("COMMON_PASSWORD"), pseudo: "zinedine-belomri", role: "joueur" },
+  { email: "coprot@example.com",password: ENV.fetch("COMMON_PASSWORD"), pseudo: "matéo-coprot", role: "joueur" },
+  { email: "coprot@example.com",password: ENV.fetch("COMMON_PASSWORD"), pseudo: "matéo-coprot", role: "joueur" },
+  { email: "dasilva@example.com",password: ENV.fetch("COMMON_PASSWORD"), pseudo: "gabriel-dasilva", role: "joueur" },
+  { email: "david@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "samuel-david", role: "joueur" },
+  { email: "delespaul@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "valentin-delespaul", role: "joueur" },
+  { email: "domarcolino@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "junior-domarcolino", role: "joueur" },
+  { email: "flohic@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "mathéo-flohic", role: "joueur" },
+  { email: "gomis@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "dominique-gomis", role: "joueur" },
+  { email: "lazreg@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "hakim-lazreg", role: "joueur" },
+  { email: "louismet@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "matteo-louismet", role: "joueur" },
+  { email: "meder@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "ancelin-meder", role: "joueur" },
+  { email: "mendy-fernandy@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "fernandy-mendy", role: "joueur" },
+  { email: "mendy-arnaud@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "arnaud-mendy", role: "joueur" },
+  { email: "mendy-alex@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "alex-mendy", role: "joueur" },
+  { email: "mouchet@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "jules-mouchet", role: "joueur" },
+  { email: "mvondo@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "astrid-mvondo", role: "joueur" },
+  { email: "rousse@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "nathan-rousse", role: "joueur" },
+  { email: "sculo@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "damien-sculo", role: "joueur" },
+  { email: "sylla@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "kaba-sylla", role: "joueur" },
+  { email: "minier@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "hugo-minier", role: "joueur" },
+  { email: "bautista@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "evan-bautista", role: "joueur" },
+  { email: "legarez@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "wilson-legarez", role: "joueur" },
+  { email: "thorel@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "marlon-thorel", role: "joueur" },
+  { email: "tual-killian@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "killian-tual", role: "joueur" },
+  { email: "tual-yael@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "yael-tual", role: "joueur" },
+  { email: "namua@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "antonin-namua", role: "joueur" }
 ]
+
 
 # Création des utilisateurs
 users = []
@@ -96,14 +115,31 @@ end
 players_data = [
   { first_name: "Aloïs", last_name: "Ackah", age: 19, date_of_birth: "23/06/2006", job: "",  user_id: users[0].id },
   { first_name: "Zine Dine", last_name: "Belomri", age: 20, date_of_birth:"24/01/2005", job: "", user_id: users[1].id }
-  # { first_name: "Zine Dine", last_name: "belomri", age: 31, job: "Attaquant", weight: 70, children_count: 1, user_id: users[2].id },
-#   { first_name: "Kylian", last_name: "Mbappé", age: 24, job: "Attaquant", weight: 73, children_count: 0, user_id: users[3].id },
-#   { first_name: "Luka", last_name: "Modrić", age: 39, job: "Milieu", weight: 65, children_count: 2, user_id: users[4].id },
-#   { first_name: "Sergio", last_name: "Ramos", age: 37, job: "Défenseur", weight: 82, children_count: 4, user_id: users[5].id },
-#   { first_name: "Virgil", last_name: "van Dijk", age: 32, job: "Défenseur", weight: 92, children_count: 2, user_id: users[6].id },
-#   { first_name: "Kevin", last_name: "De Bruyne", age: 32, job: "Milieu", weight: 70, children_count: 3, user_id: users[7].id },
-#   { first_name: "Mohamed", last_name: "Salah", age: 31, job: "Attaquant", weight: 74, children_count: 2, user_id: users[8].id },
-#   { first_name: "Karim", last_name: "Benzema", age: 35, job: "Attaquant", weight: 81, children_count: 3, user_id: users[9].id }
+  { first_name: "Matéo", last_name: "Coprot", age: 21, date_of_birth: "09/12/2004", job: "", weight: "", children_count: "", user_id: users[2].id },
+  { first_name: "Gabriel", last_name: "Da silva", age: 19, date_of_birth: "12/12/2006", job: "", weight: "", children_count: "", user_id: users[3].id },
+  { first_name: "David", last_name: "Samuel", age: 19, date_of_birth: "06/06/2006", job: "", weight: "", children_count: "", user_id: users[4].id },
+  { first_name: "Valentin", last_name: "Delespaul", age: 26, date_of_birth: "20/04/1999", job: "", weight: "", children_count: "", user_id: users[5].id },
+  { first_name: "Junior", last_name: "Do Marcolino", age: 32, date_of_birth: "18/09/1993", job: "", weight: "", children_count: "", user_id: users[6].id },
+  { first_name: "Mathéo", last_name: "Flohic", age: 24, date_of_birth: "11/06/2001", job: "", weight: "", children_count: "", user_id: users[7].id },
+  { first_name: "Dominique", last_name: "Gomis", age: 17, date_of_birth: "03/10/2007", job: "", weight: "", children_count: "", user_id: users[8].id },
+  { first_name: "Hakim", last_name: "Lazreg", age: 34, date_of_birth: "15/02/1991", job: "", weight: "", children_count: "", user_id: users[9].id },
+  { first_name: "Matteo", last_name: "Louismet", age: 24, date_of_birth: "12/01/2001", job: "", weight: "", children_count: "", user_id: users[10].id },
+  { first_name: "Ancelin", last_name: "Meder", age: 23, date_of_birth: "14/07/2002", job: "", weight: "", children_count: "", user_id: users[11].id },
+  { first_name: "Fernandy", last_name: "Mendy", age: 31, date_of_birth: "16/01/1994", job: "", weight: "", children_count: "", user_id: users[12].id },
+  { first_name: "Arnaud", last_name: "Mendy", age: 29, date_of_birth: "", job: "19/09/1996", weight: "", children_count: "", user_id: users[13].id },
+  { first_name: "Alex", last_name: "Mendy", age: 24, date_of_birth: "27/05/2001", job: "", weight: "", children_count: "", user_id: users[14].id },
+  { first_name: "Jules", last_name: "Mouchet", age: 18, date_of_birth: "18/01/2007", job: "", weight: "", children_count: "", user_id: users[15].id },
+  { first_name: "Astrid", last_name: "Mvondo", age: 27, date_of_birth: "17/05/1998", job: "", weight: "", children_count: "", user_id: users[16].id },
+  { first_name: "Nathan", last_name: "Rousse", age: 27, date_of_birth: "19/08/1998", job: "", weight: "", children_count: "", user_id: users[17].id },
+  { first_name: "Damien", last_name: "Sculo", age: 34, date_of_birth: "07/12/1991", job: "", weight: "", children_count: "", user_id: users[18].id },
+  { first_name: "Kaba", last_name: "Sylla", age: 23, date_of_birth: "09/08/2002", job: "", weight: "", children_count: "", user_id: users[19].id },
+  { first_name: "Hugo", last_name: "Minier", age: 28, date_of_birth: "14/07/1997", job: "", weight: "", children_count: "", user_id: users[20].id },
+  { first_name: "Evan", last_name: "Bautista", age: 17, date_of_birth: "06/09/2007", job: "", weight: "", children_count: "", user_id: users[21].id },
+  { first_name: "Wilson", last_name: "Legarez", age: 17, date_of_birth: "17/08/2007", job: "", weight: "", children_count: "", user_id: users[22].id },
+  { first_name: "Marlon", last_name: "Thorel", age: 18, date_of_birth: "09/08/2007", job: "", weight: "", children_count: "", user_id: users[23].id },
+  { first_name: "Killian", last_name: "Tual", age: 28, date_of_birth: "03/12/1997", job: "", weight: "", children_count: "", user_id: users[24].id },
+  { first_name: "Yael", last_name: "Tual", age: 24, date_of_birth: "14/02/2001", job: "", weight: "", children_count: "", user_id: users[25].id },
+  { first_name: "Antonin", last_name: "Namua", age: 30, date_of_birth: "06/06/1995", job: "", weight: "", children_count: "", user_id: users[26].id }
 ]
 
 # Création des profils de joueurs
@@ -128,7 +164,7 @@ players_data.each do |player_data|
 #   end
 end
 
-puts "10 utilisateurs et 10 profils de joueurs ont été créés avec succès."
+puts "utilisateurs et profils de joueurs créés avec succès."
 
 
 # puts "création de 10 évaluations de charge de travail..."
