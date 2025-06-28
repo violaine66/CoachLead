@@ -42,16 +42,16 @@
     </div>
 
     <div class="player-card-show">
-      <p><strong><%= @player_profil.age.present? ? "#{@player_profil.age} ans" : "Âge non renseigné" %></strong></p>
+      <p><strong><%= @player_profil.age.present? ? "#{@player_profil.age} ans" : "Âge NR" %></strong></p>
       <p><strong>
         <% if @player_profil.date_of_birth.present? %>
           <%= @player_profil.date_of_birth %>
         <% else %>
-          Date de naissance non renseignée
+          Date de naissance NR
         <% end %>
       </strong></p>
-      <p><strong><%= @player_profil.weight.present? ? "#{@player_profil.weight} kg" : "Poids non renseigné" %></strong></p>
-      <p><strong><%= @player_profil.job.present? ? @player_profil.job : "Travail non renseigné" %></strong></p>
+      <p><strong><%= @player_profil.weight.present? ? "#{@player_profil.weight} kg" : "Poids NR" %></strong></p>
+      <p><strong><%= @player_profil.job.present? ? @player_profil.job : "Travail NR" %></strong></p>
 
       <% if @player_profil.job.present? %>
         <p class="text-center">
@@ -72,7 +72,7 @@
           <p><strong>Aucun enfant</strong></p>
         <% end %>
       <% else %>
-        <p><strong>Enfant(s) non renseigné(s)</strong></p>
+        <p><strong>Enfant(s) NR</strong></p>
       <% end %>
     </div>
   </div>
