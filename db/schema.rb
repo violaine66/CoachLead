@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_27_203948) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_29_124439) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,12 +91,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_27_203948) do
     t.string "job"
     t.float "weight"
     t.integer "children_count"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "date_of_birth"
     t.index ["user_id"], name: "index_player_profils_on_user_id"
   end
 
@@ -111,6 +110,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_27_203948) do
     t.datetime "updated_at", null: false
     t.index ["training_id"], name: "index_pre_training_evaluations_on_training_id"
     t.index ["user_id"], name: "index_pre_training_evaluations_on_user_id"
+  end
+
+  create_table "training_evaluations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "trainings", force: :cascade do |t|

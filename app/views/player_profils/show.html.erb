@@ -43,13 +43,13 @@
 
     <div class="player-card-show">
       <p><strong><%= @player_profil.age.present? ? "#{@player_profil.age} ans" : "Âge NR" %></strong></p>
-      <p><strong>
+      <%# <p><strong>
         <% if @player_profil.date_of_birth.present? %>
-          <%= @player_profil.date_of_birth %>
-        <% else %>
-          Date de naissance NR
-        <% end %>
-      </strong></p>
+          <%# <%= @player_profil.date_of_birth %>
+        <%# <% else %>
+          <%# Date de naissance NR
+        <% end %> 
+      <%# </strong></p> % %>
       <p><strong><%= @player_profil.weight.present? ? "#{@player_profil.weight} kg" : "Poids NR" %></strong></p>
       <p><strong><%= @player_profil.job.present? ? @player_profil.job : "Travail NR" %></strong></p>
 
