@@ -7,7 +7,7 @@ class PlayerProfil < ApplicationRecord
   has_one_attached :photo
 
   # validations
-  validates :age, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
+  
 
   validates :weight, numericality: { greater_than_or_equal_to: 30 }, allow_nil: true
   validates :children_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
@@ -54,4 +54,12 @@ class PlayerProfil < ApplicationRecord
     age -= 1 if today < date_of_birth + age.years # Ajustement si l'anniversaire n'est pas encore passé cette année
     age
   end
+
+  def birthday_today?
+    return false unless date_of_birth.present?
+
+    today = Date.today
+    today.day == date_of_birth.day && today.month == date_of_birth.month
+  end
+
 end

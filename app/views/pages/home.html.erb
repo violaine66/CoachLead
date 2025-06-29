@@ -3,6 +3,19 @@
 
 
   <% if current_user.entraineur? %>
+    <div class="birthday d-flex flex-column align-items-center">
+      <% if @birthday_players.present? %>
+        <h2>🎉 Anniversaires aujourd’hui</h2>
+        <ul>
+          <% @birthday_players.each do |player| %>
+            <li>
+              <strong class="text-white"><%= player.first_name %> <%= player.last_name %></strong> — <%= player.age %> ans 🎂
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
     <div class="w-100 d-flex flex-column align-items-center">
       <div class="w-100 d-flex justify-content-center mb-4">
         <div class="card-home text-center">
@@ -24,6 +37,12 @@
     </div>
 
   <% elsif current_user.joueur? %>
+    <div class="birthday">
+      <% if @player_profil.birthday_today? %>
+        <p class="text-white fs-3" style="font-weight: bold;">🎉 Joyeux anniversaire ! 🎂</p>
+      <% end %>
+    </div>
+
     <div class="prochain-entrainement mt-5 mx-2 text-center">
       <% if @next_training %>
         <p>Prochain entraînement : <%= l(@next_training.date, format: "%A %d %B %Y") %></p>

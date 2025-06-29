@@ -7,6 +7,8 @@ class PagesController < ApplicationController
 
   def home
     @next_training = Training.where("date >= ?", Date.today).order(:date).first
+    @player_profils = policy_scope(PlayerProfil)
+    @birthday_players = @player_profils.select(&:birthday_today?)
 
   end
 
