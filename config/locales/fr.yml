@@ -24,3 +24,29 @@ fr:
       - "Décembre"
     formats:
         long:"%d %m %Y"
+  activerecord:
+    errors:
+      models:
+        player_profil:
+          attributes:
+            first_name:
+              blank: "Le prénom est obligatoire."
+            last_name:
+              blank: "Le nom est obligatoire."
+            date_of_birth:
+              blank: "La date de naissance est obligatoire."
+              invalid: "La date de naissance est invalide."
+            age:
+              not_a_number: "L'âge doit être un nombre."
+      messages:
+        record_invalid: "Le formulaire contient des erreurs."
+        blank: "ne peut pas être vide"
+        not_a_number: "n'est pas un nombre"
+        taken: "a déjà été pris"
+  devise:
+    failure:
+      invalid: "Pseudo ou mot de passe invalide."
+      locked: "Compte verrouillé."
+    sessions:
+      signed_in: "Connexion réussie."
+      signed_out: "Déconnexion réussie."

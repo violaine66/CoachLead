@@ -7,8 +7,8 @@ class PlayerProfil < ApplicationRecord
   has_one_attached :photo
 
   # validations
-  
-
+  validates :first_name, presence: true, length: { maximum: 50 }
+  validates :last_name, presence: true, length: { maximum: 50 }
   validates :weight, numericality: { greater_than_or_equal_to: 30 }, allow_nil: true
   validates :children_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
 
