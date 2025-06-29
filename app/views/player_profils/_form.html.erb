@@ -13,9 +13,11 @@
                         label_html: { class: 'upload-photo' },
                         label: '📷 Télécharge une photo' %>
 
-            <%= f.input :date_of_birth,
-                        as: :date,
-                        label: "Date de naissance" %>
+            <div class="field">
+  <%= f.label :date_of_birth, "Date de naissance" %>
+  <%= f.text_field :date_of_birth, type: 'date', class: 'form-control' %>
+</div>
+
 
             <%= f.input :age,            label: "Âge" %>
             <%= f.input :weight,          label: "Poids (kg)" %>

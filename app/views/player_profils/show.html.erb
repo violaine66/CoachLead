@@ -45,9 +45,9 @@
       <p><strong><%= @player_profil.age.present? ? "#{@player_profil.age} ans" : "Âge NR" %></strong></p>
       <p><strong>
         <% if @player_profil.date_of_birth.present? %>
-          <%= @player_profil.date_of_birth.strftime("%d/%m/%Y") %>
+          <%= @player_profil.date_of_birth.strftime("%d/%m/%Y")%>
         <% else %>
-           Date de naissance NR
+          Date de naissance NR
         <% end %>
        </strong></p>
       <p><strong><%= @player_profil.weight.present? ? "#{@player_profil.weight} kg" : "Poids NR" %></strong></p>
