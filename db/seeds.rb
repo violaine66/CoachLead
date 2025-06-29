@@ -120,7 +120,7 @@ players_data = [
   { first_name: "Valentin", last_name: "Delespaul", date_of_birth: Date.new(1999, 4, 20), job: "", weight: "", children_count: "", user_id: users[5].id },
   { first_name: "Junior", last_name: "Do Marcolino", date_of_birth: Date.new(1993, 9, 18), job: "", weight: "", children_count: "", user_id: users[6].id },
   { first_name: "Mathéo", last_name: "Flohic", date_of_birth: Date.new(2001, 6, 11), job: "", weight: "", children_count: "", user_id: users[7].id },
-  { first_name: "Dominique", last_name: "Gomis", date_of_birth: Date.new(2007, 10, 03), job: "", weight: "", children_count: "", user_id: users[8].id },
+  { first_name: "Dominique", last_name: "Gomis", date_of_birth: Date.new(2007, 10, 3), job: "", weight: "", children_count: "", user_id: users[8].id },
   { first_name: "Hakim", last_name: "Lazreg", date_of_birth: Date.new(1991, 2, 15), job: "", weight: "", children_count: "", user_id: users[9].id },
   { first_name: "Matteo", last_name: "Louismet", date_of_birth: Date.new(2001, 1, 12 ), job: "", weight: "", children_count: "", user_id: users[10].id },
   { first_name: "Ancelin", last_name: "Meder", date_of_birth: Date.new(2002, 7, 14), job: "", weight: "", children_count: "", user_id: users[11].id },
