@@ -45,4 +45,13 @@ class PlayerProfil < ApplicationRecord
     return 0 if count == 0
     (total.to_f / count).round(2)
   end
+
+  def age
+    return nil unless date_of_birth.present?
+
+    today = Date.today
+    age = today.year - date_of_birth.year
+    age -= 1 if today < date_of_birth + age.years # Ajustement si l'anniversaire n'est pas encore passé cette année
+    age
+  end
 end

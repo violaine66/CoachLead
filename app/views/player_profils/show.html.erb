@@ -43,6 +43,7 @@
 
     <div class="player-card-show">
       <p><strong><%= @player_profil.age.present? ? "#{@player_profil.age} ans" : "Âge NR" %></strong></p>
+
       <p><strong>
         <% if @player_profil.date_of_birth.present? %>
           <%= @player_profil.date_of_birth.strftime("%d/%m/%Y")%>
