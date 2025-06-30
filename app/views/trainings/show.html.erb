@@ -14,17 +14,20 @@
 
     <div class="training-details">
       <p><i class="fa-solid fa-calendar-days me-2 text-dark "></i><strong><%= @training.date.strftime("%d %m %Y")%></strong></p>
-
-      <strong><p> <%= @training.title%></p></strong>
+      <% if @training.title.present?%>
+        <strong><p> <%= @training.title%></p></strong>
+      <% end %>
       <% if @training.location.present? %>
         <p> <i class="fa-solid fa-location-dot me-2 text-dark"></i><%= @training.location %></p>
       <% end %>
       <p><i class="fa-solid fa-clock me-2 text-dark"></i>
-        <%= @training.start_time.strftime("%H:%M") %> <%= @training.end_time.strftime("%H:%M") %>
+        <%= @training.start_time.strftime("%H:%M") %> - <%= @training.end_time.strftime("%H:%M") %>
       </p>
 
+      <% if @training.description.present? %>
+        <p><%= @training.description%></p>
+      <% end %>
 
-      <p><%= @training.description%></p>
         <div class="text-end">
               <% if policy(Training).create?%>
                     <%= link_to edit_training_path do %>

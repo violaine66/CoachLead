@@ -40,25 +40,27 @@ puts "Utilisateur développeur.entraîneur créé avec succès."
 
 puts "Création des entraînements..."
 puts "Créer quelques entraînements"
+
 Training.create!(
   date: Date.new(2025, 7, 28),
   start_time: "19:15",
   end_time: "21:15",
-  title: "2h Objectif cible",
+  title: "Objectif cible",
+  description: "Séance de 2h",
 )
 
 Training.create!(
   date: Date.new(2025, 7, 29),
   start_time: "19:15",
   end_time: "20:30",
-  title: "1h15"
+  description: "Séance de 1h15",
 )
 
 Training.create!(
   date: Date.new(2025, 7, 30),
   start_time: "19:15",
   end_time: "20:30",
-  title: "1h15"
+  description: "séance de 1h15",
 )
 
 Training.create!(
@@ -66,29 +68,21 @@ Training.create!(
   location: "Parc des Sports",
   start_time: "19:15",
   end_time: "20:15",
-  title: "1h de séance vitesse + CPA intégrés"
-)
-
-Training.create!(
-  date: Date.new(2025, 8, 1),
-  location: "Parc des Sports",
-  start_time: "19:15",
-  end_time: "20:15",
-  title: "1h de séance vitesse + CPA intégrés"
+  description: "1h de séance vitesse + CPA intégrés"
 )
 
 Training.create!(
   date: Date.new(2025, 8, 4),
   start_time: "19:15",
   end_time: "20:30",
-  title: "1h15 IFT"
+  description: "Séance de 1h15 IFT",
 )
 
 Training.create!(
   date: Date.new(2025, 8, 5),
   start_time: "19:15",
   end_time: "20:15",
-  title: "1h de séance vitesse + mise en place "
+  description: "1h de séance vitesse + mise en place "
 )
 
 Training.create!(
@@ -96,9 +90,57 @@ Training.create!(
   location: "Parc des Sports",
   start_time: "19:15",
   end_time: "20:15",
-  title: "1h de séance vitesse + CPA intégrés"
+  description: "1h de séance vitesse + CPA intégrés"
 )
 
+Training.create!(
+  date: Date.new(2025, 8, 11),
+  start_time: "19:15",
+  end_time: "20:30",
+  description: "Séance de 1h15",
+)
+
+Training.create!(
+  date: Date.new(2025, 8, 12),
+  start_time: "19:15",
+  end_time: "20:30",
+  description: "1h de séance vitesse + mise en place "
+)
+
+Training.create!(
+  date: Date.new(2025, 8, 15),
+  start_time: "19:15",
+  end_time: "20:30",
+  description: "1h de séance vitesse + CPA intégrés"
+)
+
+Training.create!(
+  date: Date.new(2025, 8, 18),
+  start_time: "19:15",
+  end_time: "20:30",
+  description: "séance de 1h15",
+)
+
+Training.create!(
+  date: Date.new(2025, 8, 19)
+  start_time: "19:15",
+  end_time: "20:30",
+  description: "1h de séance vitesse + mise en place"
+)
+
+Training.create!(
+  date: Date.new(2025, 8, 22),
+  start_time: "19:15",
+  end_time: "20:30",
+  description: "1h de séance + CPA intégrés"
+)
+
+Training.create!(
+  date: Date.new(2025, 8, 26),
+  start_time: "19:15",
+  end_time: "20:30",
+  description: "1h de séance vitesse + mise en place"
+)
 
 puts "Entraînements créés avec succès."
 
