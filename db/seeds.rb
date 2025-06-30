@@ -38,36 +38,36 @@ entraineur2 = User.create!(
 )
 puts "Utilisateur développeur.entraîneur créé avec succès."
 
-# puts "Création des entraînements..."
-# puts "Créer quelques entraînements"
-# Training.create!(
-#   date: Date.today + 1.day,
-#   location: "Stade de Paris",
-#   title: "Entraînement de Pré-Saison",
-#   description: "Entraînement physique intense pour préparer la saison à venir. Focus sur la résistance et l'endurance.",
-# )
+puts "Création des entraînements..."
+puts "Créer quelques entraînements"
+Training.create!(
+  date: Date.today + 1.day,
+  location: "Stade de Paris",
+  title: "Entraînement de Pré-Saison",
+  description: "Entraînement physique intense pour préparer la saison à venir. Focus sur la résistance et l'endurance.",
+)
 
-# Training.create!(
-#   date: Date.today + 3.days,
-#   location: "Salle de Gym",
-#   title: "Séance de Renforcement Musculaire",
-#   description: "Entraînement ciblé sur le renforcement musculaire, avec des exercices pour augmenter la force et la stabilité.",
-# )
+Training.create!(
+  date: Date.today + 3.days,
+  location: "Salle de Gym",
+  title: "Séance de Renforcement Musculaire",
+  description: "Entraînement ciblé sur le renforcement musculaire, avec des exercices pour augmenter la force et la stabilité.",
+)
 
-# Training.create!(
-#   date: Date.today + 7.days,
-#   location: "Stade Municipal",
-#   title: "Entraînement Technique et Tactique",
-#   description: "Séance centrée sur les compétences techniques et la stratégie de jeu pour améliorer la performance collective.",
-# )
+Training.create!(
+  date: Date.today + 7.days,
+  location: "Stade Municipal",
+  title: "Entraînement Technique et Tactique",
+  description: "Séance centrée sur les compétences techniques et la stratégie de jeu pour améliorer la performance collective.",
+)
 
-# Training.create!(
-#   date: Date.today + 10.days,
-#   location: "Parc des Sports",
-#   title: "Match d'Entraînement",
-#   description: "Match d'entraînement contre une équipe locale pour tester les stratégies et préparer le premier match officiel.",
-# )
-# puts "Entraînements créés avec succès."
+Training.create!(
+  date: Date.today + 10.days,
+  location: "Parc des Sports",
+  title: "Match d'Entraînement",
+  description: "Match d'entraînement contre une équipe locale pour tester les stratégies et préparer le premier match officiel.",
+)
+puts "Entraînements créés avec succès."
 
 
 puts "Création de 10 utilisateurs"
@@ -166,49 +166,49 @@ end
 puts "utilisateurs et profils de joueurs créés avec succès."
 
 
-# puts "création de 10 évaluations de charge de travail..."
-# users.each do |user|
-#   JobLoadEvaluation.create!(
-#     period: "Avril 2025",                    # Tu peux modifier la période selon ton besoin
-#     rating: rand(1..5),                     # Une note entre 1 et 5 (par exemple)
-#     user: user
-#   )
-# end
-#  puts "10 évaluations de charge de travail créées avec succès."
+puts "création de 10 évaluations de charge de travail..."
+users.each do |user|
+  JobLoadEvaluation.create!(
+    period: "Avril 2025",                    # Tu peux modifier la période selon ton besoin
+    rating: rand(1..5),                     # Une note entre 1 et 5 (par exemple)
+    user: user
+  )
+end
+ puts "10 évaluations de charge de travail créées avec succès."
 
-# puts "Créez des performances de match pour chaque utilisateur"
-# puts "Création de performances de match..."
-# users.each do |user|
-#   # Créez plusieurs performances de match pour chaque utilisateur (par exemple, 5 matchs)
-#   5.times do |i|
-#     # Créez une performance de match pour un utilisateur avec des données simples
-#     MatchPerformance.create(
-#       user_id: user.id,
-#       match_date: Date.new(2025, 4, i+1),  # Dates fixes pour les matchs (ex: 1er avril, 2 avril, etc.)
-#       played: [true, false].sample,  # Match joué ou non, sélectionné aléatoirement
-#       yellow_card: rand(0..2)  # Carton jaune aléatoire (0, 1 ou 2)
-#     )
-#   end
-# end
+puts "Créez des performances de match pour chaque utilisateur"
+puts "Création de performances de match..."
+users.each do |user|
+  # Créez plusieurs performances de match pour chaque utilisateur (par exemple, 5 matchs)
+  5.times do |i|
+    # Créez une performance de match pour un utilisateur avec des données simples
+    MatchPerformance.create(
+      user_id: user.id,
+      match_date: Date.new(2025, 4, i+1),  # Dates fixes pour les matchs (ex: 1er avril, 2 avril, etc.)
+      played: [true, false].sample,  # Match joué ou non, sélectionné aléatoirement
+      yellow_card: rand(0..2)  # Carton jaune aléatoire (0, 1 ou 2)
+    )
+  end
+end
 
-# # db/seeds.rb
+# db/seeds.rb
 
-# # On récupère quelques users et trainings existants
-# joueurs = User.where(role: "joueur")  # ou :player si tu utilises un enum
-# trainings = Training.all
+# On récupère quelques users et trainings existants
+joueurs = User.where(role: "joueur")  # ou :player si tu utilises un enum
+trainings = Training.all
 
-# # Statuts possibles
-# statuses = %w[present absent late excused]
+# Statuts possibles
+statuses = %w[present absent late excused]
 
-# puts "Creating attendances..."
-# trainings.each do |training|
-#   joueurs.sample(5).each do |joueur|
-#     Attendance.create!(
-#       user: joueur,
-#       training: training,
-#       status: statuses.sample
-#     )
-#   end
-# end
+puts "Creating attendances..."
+trainings.each do |training|
+  joueurs.sample(5).each do |joueur|
+    Attendance.create!(
+      user: joueur,
+      training: training,
+      status: statuses.sample
+    )
+  end
+end
 
-# puts "✅ Attendances created successfully!"
+puts "✅ Attendances created successfully!"
