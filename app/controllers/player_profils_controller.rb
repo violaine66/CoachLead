@@ -12,7 +12,7 @@ class PlayerProfilsController < ApplicationController
       if params[:query].present?
         @player_profils = @player_profils.search_by_first_and_last_name(params[:query])
       end
-      @player_profils = @player_profils.order(:first_name, :last_name)
+      @player_profils = @player_profils.order(:last_name)
   end
 
   def show

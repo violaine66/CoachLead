@@ -2,17 +2,16 @@
   <div class="text-end">
     <%= link_to "Ajouter un profil", new_player_profil_path, class: "btn-add text-white text-end" %>
   </div>
-  <div class="row">
-    <div class="col">
-      <%= form_with url: player_profils_path, method: :get, local: true, class:"mt-3"  do %>
-        <%= text_field_tag :query, params[:query], class: "form-control me-2", onclick: "this.value=''" %>
-         <button type="submit" class="btn btn-secondary" title="Rechercher un joueur">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-          <%= link_to player_profils_path, class: "btn-reset ms-1", title: "Réinitialiser la recherche" do %>
-            <i class="fa-solid fa-xmark"></i>
-          <% end %>
-      <% end %>
+  <div class="row mt-5 d-flex justify-content-center">
+    <div class="col-sm-6 col-md-4 col-lg-4">
+
+        <%= form_with url: player_profils_path, method: :get, local: true, class:"d-flex justify-content-center" do %>
+          <%= text_field_tag :query, params[:query], class: "form-control me-2", placeholder: "Rechercher un joueur", onclick: "this.value=''" %>
+          <button type="submit" class="btn btn-secondary" title="Rechercher un joueur">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        <% end %>
+
     </div>
   </div>
 
