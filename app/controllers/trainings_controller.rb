@@ -8,8 +8,6 @@ class TrainingsController < ApplicationController
 
   def index
     @trainings = policy_scope(Training)
-    
-
   end
 
   def show
@@ -66,7 +64,7 @@ class TrainingsController < ApplicationController
 
   private
   def training_params
-    params.require(:training).permit(:date, :title, :location, :description)
+    params.require(:training).permit(:date, :title, :location, :description, :start_time, :end_time)
   end
   def set_training
     @training = Training.find(params[:id])
