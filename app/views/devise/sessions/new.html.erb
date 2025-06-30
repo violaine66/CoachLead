@@ -1,29 +1,31 @@
-<div class="container mt-5">
-  <div class="row d-flex justify-content-center mt-5 ">
-    <div class="col-10 col-md-6 col-md-6" id="card-login">
-      <h2 class="my-3 fw-bold text-dark text-center">Connexion</h2>
+<div class="container mt-5 d-flex justify-content-center align-items-center">
+  <div class="row w-100 d-flex justify-content-center">
+    <div class="col-10 col-md-8 d-flex" id="card-login">
+
+      <!-- Colonne image -->
+      <div class="w-50 d-flex justify-content-center align-items-center">
+        <%= image_tag "snaf44.png", alt: "Logo CoachLead", class: "img-fluid logo-img" %>
+      </div>
+
+      <!-- Colonne form -->
+      <div class="w-50 p-4">
+        <h2 class="my-3 fw-bold text-dark text-center">Connexion</h2>
 
         <% I18n.locale = :fr %>
 
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-inputs">
-          <%= f.input :pseudo,
-                      required: false,
-                      autofocus: true,
-                      input_html: { autocomplete: "Pseudo" } %>
-          <%= f.input :password,
-                      required: false,
-                      input_html: { autocomplete: "current-password" },
-                      label: "Mot de passe" %>
-         
-        </div>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :pseudo, required: false, autofocus: true, input_html: { autocomplete: "Pseudo" } %>
+            <%= f.input :password, required: false, input_html: { autocomplete: "current-password" }, label: "Mot de passe" %>
+          </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Connexion", class:"btn btn-connect fw-bold mb-3" %>
-        </div>
-      <% end %>
-      <div class="pb-3"><%= render "devise/shared/links"%></div>
+          <div class="form-actions">
+            <%= f.button :submit, "Connexion", class: "btn btn-connect fw-bold mb-3" %>
+          </div>
+        <% end %>
+        <div class="pb-3"><%= render "devise/shared/links" %></div>
       </div>
 
     </div>
   </div>
+</div>
