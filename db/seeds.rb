@@ -51,7 +51,7 @@ Training.create!(
 Training.create!(
   date: Date.new(2025, 7, 29),
   start_time: "19:15",
-  end_time: "20:30"
+  end_time: "20:30",
   description: "1h15"
 )
 
@@ -67,7 +67,7 @@ Training.create!(
   location: "Parc des Sports",
   start_time: "19:15",
   end_time: "20:15",
-  description: "1h de séance vitesse + CPA intégrés",
+  description: "1h de séance vitesse + CPA intégrés"
 )
 
 Training.create!(
@@ -75,7 +75,7 @@ Training.create!(
   location: "Parc des Sports",
   start_time: "19:15",
   end_time: "20:15",
-  description: "1h de séance vitesse + CPA intégrés",
+  description: "1h de séance vitesse + CPA intégrés"
 )
 
 Training.create!(
@@ -97,7 +97,7 @@ Training.create!(
   location: "Parc des Sports",
   start_time: "19:15",
   end_time: "20:15",
-  description: "1h de séance vitesse + CPA intégrés",
+  description: "1h de séance vitesse + CPA intégrés"
 )
 
 
