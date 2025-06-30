@@ -9,6 +9,10 @@ class PlayerProfilsController < ApplicationController
 
   def index
       @player_profils = policy_scope(PlayerProfil).includes(photo_attachment: :blob)
+      if params[:query].present?
+        @player_profils = @player_profils.search_by_first_and_last_name(params[:query])
+      end
+      @player_profils = @player_profils.order(:first_name, :last_name)
   end
 
   def show

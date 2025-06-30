@@ -57,6 +57,8 @@ gem "sassc-rails"
 
 gem "cloudinary"
 
+gem "pg_search"
+
 group :development do
   gem 'brakeman', require: false
 end

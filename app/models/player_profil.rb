@@ -2,6 +2,7 @@
 #  Propriété exclusive de Violaine Soulas.
 #  Toute reproduction, même partielle, est interdite sans l'autorisation écrite de Violaine Soulas.
 class PlayerProfil < ApplicationRecord
+
   belongs_to :user
   before_destroy :destroy_user_related_records
   has_one_attached :photo
@@ -12,6 +13,12 @@ class PlayerProfil < ApplicationRecord
   validates :weight, numericality: { greater_than_or_equal_to: 30 }, allow_nil: true
   validates :children_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
 
+  include PgSearch::Model
+  pg_search_scope :search_by_first_and_last_name,
+    against: [:first_name, :last_name],
+    using: {
+      tsearch: { prefix: true } # Permet la recherche par préfixe
+    }
 
   def destroy_user_related_records
     return unless user.present?
