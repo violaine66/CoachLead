@@ -122,7 +122,7 @@ Training.create!(
 )
 
 Training.create!(
-  date: Date.new(2025, 8, 19)
+  date: Date.new(2025, 8, 19),
   start_time: "19:15",
   end_time: "20:30",
   description: "1h de séance vitesse + mise en place"
