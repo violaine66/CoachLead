@@ -8,6 +8,8 @@ class TrainingsController < ApplicationController
 
   def index
     @trainings = policy_scope(Training)
+    
+
   end
 
   def show
