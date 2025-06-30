@@ -13,9 +13,17 @@
   <div class="training-joueur d-flex justify-content-center">
 
     <div class="training-details">
-      <h4><strong><p><%= @training.title%></p></strong></h4>
       <p><i class="fa-solid fa-calendar-days me-2 text-dark "></i><strong><%= @training.date.strftime("%d %m %Y")%></strong></p>
-      <p> <i class="fa-solid fa-location-dot me-2 text-dark"></i><%= @training.location %></p>
+
+      <strong><p> <%= @training.title%></p></strong>
+      <% if @training.location.present? %>
+        <p> <i class="fa-solid fa-location-dot me-2 text-dark"></i><%= @training.location %></p>
+      <% end %>
+      <p><i class="fa-solid fa-clock me-2 text-dark"></i>
+        <%= @training.start_time.strftime("%H:%M") %> <%= @training.end_time.strftime("%H:%M") %>
+      </p>
+
+
       <p><%= @training.description%></p>
         <div class="text-end">
               <% if policy(Training).create?%>

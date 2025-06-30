@@ -45,7 +45,6 @@ Training.create!(
   start_time: "19:15",
   end_time: "21:15",
   title: "2h Objectif cible",
-  description: "2h"
 )
 
 Training.create!(
