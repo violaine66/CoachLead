@@ -18,12 +18,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
+
           <li class="nav-item dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
               data-bs-toggle="dropdown" aria-expanded="false">
               Mon compte
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+              <% if current_user.entraineur?%>
+              <li><%= link_to "Exporter des données", admin_exports_path, class:"dropdown-item text-dark"%></li>
+              <% end %>
               <li><%= link_to 'Modifier mon compte', edit_user_registration_path, class: "dropdown-item text-dark" %></li>
               <li><%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item text-dark" %></li>
             </ul>
