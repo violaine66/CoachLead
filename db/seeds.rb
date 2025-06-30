@@ -41,32 +41,66 @@ puts "Utilisateur développeur.entraîneur créé avec succès."
 puts "Création des entraînements..."
 puts "Créer quelques entraînements"
 Training.create!(
-  date: Date.today + 1.day,
-  location: "Stade de Paris",
-  title: "Entraînement de Pré-Saison",
-  description: "Entraînement physique intense pour préparer la saison à venir. Focus sur la résistance et l'endurance.",
+  date: Date.new(2025, 7, 28),
+  start_time: "19:15",
+  end_time: "21:15",
+  title: "2h Objectif cible",
+  description: "2h"
 )
 
 Training.create!(
-  date: Date.today + 3.days,
-  location: "Salle de Gym",
-  title: "Séance de Renforcement Musculaire",
-  description: "Entraînement ciblé sur le renforcement musculaire, avec des exercices pour augmenter la force et la stabilité.",
+  date: Date.new(2025, 7, 29),
+  start_time: "19:15",
+  end_time: "20:30"
+  description: "1h15"
 )
 
 Training.create!(
-  date: Date.today + 7.days,
-  location: "Stade Municipal",
-  title: "Entraînement Technique et Tactique",
-  description: "Séance centrée sur les compétences techniques et la stratégie de jeu pour améliorer la performance collective.",
+  date: Date.new,
+  start_time: "19:15",
+  end_time: "20:30",
+  description: "1h15"
 )
 
 Training.create!(
-  date: Date.today + 10.days,
+  date: Date.new(2025, 8, 1),
   location: "Parc des Sports",
-  title: "Match d'Entraînement",
-  description: "Match d'entraînement contre une équipe locale pour tester les stratégies et préparer le premier match officiel.",
+  start_time: "19:15",
+  end_time: "20:15",
+  description: "1h de séance vitesse + CPA intégrés",
 )
+
+Training.create!(
+  date: Date.new(2025, 8, 1),
+  location: "Parc des Sports",
+  start_time: "19:15",
+  end_time: "20:15",
+  description: "1h de séance vitesse + CPA intégrés",
+)
+
+Training.create!(
+  date: Date.new(2025, 8, 4),
+  start_time: "19:15",
+  end_time: "20:30",
+  description: "1h15 IFT"
+)
+
+Training.create!(
+  date: Date.new(2025, 8, 5),
+  start_time: "19:15",
+  end_time: "20:15",
+  description: "1h de séance vitesse + mise en place "
+)
+
+Training.create!(
+  date: Date.new(2025, 8, 8),
+  location: "Parc des Sports",
+  start_time: "19:15",
+  end_time: "20:15",
+  description: "1h de séance vitesse + CPA intégrés",
+)
+
+
 puts "Entraînements créés avec succès."
 
 
