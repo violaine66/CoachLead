@@ -1,0 +1,9 @@
+input[type="time"] {
+  color: black;
+}
+input[type="time"]::-webkit-datetime-edit {
+  color: black;
+}
+.form-training input[type="time"] {
+  color: black;
+}

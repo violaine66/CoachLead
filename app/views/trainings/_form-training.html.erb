@@ -8,6 +8,8 @@
               <%= f.input :date, as: :string,
                 label: "Date de l'entraînement",
                           input_html: { data: { controller: "datepicker" }} %>
+              <%= f.input :start_time, as: :time, label: "Heure de début", class:"text-dark" %>
+              <%= f.input :end_time, as: :time, label: "Heure de fin" %>
 
 
               <%= f.input :title, label:"Nom de l'entraînement" %>
