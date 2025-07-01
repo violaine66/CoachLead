@@ -19,4 +19,97 @@ h1 {
   font-family: "Kanit", sans-serif;
 }
 
+.training-square {
+  width: 60px;
+  height: 60px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: background-color .2s, transform .2s;
+  color: #222;
+  text-align: center;
+  position: relative;
 
+  &.past {
+    opacity: 0.5;                   // un peu transparent
+  }
+
+  &.past .day-number,
+  &.past .month-abbrev {
+    text-decoration: line-through;  // biffer le texte
+  }
+}
+
+.training-square:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.training-square .day-number {
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #222;
+}
+
+.training-square .month-abbrev {
+  font-size: 0.75rem;
+  color: #555;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* app/assets/stylesheets/trainings.scss */
+.training-grid {
+  display: grid;
+  justify-content: center;
+  gap: 12px;
+
+  /* auto‑fit autant de colonnes que possible, min 60px, max 80px */
+  grid-template-columns: repeat(auto-fit, minmax(60px, 80px));
+  margin: 0 auto;
+}
+
+.training-square {
+  width: 60px;
+  height: 60px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  color: #222;
+  text-decoration: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-color .2s, transform .2s;
+
+  &.past {
+    opacity: 0.5;
+
+    .day-number,
+    .month-abbrev {
+      text-decoration: line-through;
+    }
+  }
+
+  &:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+  }
+}
+
+.training-square .day-number {
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.training-square .month-abbrev {
+  font-size: 0.75rem;
+  color: #555;
+  text-transform: uppercase;
+  margin-top: 2px;
+}

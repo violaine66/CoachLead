@@ -1,25 +1,21 @@
+<%# app/views/trainings/index.html.erb %>
 <div class="container mt-5">
-
   <% if current_user.entraineur? %>
-  <div class="training-new text-end mb-4">
-    <%= link_to "Créer un entraînement", new_training_path, class:"btn-add text-white" %>
-  </div>
+    <div class="text-end mb-4">
+      <%= link_to "Créer un entraînement", new_training_path, class: "btn-add text-white text-end" %>
+    </div>
   <% end %>
 
-  <%= month_calendar(locale: :fr, events: @trainings) do |date, trainings| %>
-  <div class="day-container">
-    <div class="day-number"><%= date.day %></div>
-    <div class="mood-circle-wrapper">
-      <% if trainings.any? %>
-        <% trainings.each do |training| %>
-          <%= link_to (training.title.presence || "Entraînement"), training_path(training) %><br>
-        <% end %>
-      <% else %>
-        <p>Pas d'entraînement</p>
+  <h1 class="my-4 text-center">Entraînements</h1>
+
+  <div class="training-grid">
+    <% @trainings.each do |t| %>
+      <% past = (t.date < Date.current) %>
+      <%= link_to training_path(t),
+                  class: "training-square #{'past' if past}" do %>
+        <div class="day-number"><%= t.date.day %></div>
+        <div class="month-abbrev"><%= l t.date, format: "%b", locale: :fr %></div>
       <% end %>
-    </div>
+    <% end %>
   </div>
-<% end %>
-
-
 </div>

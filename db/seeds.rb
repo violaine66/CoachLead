@@ -73,6 +73,7 @@ Training.create!(
 
 Training.create!(
   date: Date.new(2025, 8, 1),
+
   start_time: "19:15",
   end_time: "20:30",
   location: "Parc des Sports Léo Lagrange, vestaire bloc athlétisme",
