@@ -59,6 +59,8 @@ gem "cloudinary"
 
 gem "pg_search"
 
+gem "simple_calendar"
+
 group :development do
   gem 'brakeman', require: false
 end
