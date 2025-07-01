@@ -2,16 +2,15 @@
   <div class="text-end">
     <%= link_to "Ajouter un profil", new_player_profil_path, class: "btn-add text-white text-end" %>
   </div>
+  
   <div class="row mt-5 d-flex justify-content-center">
-    <div class="col-sm-6 col-md-4 col-lg-4">
-
+    <div class="col-sm-4 col-md-4 col-lg-4">
         <%= form_with url: player_profils_path, method: :get, local: true, class:"d-flex justify-content-center" do %>
           <%= text_field_tag :query, params[:query], class: "form-control me-2", placeholder: "Rechercher un joueur", onclick: "this.value=''" %>
           <button type="submit" class="btn btn-secondary" title="Rechercher un joueur">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         <% end %>
-
     </div>
   </div>
 
@@ -29,7 +28,7 @@
                 <i class="fa-solid fa-circle-user fa-5x my-3 d-block mx-auto"></i>
               <% end %>
               <div class="card-body text-center">
-                <h5 class="card-title"><strong><%= player.full_name %></strong></h5>
+                <h5 class="card-title"><strong><%= player.last_name %> <%= player.first_name%></strong></h5>
               </div>
             </div>
           <% end %>
