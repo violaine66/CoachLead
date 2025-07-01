@@ -10,4 +10,5 @@ class Training < ApplicationRecord
 
   has_many :attendances, dependent: :destroy
 
+
 end

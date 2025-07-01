@@ -6,27 +6,20 @@
   </div>
   <% end %>
 
-    <div class="row d-flex justify-content-center">
-      <div class="col-12">
-        <h1 class="my-4 text-center">Entraînements</h1>
-        <% if @trainings.present? %>
-          <% @trainings.each do |t| %>
-          <div class="d-flex align-items-center">
-            <div>
-              <%= link_to training_path(t) do %>
-                <span class="text-white"><%= t.date.strftime("%d/%m/%Y") %></span>
-
-            </div>
-          </div>
-          <hr>
-            <% end %>
-          <% end %>
-        <% else %>
-        <div class="text-center">
-          <p><em>Aucun entraînement pour le moment </em></p>
-        </div>
+  <%= month_calendar(locale: :fr, events: @trainings) do |date, trainings| %>
+  <div class="day-container">
+    <div class="day-number"><%= date.day %></div>
+    <div class="mood-circle-wrapper">
+      <% if trainings.any? %>
+        <% trainings.each do |training| %>
+          <%= link_to (training.title.presence || "Entraînement"), training_path(training) %><br>
+        <% end %>
+      <% else %>
+        <p>Pas d'entraînement</p>
       <% end %>
-      </div>
     </div>
+  </div>
+<% end %>
+
 
 </div>

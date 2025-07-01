@@ -21,7 +21,9 @@ module CoachLead
     config.load_defaults 7.1
 
     config.i18n.available_locales = [:en, :fr]
-    
+    config.i18n.default_locale = :fr
+
+
 
     # Charge les fichiers de traduction dans config/locales et sous-dossiers
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
