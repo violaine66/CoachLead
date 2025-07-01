@@ -62,6 +62,25 @@ class AttendancesController < ApplicationController
     end
   end
 
+  def bulk_update
+    training = Training.find(params[:training_id])
+    authorize training, :update?  # ou autre selon ta Pundit
+
+    attendances_params = params[:attendances] || {}
+
+    attendances_params.each do |user_id, attendance_attrs|
+      status = attendance_attrs[:status]
+      next if status.blank?
+
+      attendance = Attendance.find_or_initialize_by(training: training, user_id: user_id)
+      attendance.status = status
+      attendance.save!
+  end
+
+    redirect_to training_path(training), notice: "Présences mises à jour."
+  end
+
+
   private
   def attendance_params
     params.require(:attendance).permit(:status, :user_id, :training_id)

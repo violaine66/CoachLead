@@ -147,7 +147,6 @@
           <th>Joueur</th>
           <th>Date</th>
           <th class="text-center">Statut</th>
-          <th class="text-center">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -167,11 +166,6 @@
                 <%= a.status.present? ? a.status.capitalize : "Non défini" %>
               </span>
             </td>
-            <td class="text-center">
-              <%= link_to edit_training_attendance_path(@training, a), class: "text-decoration-none" do %>
-                <i class="fas fa-edit text-dark"></i>
-              <% end %>
-            </td>
           </tr>
         <% end %>
       </tbody>
@@ -179,4 +173,55 @@
   <% end %>
 </div>
 
+<div class="row d-flex justify-content-center">
+  <div class="col-sm-8 col-md-8 col-lg-6 mx-auto ">
+<h4 class="text-center mb-3">Saisie</h4>
+      <%= form_with url: bulk_update_attendances_path, method: :post do %>
+
+      <%= hidden_field_tag :training_id, @training.id %>
+
+        <table id="attendance-table" class="table table-striped mt-3">
+          <thead>
+            <tr>
+              <th>Joueur</th>
+              <th>Statut</th>
+              <th>Statut actuel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @players.each do |player| %>
+              <% attendance = @attendances[player.id] %>
+              <tr class="text-dark">
+                <td>
+                  <%= player.player_profil ? "#{player.player_profil.first_name} #{player.player_profil.last_name}" : "" %>
+                </td>
+                <td class="text-dark">
+                  <%= select_tag "attendances[#{player.id}][status]", options_for_select(['present', 'absent', 'late', 'excused'], attendance&.status), include_blank: true, prompt:"Séléctionner", class:"form-select status-select"%>
+                </td>
+                <td>
+                  <% if attendance %>
+                    <% badge_class = case attendance.status
+                                    when "present" then "badge bg-success"
+                                    when "absent" then "badge bg-danger"
+                                    when "late" then "badge bg-warning text-dark"
+                                    when "excused" then "badge bg-info text-dark"
+                                    else "badge bg-secondary"
+                                  end %>
+                    <span class="<%= badge_class %>">
+                      <%= attendance.status.present? ? attendance.status.capitalize : "Non défini" %>
+                    </span>
+                  <% else %>
+                    <span class="badge bg-secondary">Non défini</span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      <%= submit_tag "Enregistrer les présences" %>
+    <% end %>
+
+    </div>
+  </div>
 </div>

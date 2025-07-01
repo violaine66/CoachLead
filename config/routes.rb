@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   end
 
 
+  resources :attendances do
+  collection do
+    post :bulk_update
+  end
+end
+
 
 
 

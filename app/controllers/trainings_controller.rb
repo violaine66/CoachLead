@@ -19,6 +19,12 @@ class TrainingsController < ApplicationController
     @training = Training.includes(attendances: { user: :player_profil }).find(params[:id])
     authorize @training
 
+    # Tous les joueurs (peut être filtrés selon ta logique métier)
+    @players = User.includes(:player_profil).where(role: 'joueur')
+
+    # Attendances existantes indexées par user_id
+    @attendances = @training.attendances.index_by(&:user_id)
+
     if current_user.joueur?
       @pre_training_evaluation = PreTrainingEvaluation.find_by(training: @training, user: current_user)
     elsif current_user.entraineur?

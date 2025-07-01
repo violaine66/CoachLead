@@ -22,6 +22,20 @@
   background-color: #EBFFEB;
  }
 
+ #attendance-table td, th, input {
+  color:black;
+ }
+
+.status-select {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+.status-select option {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
  @media (max-width: 768px) {
   table th, table td {
     font-size: 12px; /* Réduire la taille de la police */
