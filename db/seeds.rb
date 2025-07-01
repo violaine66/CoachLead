@@ -39,7 +39,6 @@ entraineur2 = User.create!(
 puts "Utilisateur développeur.entraîneur créé avec succès."
 
 puts "Création des entraînements..."
-puts "Créer quelques entraînements"
 
 Training.create!(
   date: Date.new(2025, 7, 28),
@@ -67,7 +66,7 @@ Training.create!(
   date: Date.new(2025, 8, 1),
   location: "Parc des Sports",
   start_time: "19:15",
-  end_time: "20:15",
+  end_time: "20:30",
   description: "1h de séance vitesse + CPA intégrés"
 )
 
@@ -81,15 +80,14 @@ Training.create!(
 Training.create!(
   date: Date.new(2025, 8, 5),
   start_time: "19:15",
-  end_time: "20:15",
+  end_time: "20:30",
   description: "1h de séance vitesse + mise en place "
 )
 
 Training.create!(
   date: Date.new(2025, 8, 8),
-  location: "Parc des Sports",
   start_time: "19:15",
-  end_time: "20:15",
+  end_time: "20:30",
   description: "1h de séance vitesse + CPA intégrés"
 )
 
@@ -241,49 +239,49 @@ end
 puts "utilisateurs et profils de joueurs créés avec succès."
 
 
-puts "création de 10 évaluations de charge de travail..."
-users.each do |user|
-  JobLoadEvaluation.create!(
-    period: "Avril 2025",                    # Tu peux modifier la période selon ton besoin
-    rating: rand(1..5),                     # Une note entre 1 et 5 (par exemple)
-    user: user
-  )
-end
- puts "10 évaluations de charge de travail créées avec succès."
+# puts "création de 10 évaluations de charge de travail..."
+# users.each do |user|
+#   JobLoadEvaluation.create!(
+#     period: "Avril 2025",                    # Tu peux modifier la période selon ton besoin
+#     rating: rand(1..5),                     # Une note entre 1 et 5 (par exemple)
+#     user: user
+#   )
+# end
+#  puts "10 évaluations de charge de travail créées avec succès."
 
-puts "Créez des performances de match pour chaque utilisateur"
-puts "Création de performances de match..."
-users.each do |user|
-  # Créez plusieurs performances de match pour chaque utilisateur (par exemple, 5 matchs)
-  5.times do |i|
-    # Créez une performance de match pour un utilisateur avec des données simples
-    MatchPerformance.create(
-      user_id: user.id,
-      match_date: Date.new(2025, 4, i+1),  # Dates fixes pour les matchs (ex: 1er avril, 2 avril, etc.)
-      played: [true, false].sample,  # Match joué ou non, sélectionné aléatoirement
-      yellow_card: rand(0..2)  # Carton jaune aléatoire (0, 1 ou 2)
-    )
-  end
-end
+# puts "Créez des performances de match pour chaque utilisateur"
 
-# db/seeds.rb
+# users.each do |user|
+#   # Créez plusieurs performances de match pour chaque utilisateur (par exemple, 5 matchs)
+#   5.times do |i|
+#     # Créez une performance de match pour un utilisateur avec des données simples
+#     MatchPerformance.create(
+#       user_id: user.id,
+#       match_date: Date.new(2025, 4, i+1),  # Dates fixes pour les matchs (ex: 1er avril, 2 avril, etc.)
+#       played: [true, false].sample,  # Match joué ou non, sélectionné aléatoirement
+#       yellow_card: rand(0..2)  # Carton jaune aléatoire (0, 1 ou 2)
+#     )
+#   end
+# end
 
-# On récupère quelques users et trainings existants
-joueurs = User.where(role: "joueur")  # ou :player si tu utilises un enum
-trainings = Training.all
+# # db/seeds.rb
 
-# Statuts possibles
-statuses = %w[present absent late excused]
+# # On récupère quelques users et trainings existants
+# joueurs = User.where(role: "joueur")  # ou :player si tu utilises un enum
+# trainings = Training.all
 
-puts "Creating attendances..."
-trainings.each do |training|
-  joueurs.sample(5).each do |joueur|
-    Attendance.create!(
-      user: joueur,
-      training: training,
-      status: statuses.sample
-    )
-  end
-end
+# # Statuts possibles
+# statuses = %w[present absent late excused]
 
-puts "✅ Attendances created successfully!"
+# puts "Creating attendances..."
+# trainings.each do |training|
+#   joueurs.sample(5).each do |joueur|
+#     Attendance.create!(
+#       user: joueur,
+#       training: training,
+#       status: statuses.sample
+#     )
+#   end
+# end
+
+# puts "✅ Attendances created successfully!"
