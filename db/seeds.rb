@@ -39,7 +39,7 @@ entraineur2 = User.create!(
 entraineur3 = User.create!(
   email: ENV.fetch("ADMIN3_EMAIL"),
   password: ENV.fetch("ADMIN3_PASSWORD"),
-  pseudo: ENV.fetch("ADMI32_PSEUDO"),
+  pseudo: ENV.fetch("ADMIN3_PSEUDO"),
   role: :entraineur,
 )
 puts "Utilisateur développeur.entraîneur créé avec succès."
