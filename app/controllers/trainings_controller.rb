@@ -1,7 +1,11 @@
 # © 2025 Violaine Soulas Tous droits réservés.
 #  Propriété exclusive de Violaine Soulas.
 #  Toute reproduction, même partielle, est interdite sans l'autorisation écrite de Violaine Soulas.
+
+
 class TrainingsController < ApplicationController
+
+
   before_action :authenticate_user!
   before_action :set_training, only: [:show, :edit, :update, :destroy]
   after_action :verify_policy_scoped, only: :index  # Vérifie la politique du scope pour l'index

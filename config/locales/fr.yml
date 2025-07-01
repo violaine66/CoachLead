@@ -50,3 +50,43 @@ fr:
     sessions:
       signed_in: "Connexion réussie."
       signed_out: "Déconnexion réussie."
+  date:
+    abbr_day_names:
+      - "Dim"
+      - "Lun"
+      - "Mar"
+      - "Mer"
+      - "Jeu"
+      - "Ven"
+      - "Sam"
+  date:
+    day_names:
+      - "Dimanche"
+      - "Lundi"
+      - "Mardi"
+      - "Mercredi"
+      - "Jeudi"
+      - "Vendredi"
+      - "Samedi"
+    abbr_day_names:
+      - "Dim"
+      - "Lun"
+      - "Mar"
+      - "Mer"
+      - "Jeu"
+      - "Ven"
+      - "Sam"
+    month_names:
+      - ~
+      - "Janvier"
+      - "Février"
+      - "Mars"
+      - "Avril"
+      - "Mai"
+      - "Juin"
+      - "Juillet"
+      - "Août"
+      - "Septembre"
+      - "Octobre"
+      - "Novembre"
+      - "Décembre"

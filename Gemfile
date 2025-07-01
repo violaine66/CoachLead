@@ -58,8 +58,10 @@ gem "sassc-rails"
 gem "cloudinary"
 
 gem "pg_search"
+gem 'rails-i18n'
 
-gem "simple_calendar"
+gem 'simple_calendar'
+
 
 group :development do
   gem 'brakeman', require: false
