@@ -9,7 +9,8 @@ class MatchPerformancesController < ApplicationController
   def index
     @match_performances = policy_scope(MatchPerformance).includes(user: :player_profil)
     @match_performance = MatchPerformance.new
-    @player_profils = PlayerProfil.all
+
+    @users = User.includes(:player_profil).where(role: 'joueur')
     @stats_by_player = @match_performances
     .group_by(&:user)
     .transform_values do |performances|
@@ -24,35 +25,86 @@ class MatchPerformancesController < ApplicationController
     authorize @match_performance
   end
 
-  def new
-    @match_performance = MatchPerformance.new
-    @player_profils = PlayerProfil.all
-    authorize @match_performance
+  # def new
+  #   @match_performance = MatchPerformance.new
+  #   @player_profils = PlayerProfil.all
+  #   authorize @match_performance
 
-  end
+  # end
 
-  def create
-    @match_performance = MatchPerformance.new(match_performance_params)
-    authorize @match_performance
+def new
+  @match_performance = MatchPerformance.new
+    authorize @match_performance    # <-
+  @player_profils = PlayerProfil.all
+  @existing_match_dates = MatchPerformance.select(:match_date).distinct.pluck(:match_date).compact.sort || []
+end
 
-    # Vérifier si l'utilisateur sélectionné a un profil associé
-    @user = User.find_by(id: @match_performance.user_id)
-    if @user.nil? || @user.player_profil.nil?
-      flash[:alert] = "L'utilisateur sélectionné n'a pas de profil associé."
-      render :new and return
-    end
+def create
+  user_ids = params[:user_ids] || []
 
-    if @match_performance.save
-      redirect_to @match_performance, notice: 'La performance du match a été créée avec succès.'
+  @existing_match_dates = MatchPerformance.select(:match_date).distinct.pluck(:match_date).compact.sort
+  @player_profils = PlayerProfil.all
+
+  match_date = if params[:existing_match_date].present?
+                 Date.parse(params[:existing_match_date])
+               else
+                 match_performance_params[:match_date]
+               end
+
+  # Préparer les params corrigés
+  safe_params = match_performance_params.to_h
+
+  # Convertir les attributs numériques vides en nil ou 0
+  [:yellow_card, :played, :buts, :passes].each do |field|
+    if safe_params[field].blank?
+      safe_params[field] = 0  # ou nil selon ta logique métier
     else
-      render :new, status: :unprocessable_entity
+      safe_params[field] = safe_params[field].to_i
     end
   end
 
-  private
-  def match_performance_params
-    params.require(:match_performance).permit(:match_date,:commentaires, :played, :yellow_card, :user_id, :buts, :passes)
+  authorize MatchPerformance
+
+  performances = user_ids.map do |user_id|
+    MatchPerformance.new(
+      user_id: user_id,
+      match_date: match_date,
+      played: safe_params[:played],
+      buts: safe_params[:buts],
+      passes: safe_params[:passes],
+      yellow_card: safe_params[:yellow_card],
+      commentaires: safe_params[:commentaires]
+    )
   end
+
+  if performances.all?(&:save)
+    redirect_to match_performances_path, notice: "Performances créées avec succès."
+  else
+    performances.each do |performance|
+      Rails.logger.error "MatchPerformance errors: #{performance.errors.full_messages.join(', ')}" unless performance.valid?
+    end
+
+    @match_performance = MatchPerformance.new(match_performance_params)
+
+    flash.now[:alert] = "Erreur lors de la création des performances."
+    render :new
+  end
+end
+
+
+private
+
+def match_performance_params
+  params.require(:match_performance).permit(:match_date, :played, :buts, :passes, :yellow_card, :commentaires)
+end
+
+private
+
+def match_performance_params
+  params.require(:match_performance).permit(:match_date, :played, :buts, :passes, :yellow_card, :commentaires)
+end
+
+
 
   def set_match_performance
     @match_performance = MatchPerformance.find(params[:id])

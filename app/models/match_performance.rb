@@ -6,4 +6,12 @@ class MatchPerformance < ApplicationRecord
   validates :yellow_card, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :played, inclusion: { in: [true, false] }
   validates :match_date, presence: true
+
+    scope :for_player_on_date, ->(user_id, match_date) {
+    where(user_id: user_id, match_date: match_date)
+  }
+
+  # Validation d'unicité pour éviter doublons
+  validates :user_id, uniqueness: { scope: :match_date, message: "a déjà une performance enregistrée pour cette date" }
+
 end
