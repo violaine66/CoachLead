@@ -85,7 +85,9 @@
                       <td><%= performance.yellow_card %></td>
                       <td>
                         <%= link_to "Voir", match_performance_path(performance), class: "btn btn-sm btn-primary text-white" %>
-                        <%= link_to "Modifier", edit_match_performance_path(performance), class: "btn btn-sm btn-primary text-white" %>
+                        <% if current_user.entraineur? %>
+                          <%= link_to "Modifier", edit_match_performance_path(performance), class: "btn btn-sm btn-primary text-white" %>
+                        <% end %>
                       </td>
                     </tr>
                   <% end %>
