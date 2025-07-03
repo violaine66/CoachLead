@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <% if current_user.entraineur? %>
     <div class="text-end my-4">
-      <%= link_to "Créer une nouvelle performance", new_match_performance_path, class: "btn-add text-white" %>
+      <%= link_to "Renseigner une participation", new_match_performance_path, class: "btn-add text-white" %>
     </div>
   <% end %>
 
@@ -112,7 +112,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @match_performances.each do |performance| %>
+              <% @match_performances.sort_by { |perf| [perf.user.player_profil&.last_name.to_s.downcase, perf.match_date] }.each do |performance| %>
                 <tr>
                   <% if current_user.entraineur? %>
                     <td>
@@ -135,6 +135,4 @@
       </div>
     </div>
   <% end %>
-
-
 </div>
