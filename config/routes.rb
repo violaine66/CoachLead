@@ -37,7 +37,7 @@ end
   #   resources :job_load_evaluations, only: [:new, :create, :show]
   # end
   resources :job_load_evaluations, only: [:index, :show, :new, :create]
-  resources :match_performances, only: [:index, :show, :new, :create]
+  resources :match_performances, only: [:index, :show, :new, :create, :update, :edit]
   # config/routes.rb
   devise_scope :user do
     get   'user/edit_avatar',   to: 'users/registrations#edit_avatar',   as: :edit_avatar_user

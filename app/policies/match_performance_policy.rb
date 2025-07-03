@@ -34,4 +34,13 @@ class MatchPerformancePolicy < ApplicationPolicy
   def create?
     user.entraineur? || record.user == user || user.joueur?
   end
+
+  def update?
+    user.entraineur? || record.user == user || user.joueur?
+  end
+
+  def edit?
+    update?
+  end
+
 end

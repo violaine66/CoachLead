@@ -7,31 +7,27 @@ class MatchPerformancesController < ApplicationController
   after_action :verify_policy_scoped, only: :index  # Vérifie la politique du scope pour l'index
 
   def index
-    @match_performances = policy_scope(MatchPerformance).includes(user: :player_profil)
-    @match_performance = MatchPerformance.new
+  @match_performances = policy_scope(MatchPerformance).includes(user: :player_profil)
+  @match_performance = MatchPerformance.new
 
-    @users = User.includes(:player_profil).where(role: 'joueur')
-    
-    @stats_by_player = @match_performances
+  @users = User.includes(:player_profil).where(role: 'joueur')
+
+  @stats_by_player = @match_performances
     .group_by(&:user)
     .transform_values do |performances|
       {
         total_played: performances.count { |p| p.played },
+        total_buts: performances.sum { |p| p.buts.to_i },
+        total_passes: performances.sum { |p| p.passes.to_i },
         total_yellow_cards: performances.sum { |p| p.yellow_card.to_i }
       }
     end
-  end
+end
+
 
   def show
     authorize @match_performance
   end
-
-  # def new
-  #   @match_performance = MatchPerformance.new
-  #   @player_profils = PlayerProfil.all
-  #   authorize @match_performance
-
-  # end
 
 def new
   @match_performance = MatchPerformance.new
@@ -89,6 +85,23 @@ def create
 
     flash.now[:alert] = "Erreur lors de la création des performances."
     render :new
+  end
+end
+
+def edit
+  @match_performance = MatchPerformance.find(params[:id])
+  authorize @match_performance
+
+end
+
+def update
+  @match_performance = MatchPerformance.find(params[:id])
+  authorize @match_performance
+  if @match_performance.update(match_performance_params)
+    redirect_to match_performance_path(@match_performance), notice: 'Performance mise à jour avec succès.'
+  else
+    flash.now[:alert] = "Erreur lors de la mise à jour de la performance."
+    render :edit
   end
 end
 

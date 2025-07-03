@@ -1,0 +1,38 @@
+<%= simple_form_for @match_performance do |f| %>
+
+
+  <div class="form-group mt-2">
+    <!-- Saisie de la date du match -->
+    <%= f.label :match_date, "Date du match" %>
+    <%= f.date_field :match_date, class: "form-control" %>
+  </div>
+
+  <div class="form-group mt-2">
+    <!-- Participation -->
+    <%= f.input :played, label: "Participation", as: :boolean %>
+  </div>
+
+  <div class="form-group mt-2">
+    <!-- Buts du joueur -->
+    <%= f.input :buts, collection: (0..15).to_a, selected: f.object.buts || 0, label: "Buts" %>
+  </div>
+
+  <div class="form-group mt-2">
+    <!-- Passes décisives du joueur -->
+    <%= f.input :passes, collection: (0..100).to_a, selected: f.object.passes || 0, label: "Passes décisives" %>
+  </div>
+
+  <div class="form-group mt-2">
+    <!-- Cartons jaunes -->
+    <%= f.input :yellow_card, collection: (0..10).to_a, selected: f.object.yellow_card || 0, label: "Carton jaune" %>
+  </div>
+
+  <div class="form-group mt-2">
+    <!-- Commentaires -->
+    <%= f.input :commentaires, label: "Commentaires" %>
+  </div>
+
+  <!-- Bouton de soumission -->
+  <%= f.button :submit, class: "btn btn-primary", label:"Enregistrer" %>
+  <%= link_to"Retour", match_performances_path, class:"btn btn-secondary text-white"%>
+<% end %> <!-- <=== ce end ferme le bloc simple_form_for -->
