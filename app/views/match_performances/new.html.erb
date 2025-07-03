@@ -1,45 +1,46 @@
 <div class="container mt-5">
   <div class="row d-flex justify-content-center">
-    <div class="col-sm-10 col-md-8">
+    <div class="col-sm-4 col-md-4 col-lg-4">
       <%= simple_form_for @match_performance, url: match_performances_path, method: :post do |f| %>
         <div class="form-group mt-4">
-          <%= label_tag :user_ids, "Sélectionner les joueurs" %><br>
-          <% @player_profils.each do |profile| %>
-            <div class="form-check">
-              <%= check_box_tag "user_ids[]", profile.user_id, false, class: "form-check-input", id: "player_#{profile.user_id}" %>
-              <%= label_tag "player_#{profile.user_id}", profile.full_name, class: "form-check-label" %>
-            </div>
-          <% end %>
+          <h4><%= label_tag :user_ids, "Sélectionner les joueurs" %></h5>
+          <div class="form-check mb-3">
+             <% @player_profils.each do |profile| %>
+                <div class="form-check">
+                  <%= check_box_tag "user_ids[]", profile.user_id, false, class: "form-check-input", id: "player_#{profile.user_id}" %>
+                  <%= label_tag "player_#{profile.user_id}", profile.full_name, class: "form-check-label" %>
+                </div>
+              <% end %>
+          </div>
         </div>
 
-        <div class="form-group mt-2">
-          <%= f.label :existing_match_date, "Choisir une date de match existante (facultatif)" %>
-          <%= select_tag 'existing_match_date', options_for_select(@existing_match_dates.map { |d| [d.strftime('%d/%m/%Y'), d] }), include_blank: true, class: "form-control" %>
-        </div>
+        <div class="form-group my-4">
+            <%= f.label :existing_match_date, "Choisir une date de match existante (facultatif)" %>
+            <%= select_tag 'existing_match_date', options_for_select(@existing_match_dates.map { |d| [d.strftime('%d/%m/%Y'), d] }), include_blank: true, class: "form-control" %>
+          </div>
 
-        <div class="form-group mt-2">
-          <%= f.label :match_date, "Ou saisir une nouvelle date de match" %>
-          <%= f.date_field :match_date, class: "form-control" %>
-        </div>
+          <div class="form-group my-4">
+            <%= f.label :match_date, "Ou saisir une nouvelle date de match" %>
+            <%= f.date_field :match_date, class: "form-control" %>
+          </div>
 
-        <div class="form-group mt-2">
-          <%= f.input :played, as: :boolean, label: "Participation (joué)" %>
-        </div>
-
+          <div class="form-group my-4">
+            <%= f.input :played, as: :boolean, label: "Participation (joué)" %>
+          </div>
         <%= f.submit "Enregistrer la participation", class: "btn btn-add text-white" %>
-      <% end %>
-      <% if @match_performance.errors.any? %>
-        <div class="alert alert-danger">
-          <h4><%= pluralize(@match_performance.errors.count, "erreur") %> empêchent la sauvegarde :</h4>
-          <ul>
-            <% @match_performance.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+        <%= link_to "Retour", match_performances_path, class: "btn btn-secondary text-white"%>
+        <% end %>
 
-
+        <% if @match_performance.errors.any? %>
+          <div class="alert alert-danger">
+            <h4><%= pluralize(@match_performance.errors.count, "erreur") %> empêchent la sauvegarde :</h4>
+            <ul>
+              <% @match_performance.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>
