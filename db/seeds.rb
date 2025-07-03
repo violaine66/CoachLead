@@ -240,21 +240,21 @@ players_data.each do |player_data|
   puts "Profil du joueur #{player.first_name} #{player.last_name} créé."
 
 
-  # Rechercher un fichier d'image correspondant au prénom (insensible à l'extension)
-  image_files = Dir.glob(Rails.root.join("app/assets/images/#{player.first_name.downcase}.*"))
+  # # Rechercher un fichier d'image correspondant au prénom (insensible à l'extension)
+  # image_files = Dir.glob(Rails.root.join("app/assets/images/#{player.first_name.downcase}.*"))
 
-  if image_files.any?
-    image_path = image_files.first
-    player.photo.attach(
-      io: File.open(image_path),
-      filename: File.basename(image_path),
-      content_type: Marcel::MimeType.for(Pathname.new(image_path))
-    )
-    puts "📸 Photo attachée pour #{player.first_name} (#{File.basename(image_path)})"
-  else
-    puts "⚠️ Aucune image trouvée pour #{player.first_name}"
-  end
-end
+  # if image_files.any?
+  #   image_path = image_files.first
+  #   player.photo.attach(
+  #     io: File.open(image_path),
+  #     filename: File.basename(image_path),
+  #     content_type: Marcel::MimeType.for(Pathname.new(image_path))
+  #   )
+  #   puts "📸 Photo attachée pour #{player.first_name} (#{File.basename(image_path)})"
+  # else
+  #   puts "⚠️ Aucune image trouvée pour #{player.first_name}"
+  # end
+# end
 
 puts "utilisateurs et profils de joueurs créés avec succès."
 
@@ -276,20 +276,20 @@ puts "utilisateurs et profils de joueurs créés avec succès."
 # end
 #  puts "10 évaluations de charge de travail créées avec succès."
 
-puts "Créez des performances de match pour chaque utilisateur"
+# puts "Créez des performances de match pour chaque utilisateur"
 
-users.each do |user|
-  # Créez plusieurs performances de match pour chaque utilisateur (par exemple, 5 matchs)
-  5.times do |i|
-    # Créez une performance de match pour un utilisateur avec des données simples
-    MatchPerformance.create(
-      user_id: user.id,
-      match_date: Date.new(2025, 4, i+1),  # Dates fixes pour les matchs (ex: 1er avril, 2 avril, etc.)
-      played: [true, false].sample,  # Match joué ou non, sélectionné aléatoirement
-      yellow_card: rand(0..2)  # Carton jaune aléatoire (0, 1 ou 2)
-    )
-  end
-end
+# users.each do |user|
+#   # Créez plusieurs performances de match pour chaque utilisateur (par exemple, 5 matchs)
+#   5.times do |i|
+#     # Créez une performance de match pour un utilisateur avec des données simples
+#     MatchPerformance.create(
+#       user_id: user.id,
+#       match_date: Date.new(2025, 4, i+1),  # Dates fixes pour les matchs (ex: 1er avril, 2 avril, etc.)
+#       played: [true, false].sample,  # Match joué ou non, sélectionné aléatoirement
+#       yellow_card: rand(0..2)  # Carton jaune aléatoire (0, 1 ou 2)
+#     )
+#   end
+# end
 
 # # db/seeds.rb
 
