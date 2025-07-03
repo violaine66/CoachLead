@@ -254,7 +254,7 @@ players_data.each do |player_data|
   # else
   #   puts "⚠️ Aucune image trouvée pour #{player.first_name}"
   # end
-# end
+end
 
 puts "utilisateurs et profils de joueurs créés avec succès."
 
