@@ -91,7 +91,7 @@
                 </tr>
               </thead>
               <tbody>
-                <% @player_profil.user.attendances.each do |attendance| %>
+                 <% @player_profil.user.attendances.sort_by { |a| a.training.date }.each do |attendance| %>
                   <tr>
                     <td><%= attendance.training.date.strftime("%d/%m/%Y") %></td>
                     <td>
