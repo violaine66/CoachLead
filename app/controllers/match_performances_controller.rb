@@ -11,6 +11,7 @@ class MatchPerformancesController < ApplicationController
     @match_performance = MatchPerformance.new
 
     @users = User.includes(:player_profil).where(role: 'joueur')
+    
     @stats_by_player = @match_performances
     .group_by(&:user)
     .transform_values do |performances|

@@ -26,7 +26,7 @@
           <%= f.input :played, as: :boolean, label: "Participation (joué)" %>
         </div>
 
-        <%= f.submit "Créer la participation", class: "btn btn-secondary" %>
+        <%= f.submit "Enregistrer la participation", class: "btn btn-add text-white" %>
       <% end %>
       <% if @match_performance.errors.any? %>
         <div class="alert alert-danger">
