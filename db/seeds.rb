@@ -258,23 +258,23 @@ end
 
 puts "utilisateurs et profils de joueurs créés avec succès."
 
-puts "création de matchs"
+# puts "création de matchs"
 
-MatchPerformance.create!(
-  match_date: Date.new(2025, 4, 1),
-)
-MatchPerformance.create!(
-  match_date: Date.new(2025, 4, 2),
-)
-puts "création de 10 évaluations de charge de travail..."
-users.each do |user|
-  JobLoadEvaluation.create!(
-    period: "Avril 2025",                    # Tu peux modifier la période selon ton besoin
-    rating: rand(1..5),                     # Une note entre 1 et 5 (par exemple)
-    user: user
-  )
-end
- puts "10 évaluations de charge de travail créées avec succès."
+# MatchPerformance.create!(
+#   match_date: Date.new(2025, 4, 1),
+# )
+# MatchPerformance.create!(
+#   match_date: Date.new(2025, 4, 2),
+# )
+# puts "création de 10 évaluations de charge de travail..."
+# users.each do |user|
+#   JobLoadEvaluation.create!(
+#     period: "Avril 2025",                    # Tu peux modifier la période selon ton besoin
+#     rating: rand(1..5),                     # Une note entre 1 et 5 (par exemple)
+#     user: user
+#   )
+# end
+#  puts "10 évaluations de charge de travail créées avec succès."
 
 puts "Créez des performances de match pour chaque utilisateur"
 
