@@ -1,4 +1,8 @@
-<%= simple_form_for @match_performance do |f| %>
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-12 col-md-10 col-lg-10">
+
+      <%= simple_form_for @match_performance do |f| %>
 
 
   <div class="form-group mt-2">
@@ -36,3 +40,8 @@
   <%= f.button :submit, class: "btn btn-primary", label:"Enregistrer" %>
   <%= link_to"Retour", match_performances_path, class:"btn btn-secondary text-white"%>
 <% end %> <!-- <=== ce end ferme le bloc simple_form_for -->
+
+
+    </div>
+  </div>
+</div>
