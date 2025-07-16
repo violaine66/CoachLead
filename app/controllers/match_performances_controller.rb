@@ -105,17 +105,10 @@ def update
   end
 end
 
-
 private
 
 def match_performance_params
-  params.require(:match_performance).permit(:match_date, :played, :buts, :passes, :yellow_card, :commentaires)
-end
-
-private
-
-def match_performance_params
-  params.require(:match_performance).permit(:match_date, :played, :buts, :passes, :yellow_card, :commentaires)
+  params.require(:match_performance).permit(:match_date, :played, :buts, :passes, :yellow_card, :commentaires, :tempsde_jeu)
 end
 
 
