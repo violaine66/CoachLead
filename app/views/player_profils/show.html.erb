@@ -144,21 +144,21 @@
     </div>
   </div>
 
-  <div class="montant-penalites">
+  <%# <div class="montant-penalites">
     <div class="row">
       <div class="col-sm-10 col-md-10 col-lg-8 mx-auto">
         <div class="total">
-          <h4>Pénalités</h4>
-          <% if @player_profil.total_penalties.to_i > 0 %>
-            <p><strong>Nombre de pénalités :</strong> <%= @player_profil.total_penalties %></p>
-            <p><strong>Total à soustraire en fin de saison :</strong> <%= @player_profil.total_penalties_amount %> €</p>
-          <% else %>
-            <p class="text-center"><em class="text-dark">Aucune donnée disponible pour le moment</em></p>
-          <% end %>
-        </div>
+          <h4>Pénalités</h4> %>
+          <%# if @player_profil.total_penalties.to_i > 0 %>
+            <%# <p><strong>Nombre de pénalités :</strong> <%= @player_profil.total_penalties</p> %>
+            <%# <p><strong>Total à soustraire en fin de saison :</strong> <%= @player_profil.total_penalties_amount €</p> %>
+          <%# else %>
+            <%# <p class="text-center"><em class="text-dark">Aucune donnée disponible pour le moment</em></p> %>
+          <%# end %>
+        <%# </div>
       </div>
     </div>
-  </div>
+  </div> %>
 
   <div class="fixed-bottom text-center mb-3">
     <%= link_to "Retour", root_path, class: "btn btn-secondary" %>
