@@ -17,6 +17,9 @@
   <div class="details-match">
     <p><strong>Date du match :</strong> <%= @match_performance.match_date.strftime("%d/%m/%Y") %></p>
     <p><strong>Participation :</strong> <%= @match_performance.played ? "Oui" : "Non" %></p>
+    <% if @match_performance.played == true %>
+      <p><strong>Temps de jeu effectif :</strong> <%= @match_performance.tempsde_jeu %> minutes</p>
+    <% end %>
     <p><strong>Buts :</strong> <%= @match_performance.buts %></p>
     <p><strong>Passes décisives :</strong> <%= @match_performance.passes %></p>
     <p><strong>Cartons jaunes :</strong> <%= @match_performance.yellow_card %></p>
