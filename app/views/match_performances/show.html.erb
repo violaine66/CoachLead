@@ -20,7 +20,9 @@
     <p><strong>Buts :</strong> <%= @match_performance.buts %></p>
     <p><strong>Passes décisives :</strong> <%= @match_performance.passes %></p>
     <p><strong>Cartons jaunes :</strong> <%= @match_performance.yellow_card %></p>
-    <p><strong>Commentaires :</strong> <%= @match_performance.commentaires %></p>
+    <% if current_user.entraineur? %>
+      <p><strong>Commentaires :</strong> <%= @match_performance.commentaires %></p>
+    <% end %>
   </div>
   <%= link_to "Retour", match_performances_path, class: "btn btn-secondary mt-3 text-white" %>
 </div>
