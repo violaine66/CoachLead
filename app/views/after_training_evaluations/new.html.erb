@@ -33,15 +33,13 @@
 
           <div class="mb-3">
             <div class="form-check">
-           <%= f.input :pleasure, as: :radio_buttons,
-  label: "😊 As-tu eu du plaisir à l'entraînement ?",
-  collection: [["Oui", true], ["Non", false]],
-  item_wrapper_class: "form-check",
-  item_label_class: "form-check-label text-white",
-  input_html: { class: "form-check-input" },
-  label_html: { class: "form-label text-white" } %>
-
-
+              <%= f.input :pleasure, as: :radio_buttons,
+                  label: "😊 As-tu eu du plaisir à l'entraînement ?",
+                  collection: [["Oui", true], ["Non", false]],
+                  item_wrapper_class: "form-check",
+                  item_label_class: "form-check-label text-white",
+                  input_html: { class: "form-check-input" },
+                  label_html: { class: "form-label text-white" } %>
             </div>
           </div>
 

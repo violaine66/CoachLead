@@ -36,7 +36,7 @@ class PlayerProfil < ApplicationRecord
 
     def total_penalties
     user.attendances
-        .where(status: [:absent, :late])
+        .where(status: [:absent, :late, :excused])
         .count
   end
 
