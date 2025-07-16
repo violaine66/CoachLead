@@ -66,7 +66,7 @@ def create
     MatchPerformance.new(
       user_id: user_id,
       match_date: match_date,
-      played: safe_params[:played],
+      played: true,
       buts: safe_params[:buts],
       passes: safe_params[:passes],
       yellow_card: safe_params[:yellow_card],

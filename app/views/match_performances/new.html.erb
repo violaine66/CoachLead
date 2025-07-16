@@ -24,9 +24,9 @@
             <%= f.date_field :match_date, class: "form-control" %>
           </div>
 
-          <div class="form-group my-4">
-            <%= f.input :played, as: :boolean, label: "Participation (joué)" %>
-          </div>
+          <%# <div class="form-group my-4"> %>
+            <%# <%= f.input :played, as: :boolean, label: "Participation (joué)" %>
+          <%# </div> %>
         <%= f.submit "Enregistrer la participation", class: "btn btn-add text-white" %>
         <%= link_to "Retour", match_performances_path, class: "btn btn-secondary text-white"%>
         <% end %>
