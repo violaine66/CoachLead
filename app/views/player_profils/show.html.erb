@@ -52,17 +52,18 @@
         <% end %>
        </strong></p>
       <p><strong><%= @player_profil.weight.present? ? "#{@player_profil.weight} kg" : "Poids NR" %></strong></p>
+      <p><strong><%= @player_profil.vma.present? ? "VMA : #{@player_profil.vma}" : "VMA NR" %></strong></p>
       <p><strong><%= @player_profil.job.present? ? @player_profil.job : "Travail NR" %></strong></p>
 
-      <% if @player_profil.job.present? %>
-        <p class="text-center">
-          <%= link_to job_load_evaluations_path do %>
-            <strong><em>
+      <%# if @player_profil.job.present? %>
+        <%# <p class="text-center"> %>
+          <%# link_to job_load_evaluations_path do %>
+            <%# <strong><em>
               <span class="text-dark">Evaluation du travail <i class="fa-solid fa-arrow-up-right-from-square ms-1 text-dark"></i></span>
-            </em></strong>
-          <% end %>
-        </p>
-      <% end %>
+            </em></strong> %>
+          <%# end %>
+        <%# </p> %>
+      <%# end %>
 
       <% if @player_profil.children_count.present? %>
         <% if @player_profil.children_count > 1 %>
