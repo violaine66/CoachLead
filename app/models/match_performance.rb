@@ -4,6 +4,13 @@
 class MatchPerformance < ApplicationRecord
   belongs_to :user
   validates :yellow_card, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  enum yellow_card_reason: {
+    sportif: 'Faute à caractère sportif',
+    antisportif: 'Comportement anti-sportif'
+  }
+
+  validates :yellow_card_reason, inclusion: { in: yellow_card_reasons.keys }, allow_blank: true
+
   validates :played, inclusion: { in: [true, false] }
   validates :match_date, presence: true
   validates :note_match, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 10 }, allow_nil: true
