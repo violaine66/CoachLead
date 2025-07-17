@@ -23,7 +23,9 @@
     <p><strong>Buts :</strong> <%= @match_performance.buts %></p>
     <p><strong>Passes décisives :</strong> <%= @match_performance.passes %></p>
     <p><strong>Cartons jaunes :</strong> <%= @match_performance.yellow_card %></p>
+
     <% if current_user.entraineur? %>
+      <p><strong>Note de match :</strong> <%= @match_performance.note_match %></p>
       <p><strong>Commentaires :</strong> <%= @match_performance.commentaires %></p>
     <% end %>
   </div>
