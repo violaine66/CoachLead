@@ -70,7 +70,9 @@ def create
       buts: safe_params[:buts],
       passes: safe_params[:passes],
       yellow_card: safe_params[:yellow_card],
-      commentaires: safe_params[:commentaires]
+      commentaires: safe_params[:commentaires],
+      tempsde_jeu: safe_params[:tempsde_jeu],
+      note_match: safe_params[:note_match]
     )
   end
 
@@ -108,7 +110,7 @@ end
 private
 
 def match_performance_params
-  params.require(:match_performance).permit(:match_date, :played, :buts, :passes, :yellow_card, :commentaires, :tempsde_jeu)
+  params.require(:match_performance).permit(:match_date, :played, :buts, :passes, :yellow_card, :commentaires, :tempsde_jeu, :note_match)
 end
 
 
