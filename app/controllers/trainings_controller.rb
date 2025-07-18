@@ -51,6 +51,10 @@ class TrainingsController < ApplicationController
     @training = Training.new(training_params)
     authorize @training
     if @training.save
+       players = User.joins(:player_profil)
+                  .where(role: 'joueur')
+                  .order('player_profils.last_name ASC, player_profils.first_name ASC')
+
       redirect_to @training, notice: 'Entraînement créé avec succès.'
     else
       render :new, status: :unprocessable_entity

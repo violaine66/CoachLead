@@ -149,7 +149,7 @@
       <tbody>
         <% @training.attendances.each do |a| %>
           <tr>
-            <td><%= "#{a.user.player_profil.first_name} #{a.user.player_profil.last_name}" %></td>
+            <td><%= "#{a.user.player_profil.last_name} #{a.user.player_profil.first_name}" %></td>
             <td><%= a.training.date.strftime("%d/%m/%Y") %></td>
             <td class="text-center">
               <% badge_class = case a.status
@@ -191,7 +191,7 @@
               <% attendance = @attendances[player.id] %>
               <tr class="text-dark">
                 <td>
-                  <%= player.player_profil ? "#{player.player_profil.first_name} #{player.player_profil.last_name}" : "" %>
+                  <%= player.player_profil ? "#{player.player_profil.last_name} #{player.player_profil.first_name}" : "" %>
                 </td>
                 <td class="text-dark">
                   <%= select_tag "attendances[#{player.id}][status]", options_for_select(['present', 'absent', 'late', 'excused'], attendance&.status), include_blank: true, prompt:"Séléctionner", class:"form-select status-select"%>
