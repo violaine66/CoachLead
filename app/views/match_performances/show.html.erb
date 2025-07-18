@@ -25,9 +25,9 @@
     <p><strong>Cartons jaunes :</strong> <%= @match_performance.yellow_card %>
     <% if @match_performance.yellow_card > 0 %>
      <p>
-  <strong>Raison du carton jaune :</strong>
-  <%= MatchPerformance.yellow_card_reasons[@match_performance.yellow_card_reason.to_sym] if @match_performance.yellow_card_reason.present? %>
-</p>
+      <strong>Raison du carton jaune :</strong>
+      <%= MatchPerformance.yellow_card_reasons[@match_performance.yellow_card_reason.to_sym] if @match_performance.yellow_card_reason.present? %>
+    </p>
 
 
     <% end %>

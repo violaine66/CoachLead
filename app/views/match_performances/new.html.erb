@@ -15,9 +15,9 @@
         </div>
 
         <div class="form-group my-4">
-            <%= f.label :existing_match_date, "Choisir une date de match existante (facultatif)" %>
-            <%= select_tag 'existing_match_date', options_for_select(@existing_match_dates.map { |d| [d.strftime('%d/%m/%Y'), d] }), include_blank: true, class: "form-control" %>
-          </div>
+          <%= f.label :existing_match_date, "Choisir une date de match existante (facultatif)" %>
+          <%= select_tag 'existing_match_date', options_for_select(@existing_match_dates.map { |d| [d.strftime('%d/%m/%Y'), d] }), include_blank: true, class: "form-control" %>
+        </div>
 
           <div class="form-group my-4">
             <%= f.label :match_date, "Ou saisir une nouvelle date de match" %>
