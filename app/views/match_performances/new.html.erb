@@ -8,7 +8,7 @@
              <% @player_profils.each do |profile| %>
                 <div class="form-check">
                   <%= check_box_tag "user_ids[]", profile.user_id, false, class: "form-check-input", id: "player_#{profile.user_id}" %>
-                  <%= label_tag "player_#{profile.user_id}", profile.full_name, class: "form-check-label" %>
+                  <%= label_tag "player_#{profile.user_id}", "#{profile.last_name} #{profile.first_name}", class: "form-check-label" %>
                 </div>
               <% end %>
           </div>

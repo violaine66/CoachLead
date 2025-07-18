@@ -31,16 +31,17 @@ end
 
 def new
   @match_performance = MatchPerformance.new
-    authorize @match_performance    # <-
-  @player_profils = PlayerProfil.all
+    authorize @match_performance
+  @player_profils = PlayerProfil.order(:last_name)
   @existing_match_dates = MatchPerformance.select(:match_date).distinct.pluck(:match_date).compact.sort || []
 end
 
 def create
   user_ids = params[:user_ids] || []
+   @player_profils = PlayerProfil.order(:last_name)
 
   @existing_match_dates = MatchPerformance.select(:match_date).distinct.pluck(:match_date).compact.sort
-  @player_profils = PlayerProfil.all
+
 
   match_date = if params[:existing_match_date].present?
                  Date.parse(params[:existing_match_date])
