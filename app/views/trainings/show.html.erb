@@ -86,7 +86,7 @@
               <tbody>
                 <% @pre_training_evaluations.each do |evaluation| %>
                   <tr>
-                    <td><%= "#{evaluation.user.player_profil.first_name} #{evaluation.user.player_profil.last_name}" %></td>
+                    <td><%= "#{evaluation.user.player_profil.last_name_name} #{evaluation.user.player_profil.first_name}" %></td>
                     <td><%= evaluation.cognitive_fatigue %> /5</td>
                     <td><%= evaluation.physical_fatigue %> /5</td>
                     <td><%= evaluation.mood %> /5</td>
@@ -147,7 +147,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @training.attendances.each do |a| %>
+        <% @training.attendances.sort_by { |a| a.user.player_profil&.last_name.to_s.downcase }.each do |a| %>
           <tr>
             <td><%= "#{a.user.player_profil.last_name} #{a.user.player_profil.first_name}" %></td>
             <td><%= a.training.date.strftime("%d/%m/%Y") %></td>
