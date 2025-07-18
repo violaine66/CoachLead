@@ -20,6 +20,10 @@ class Training < ApplicationRecord
     end.join(", ")
   end
 
+     # Appelée après la création des présences
+  def generate_player_material_list
+    update(player_material_list: prepa_materiel)
+  end
 
 
 end

@@ -131,6 +131,9 @@
   <% if current_user.entraineur? %>
     <h4>Absences / Retards des joueurs</h4>
 
+    <p><strong>Joueurs désignés pour le matériel :</strong> <%= @training.player_material_list.presence || "Non encore générée" %></p>
+
+
     <table class="table table-striped mt-3">
       <thead>
         <tr>
