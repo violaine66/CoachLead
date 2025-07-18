@@ -9,6 +9,11 @@ class MatchPerformance < ApplicationRecord
     antisportif: 'Comportement anti-sportif'
   }
 
+  def self.yellow_card_reasons_for_select
+    yellow_card_reasons.map { |key, label| [label, key] }
+  end
+
+
   validates :yellow_card_reason, inclusion: { in: yellow_card_reasons.keys }, allow_blank: true
 
   validates :played, inclusion: { in: [true, false] }
