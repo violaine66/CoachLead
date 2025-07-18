@@ -11,7 +11,7 @@ class Training < ApplicationRecord
   has_many :attendances, dependent: :destroy
 
   def prepa_materiel
-    present_players = attendances.includes(:user).where(present: true).map(&:user).uniq
+    present_players = attendances.includes(:user).where(status: :present).map(&:user).uniq
 
     selected_players = present_players.sample(6)
 

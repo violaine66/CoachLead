@@ -11,7 +11,7 @@ class Attendance < ApplicationRecord
 
     def maybe_generate_material_list
     # Une fois que tous les attendances sont créées, on génère la liste
-    if training.attendances.where(present: true).count >= 6
+    if training.attendances.where(status: :present).count >= 6
       training.generate_player_material_list
     end
   end
