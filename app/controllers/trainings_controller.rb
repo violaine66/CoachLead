@@ -20,7 +20,11 @@ class TrainingsController < ApplicationController
     authorize @training
 
     # Tous les joueurs (peut être filtrés selon ta logique métier)
-    @players = User.includes(:player_profil).where(role: 'joueur')
+    @players = User.joins(:player_profil)
+               .where(role: 'joueur')
+               .order('player_profils.last_name')
+               .includes(:player_profil)
+
 
     # Attendances existantes indexées par user_id
     @attendances = @training.attendances.index_by(&:user_id)

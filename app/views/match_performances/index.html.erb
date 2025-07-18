@@ -27,7 +27,7 @@
               <% next if stats[:total_played].to_i.zero? %>
               <tr>
                 <td>
-                  <%= user.player_profil.present? ? "#{user.player_profil.first_name} #{user.player_profil.last_name}" : "Profil manquant" %>
+                  <%= user.player_profil.present? ? "#{user.player_profil.last_name} #{user.player_profil.first_name}" : "Profil manquant" %>
                 </td>
                 <td><%= stats[:total_played] %></td>
                 <td><%= stats[:total_buts] %></td>
@@ -77,7 +77,7 @@
                     <tr>
                       <% if current_user.entraineur? %>
                         <td>
-                          <%= performance.user.player_profil.present? ? "#{performance.user.player_profil.first_name} #{performance.user.player_profil.last_name}" : "Profil manquant" %>
+                          <%= performance.user.player_profil.present? ? "#{performance.user.player_profil.last_name} #{performance.user.player_profil.first_name}" : "Profil manquant" %>
                         </td>
                       <% end %>
                       <td><%= performance.match_date.strftime("%d/%m/%Y") %></td>
