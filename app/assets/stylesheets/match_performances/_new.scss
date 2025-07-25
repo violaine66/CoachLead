@@ -20,11 +20,16 @@
 h2 {
   font-family: "Kanit", sans-serif;
   }
-  
+
 .form-check-input[type="checkbox"]{
   font-size: 20px;
 
 }
 .form-check-label {
   margin: 5px;
+}
+
+#yellow_cards select option {
+  color: black;
+  background-color: white; /* Pour que le fond soit blanc, optionnel */
 }
