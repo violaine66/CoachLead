@@ -71,8 +71,7 @@ def create
       played: true,
       buts: safe_params[:buts],
       passes: safe_params[:passes],
-      yellow_cards_attributes: safe_params[:yellow_cards_attributes],
-
+      yellow_cards_attributes: safe_params[:yellow_cards_attributes] || [],
       commentaires: safe_params[:commentaires],
       tempsde_jeu: safe_params[:tempsde_jeu],
       note_match: safe_params[:note_match]
