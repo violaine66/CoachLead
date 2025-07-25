@@ -191,7 +191,11 @@ users_data = [
   { email: "thorel@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "marlon-thorel", role: "joueur" },
   { email: "tual-killian@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "killian-tual", role: "joueur" },
   { email: "tual-yael@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "yael-tual", role: "joueur" },
-  { email: "namua@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "antonin-namua", role: "joueur" }
+  { email: "namua@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "antonin-namua", role: "joueur" },
+  { email: "taghue@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "nathan-taghue", role: "joueur" },
+  { email: "chavantre@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "noam-chavantre", role: "joueur" },
+  { email: "lochin@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "evan-lochin", role: "joueur" },
+  { email: "mahamoudou@example.com", password: ENV.fetch("COMMON_PASSWORD"), pseudo: "simon-mahamoudou", role: "joueur" }
 ]
 
 
