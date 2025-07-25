@@ -231,7 +231,11 @@ players_data = [
   { first_name: "Marlon", last_name: "Thorel", date_of_birth: Date.new(2007, 8, 9), job: "", weight: "", children_count: "", user_id: users[23].id },
   { first_name: "Killian", last_name: "Tual", date_of_birth: Date.new(1997, 12, 3), job: "", weight: "", children_count: "", user_id: users[24].id },
   { first_name: "Yael", last_name: "Tual", date_of_birth: Date.new(2001, 2, 14), job: "", weight: "", children_count: "", user_id: users[25].id },
-  { first_name: "Antonin", last_name: "Namua", date_of_birth: Date.new(1995, 6, 1), job: "", weight: "", children_count: "", user_id: users[26].id }
+  { first_name: "Antonin", last_name: "Namua", date_of_birth: Date.new(1995, 6, 1), job: "", weight: "", children_count: "", user_id: users[26].id },
+  { first_name: "Nathan", last_name: "Taghue", date_of_birth: Date.new(2007, 1, 1), job: "", weight: "", children_count: "", user_id: users[27].id },
+  { first_name: "Noam", last_name: "Chavantre", date_of_birth: Date.new(2005, 9, 19), job: "", weight: "", children_count: "", user_id: users[28].id },
+  { first_name: "Evan", last_name: "Lochin", date_of_birth: Date.new(2007, 9, 11), job: "", weight: "", children_count: "", user_id: users[29].id },
+  { first_name: "Simon", last_name: "Mahamoudou", date_of_birth: Date.new(2003, 8, 17), job: "", weight: "", children_count: "", user_id: users[30].id }
 ]
 
 # Création des profils de joueurs
