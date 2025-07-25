@@ -26,7 +26,47 @@
           <%= f.input :passes, selected: f.object.passes || 0, label: "Passes décisives" %>
         </div>
 
-      >
+       <div id="yellow_cards">
+    <%= f.simple_fields_for :yellow_cards do |yc| %>
+      <div class="form-group d-flex align-items-center mb-2">
+        <%= yc.input :reason, collection: YellowCard.reasons.keys.map { |r| [r.humanize, r] }, label: false, include_blank: "Sélectionner la raison" %>
+        <%= yc.input :_destroy, as: :boolean, label: "Supprimer", wrapper_html: { class: "ms-3" } %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to 'Ajouter un carton jaune', '#', id: 'add_yellow_card', class: 'btn btn-outline-secondary mb-3' %>
+  </div>
+
+
+
+<!-- Template caché pour nouveau carton jaune à ajouter via JS -->
+<div id="yellow_card_template" style="display: none;">
+  <%= f.simple_fields_for :yellow_cards, YellowCard.new, child_index: "new_yellow_card" do |yc| %>
+    <div class="form-group d-flex align-items-center mb-2">
+      <%= yc.input :reason, collection: YellowCard.reasons.keys.map { |r| [r.humanize, r] }, label: false, include_blank: "Sélectionner la raison" %>
+      <%= yc.input :_destroy, as: :boolean, label: "Supprimer", wrapper_html: { class: "ms-3" } %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const addButton = document.getElementById("add_yellow_card");
+    const container = document.getElementById("yellow_cards");
+    const template = document.getElementById("yellow_card_template").innerHTML;
+
+    addButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      const newId = new Date().getTime();
+      const newFields = template.replace(/new_yellow_card/g, newId);
+      container.insertAdjacentHTML('beforeend', newFields);
+    });
+  });
+</script>
+
+
 
         <div class="form-group mt-2">
           <!-- Temps de jeu -->

@@ -3,18 +3,8 @@
 #  Toute reproduction, même partielle, est interdite sans l'autorisation écrite de Violaine Soulas.
 class MatchPerformance < ApplicationRecord
   belongs_to :user
-  # validates :yellow_card, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  # enum yellow_card_reason: {
-  #   sportif: 'Faute à caractère sportif',
-  #   antisportif: 'Comportement anti-sportif'
-  # }
-
-  # def self.yellow_card_reasons_for_select
-  #   yellow_card_reasons.map { |key, label| [label, key] }
-  # end
-
-
-  # validates :yellow_card_reason, inclusion: { in: yellow_card_reasons.keys }, allow_blank: true
+  has_many :yellow_cards, dependent: :destroy
+  accepts_nested_attributes_for :yellow_cards, allow_destroy: true
 
   validates :played, inclusion: { in: [true, false] }
   validates :match_date, presence: true

@@ -19,7 +19,7 @@ class MatchPerformancesController < ApplicationController
         total_played: performances.count { |p| p.played },
         total_buts: performances.sum { |p| p.buts.to_i },
         total_passes: performances.sum { |p| p.passes.to_i },
-        total_yellow_cards: performances.sum { |p| p.yellow_card.to_i }
+        total_yellow_cards: performances.sum { |p| p.yellow_cards.size }
       }
     end
 end
@@ -70,6 +70,7 @@ def create
       played: true,
       buts: safe_params[:buts],
       passes: safe_params[:passes],
+      yellow_cards_attributes: safe_params[:yellow_cards_attributes],
 
       commentaires: safe_params[:commentaires],
       tempsde_jeu: safe_params[:tempsde_jeu],
@@ -112,7 +113,7 @@ end
 private
 
 def match_performance_params
-  params.require(:match_performance).permit(:match_date, :played, :buts, :passes, :commentaires, :tempsde_jeu, :note_match)
+  params.require(:match_performance).permit(:match_date, :played, :buts, :passes, :commentaires, :tempsde_jeu, :note_match, yellow_cards_attributes: [:id, :reason, :_destroy])
 end
 
 

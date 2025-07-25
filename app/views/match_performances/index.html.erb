@@ -17,6 +17,7 @@
               <th>Matchs joués</th>
               <th>Buts</th>
               <th>Passes décisives</th>
+              <th>Cartons jaunes</th>
 
             </tr>
           </thead>
@@ -32,6 +33,7 @@
                 <td><%= stats[:total_played] %></td>
                 <td><%= stats[:total_buts] %></td>
                 <td><%= stats[:total_passes] %></td>
+                <td><%= stats[:total_yellow_cards] %></td>
 
               </tr>
             <% end %>
@@ -60,6 +62,7 @@
                     <th>Participation</th>
                     <th>Buts</th>
                     <th>Passes décisives</th>
+                    <th>Cartons jaunes</th>
 
                     <th></th>
                   </tr>
@@ -76,6 +79,8 @@
                       <td><%= performance.played ? "Oui" : "Non" %></td>
                       <td><%= performance.buts %></td>
                       <td><%= performance.passes %></td>
+                      <td><%= performance.yellow_cards.count %></td>
+
 
                       <td>
                         <%= link_to "Voir", match_performance_path(performance), class: "btn btn-sm btn-primary text-white" %>

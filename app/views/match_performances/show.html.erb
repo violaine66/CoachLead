@@ -23,10 +23,21 @@
     <p><strong>Buts :</strong> <%= @match_performance.buts %></p>
     <p><strong>Passes décisives :</strong> <%= @match_performance.passes %></p>
 
-  
-
-
+    <% if @match_performance.yellow_cards.any? %>
+      <p><strong>Cartons jaunes :</strong></p>
+      <ul>
+      <% @match_performance.yellow_cards.each do |yellow_card| %>
+        <li><%= yellow_card.reason.humanize %></li>
+      <% end %>
+    </ul>
+    <% else %>
+      <p><strong>Cartons jaunes :</strong> Aucun</p>
     <% end %>
+
+
+
+
+
     <% if current_user.entraineur? %>
       <p><strong>Note de match :</strong> <%= @match_performance.note_match %>/10</p>
       <p><strong>Commentaires :</strong> <%= @match_performance.commentaires %></p>
