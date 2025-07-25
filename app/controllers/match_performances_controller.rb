@@ -34,6 +34,8 @@ def new
     authorize @match_performance
   @player_profils = PlayerProfil.order(:last_name)
   @existing_match_dates = MatchPerformance.select(:match_date).distinct.pluck(:match_date).compact.sort || []
+@match_performance.yellow_cards.build
+
 end
 
 def create
