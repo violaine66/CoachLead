@@ -31,11 +31,11 @@ end
 
 def new
   @match_performance = MatchPerformance.new
-    authorize @match_performance
+  authorize @match_performance
   @player_profils = PlayerProfil.order(:last_name)
   @existing_match_dates = MatchPerformance.select(:match_date).distinct.pluck(:match_date).compact.sort || []
-  yellow_cards_attributes: safe_params[:yellow_cards_attributes] || []
 end
+
 
 def create
   user_ids = params[:user_ids] || []
