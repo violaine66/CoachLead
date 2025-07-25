@@ -95,8 +95,8 @@ end
 
 def edit
   @match_performance = MatchPerformance.find(params[:id])
+  @match_performance.yellow_cards.build if @match_performance.yellow_cards.empty?
   authorize @match_performance
-
 end
 
 def update
