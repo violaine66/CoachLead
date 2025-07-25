@@ -24,10 +24,10 @@
     <p><strong>Passes décisives :</strong> <%= @match_performance.passes %></p>
 
     <% if @match_performance.yellow_cards.any? %>
-      <p><strong>Cartons jaunes :</strong></p>
+      <p><strong>Cartons jaunes :</strong> <%= @match_performance.yellow_cards.count %></p>
       <ul>
       <% @match_performance.yellow_cards.each do |yellow_card| %>
-        <li><%= yellow_card.reason.humanize %></li>
+        <li class="text-dark"><%= yellow_card.reason.humanize %></li>
       <% end %>
     </ul>
     <% else %>
