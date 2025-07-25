@@ -30,7 +30,7 @@
           <%= f.simple_fields_for :yellow_cards do |yc| %>
             <div class="form-group d-flex align-items-center mb-2">
               <%= yc.input :reason, collection: YellowCard.reasons.keys.map { |r| [r.humanize, r] }, label: false, include_blank: "Sélectionner la raison" %>
-              <%= yc.input :_destroy, as: :boolean, label: "Supprimer", wrapper_html: { class: "ms-3" } %>
+              <%# <%= yc.input :_destroy, as: :boolean, label: "Supprimer", wrapper_html: { class: "ms-3" } %>
             </div>
           <% end %>
         </div>
@@ -45,7 +45,7 @@
       <%= f.simple_fields_for :yellow_cards, YellowCard.new, child_index: "new_yellow_card" do |yc| %>
         <div class="form-group d-flex align-items-center mb-2">
           <%= yc.input :reason, collection: YellowCard.reasons.keys.map { |r| [r.humanize, r] }, label: false, include_blank: "Sélectionner la raison" %>
-          <%= yc.input :_destroy, as: :boolean, label: "Supprimer", wrapper_html: { class: "ms-3 text-dark" } %>
+          <%# <%= yc.input :_destroy, as: :boolean, label: "Supprimer", wrapper_html: { class: "ms-3 text-dark" } %>
         </div>
       <% end %>
     </div>
