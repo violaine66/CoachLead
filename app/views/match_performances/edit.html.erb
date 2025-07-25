@@ -29,7 +29,7 @@
        <div id="yellow_cards">
           <%= f.simple_fields_for :yellow_cards do |yc| %>
             <div class="form-group d-flex align-items-center mb-2">
-              <%= yc.input :reason, collection: YellowCard.reasons.keys.map { |r| [r.humanize, r] }, label: false, include_blank: "Sélectionner la raison" %>
+              <%= yc.input :reason, label:"Carton jaune",collection: YellowCard.reasons.keys.map { |r| [r.humanize, r] }, label: false, include_blank: "Sélectionner la raison" %>
               <%# <%= yc.input :_destroy, as: :boolean, label: "Supprimer", wrapper_html: { class: "ms-3" } %>
             </div>
           <% end %>
