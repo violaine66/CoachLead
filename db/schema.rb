@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_18_124651) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_25_110029) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,7 +76,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_18_124651) do
   create_table "match_performances", force: :cascade do |t|
     t.date "match_date"
     t.boolean "played"
-    t.integer "yellow_card"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -85,7 +84,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_18_124651) do
     t.integer "passes", default: 0
     t.integer "tempsde_jeu", default: 0
     t.float "note_match"
-    t.string "yellow_card_reason"
     t.index ["user_id"], name: "index_match_performances_on_user_id"
   end
 

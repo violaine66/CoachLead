@@ -17,7 +17,7 @@
               <th>Matchs joués</th>
               <th>Buts</th>
               <th>Passes décisives</th>
-              <th>Cartons jaunes</th>
+
             </tr>
           </thead>
           <tbody>
@@ -32,15 +32,7 @@
                 <td><%= stats[:total_played] %></td>
                 <td><%= stats[:total_buts] %></td>
                 <td><%= stats[:total_passes] %></td>
-                <td>
-                  <% if stats[:total_yellow_cards].to_i >= 2 %>
-                    <span class="badge text-dark" style="background-color: #ffff00;">
-                      <%= stats[:total_yellow_cards] %>
-                    </span>
-                  <% else %>
-                    <%= stats[:total_yellow_cards] %>
-                  <% end %>
-                </td>
+
               </tr>
             <% end %>
           </tbody>
@@ -68,7 +60,7 @@
                     <th>Participation</th>
                     <th>Buts</th>
                     <th>Passes décisives</th>
-                    <th>Cartons jaunes</th>
+
                     <th></th>
                   </tr>
                 </thead>
@@ -84,7 +76,7 @@
                       <td><%= performance.played ? "Oui" : "Non" %></td>
                       <td><%= performance.buts %></td>
                       <td><%= performance.passes %></td>
-                      <td><%= performance.yellow_card %></td>
+
                       <td>
                         <%= link_to "Voir", match_performance_path(performance), class: "btn btn-sm btn-primary text-white" %>
                         <% if current_user.entraineur? %>

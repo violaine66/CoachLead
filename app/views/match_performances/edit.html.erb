@@ -26,18 +26,7 @@
           <%= f.input :passes, selected: f.object.passes || 0, label: "Passes décisives" %>
         </div>
 
-        <div class="form-group mt-2">
-          <!-- Cartons jaunes -->
-          <%= f.input :yellow_card, selected: f.object.yellow_card || 0, label: "Carton jaune" %>
-        </div>
-
-        <div class="form-group mt-2">
-          <%= f.input :yellow_card_reason,
-                      label: "Raison du carton jaune",
-                      as: :select,
-                      collection: MatchPerformance.yellow_card_reasons_for_select,
-                      include_blank: true %>
-        </div>
+      >
 
         <div class="form-group mt-2">
           <!-- Temps de jeu -->
