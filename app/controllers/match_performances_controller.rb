@@ -54,7 +54,7 @@ def create
   safe_params = match_performance_params.to_h
 
   # Convertir les attributs numériques vides en nil ou 0
-  [:yellow_card, :played, :buts, :passes].each do |field|
+  [:played, :buts, :passes].each do |field|
     if safe_params[field].blank?
       safe_params[field] = 0  # ou nil selon ta logique métier
     else
